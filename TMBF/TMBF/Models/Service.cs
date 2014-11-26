@@ -22,8 +22,9 @@ namespace TMBF
         public double OffPeekRate { get; set; }
 
         public DateTime RateEffectiveDate { get; set; }
-        
 
+        public DateTime RateEndDate { get; set; }
+        
         public virtual ICollection<Customer> Customers {  get;  set; }
     }
 }

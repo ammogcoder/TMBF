@@ -38,7 +38,7 @@
   <Class Name="TMBF.Service">
     <Position X="0.5" Y="6" Width="2" />
     <TypeIdentifier>
-      <HashCode>AAEAAAAAAAAAgEAEAAAAAAQAAAAAAAAAACAAAAAAADA=</HashCode>
+      <HashCode>BAEAAAAAAAAAgEAEAAAAAAQAAAAAAAAAACAAAAAAADA=</HashCode>
       <FileName>Models\Service.cs</FileName>
     </TypeIdentifier>
   </Class>
