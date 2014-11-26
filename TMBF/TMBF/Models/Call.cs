@@ -4,7 +4,7 @@ using System.Web.Services;
 using System.Web.Services.Protocols;
 using System.ComponentModel;
 
-namespace TMBF
+namespace TMBF.Models
 {
     public class Call
     {
@@ -23,7 +23,6 @@ namespace TMBF
         public int ReceiverNo { get; set; }
 
         public int CustomerID { get; set; }
-
 
 
         public virtual Customer Customer { get; set; }

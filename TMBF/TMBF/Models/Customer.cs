@@ -5,11 +5,11 @@ using System.Web.Services.Protocols;
 using System.ComponentModel;
 using System.Collections.Generic;
 
-namespace TMBF
+namespace TMBF.Models
 {
     public class Customer: User
     {
-        public string Country{ get;  set; }
+        public int Country{ get;  set; }
 
         public string StreetAddress { get; set; }
 
@@ -22,6 +22,8 @@ namespace TMBF
         public float Commision2Representative { get; set; }
 
         public int ServiceID { get; set; }
+
+        public int SalesRepID { get; set; }
 
         public virtual Service Service { get; set; }
 

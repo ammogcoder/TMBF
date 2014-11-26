@@ -5,7 +5,7 @@ using System.Web.Services.Protocols;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace TMBF
+namespace TMBF.Models
 {
     public class Country
     {
