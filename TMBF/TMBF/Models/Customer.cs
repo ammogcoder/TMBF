@@ -4,9 +4,11 @@ using System.Web.Services;
 using System.Web.Services.Protocols;
 using System.ComponentModel;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace TMBF.Models
 {
+    [Table("Customer")]
     public class Customer: User
     {
         public int Country{ get;  set; }
