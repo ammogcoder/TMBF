@@ -4,14 +4,18 @@ using System.Web.Services;
 using System.Web.Services.Protocols;
 using System.ComponentModel;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace TMBF.Models
 {
     [Table("Customer")]
-    public class Customer: User
+    public class Customer
     {
         [Display(Name = "Street Address")]
         public string StreetAddress { get; set; }
+        public long UserID { get; set; }
+        public long ID { get; set; }
         public string City { get; set; }
         public string State { get; set; }
         [Display(Name = "Zip Code")]

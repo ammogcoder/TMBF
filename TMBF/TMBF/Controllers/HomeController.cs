@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using TMBF.Models;
 
 namespace TMBF.Controllers
 {
@@ -26,5 +27,34 @@ namespace TMBF.Controllers
 
             return View();
         }
+        /// <summary>
+        /// Login Actions By Magdy
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult Login()
+        {
+            return View();
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Login(User usr)
+        {
+            //if (ModelState.IsValid)
+            //{
+            //    using (DAL.TelecomContext Context = new DAL.TelecomContext())
+            //    {
+            //        var v = Context.Users.Where(m => m..Equals(usr.Name) && m.Password.Equals(usr.Password)).FirstOrDefault();
+            //        if (v != null)
+            //        {
+            //            //Session["Role"]=
+            //            Session["UsrID"] = v.ID;
+            //            return RedirectToAction("Index");
+            //        }
+            //    }
+            //}
+            return View(usr);
+        }
+        ///////////////////////
+
     }
 }
