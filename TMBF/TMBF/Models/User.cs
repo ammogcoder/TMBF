@@ -11,6 +11,9 @@ namespace TMBF.Models
     {
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public  long ID { get; set; }
+        [Display(Name = "User Name")]
+        public string UserName { get; set; }
+
 
         [Display(Name = "First Name")]
         public  string FirstName { get; set; }
