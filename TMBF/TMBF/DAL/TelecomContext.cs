@@ -12,7 +12,7 @@ namespace TMBF.DAL
         }
         //aaa aaa
         public DbSet<Customer> Customers { get; set; }
-       // public DbSet<Someone> Someones { get; set; }
+        public DbSet<Someone> Someones { get; set; }
         public DbSet<Service> Services { get; set; }
         public DbSet<User> Users { get; set; }
 
