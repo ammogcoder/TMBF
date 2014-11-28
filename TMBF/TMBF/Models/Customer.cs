@@ -13,9 +13,7 @@ namespace TMBF.Models
     public class Customer: User
     {
         [Display(Name = "Street Address")]
-        public string StreetAddress { get; set; }
-        public long UserID { get; set; }
-        public long ID { get; set; }
+        public string StreetAddress { get; set; }        
         public string City { get; set; }
         public string State { get; set; }
         [Display(Name = "Zip Code")]

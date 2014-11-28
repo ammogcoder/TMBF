@@ -29,11 +29,11 @@ namespace TMBF.DAL
                         
             var customers = new List<Customer>
             {
-                new Customer{ID=6421234569,CommisionForSalesRep=5,City="Fairfield",State="IA",StreetAddress="100N",ZipCode=123,ServiceID=1,SalesRepID=1,CountryID=123},
-                new Customer{ID=6421234579,CommisionForSalesRep=5,City="Fairfield",State="IA",StreetAddress="100N",ZipCode=123,ServiceID=1,SalesRepID=1,CountryID=123},
-                new Customer{ID=6421234589,CommisionForSalesRep=5,City="Fairfield",State="IA",StreetAddress="100N",ZipCode=123,ServiceID=1,SalesRepID=1,CountryID=123},
-                new Customer{ID=6421234599,CommisionForSalesRep=5,City="Fairfield",State="IA",StreetAddress="100N",ZipCode=123,ServiceID=1,SalesRepID=1,CountryID=123},
-                new Customer{ID=6421234509,CommisionForSalesRep=5,City="Fairfield",State="IA",StreetAddress="100N",ZipCode=123,ServiceID=1,SalesRepID=1,CountryID=123}
+                new Customer{ID=6421234569,FirstName="John",LastName="Doe",CommisionForSalesRep=5,City="Fairfield",State="IA",StreetAddress="100N",ZipCode=123,ServiceID=1,SalesRepID=1,CountryID=123},
+                new Customer{ID=6421234579,FirstName="Kohn",LastName="Eoe",CommisionForSalesRep=5,City="Fairfield",State="IA",StreetAddress="100N",ZipCode=123,ServiceID=1,SalesRepID=1,CountryID=123},
+                new Customer{ID=6421234589,FirstName="Lohn",LastName="Foe",CommisionForSalesRep=5,City="Fairfield",State="IA",StreetAddress="100N",ZipCode=123,ServiceID=1,SalesRepID=1,CountryID=123},
+                new Customer{ID=6421234599,FirstName="Mohn",LastName="Goe",CommisionForSalesRep=5,City="Fairfield",State="IA",StreetAddress="100N",ZipCode=123,ServiceID=1,SalesRepID=1,CountryID=123},
+                new Customer{ID=6421234509,FirstName="Nohn",LastName="Hoe",CommisionForSalesRep=5,City="Fairfield",State="IA",StreetAddress="100N",ZipCode=123,ServiceID=1,SalesRepID=1,CountryID=123}
             };
             customers.ForEach(c => context.Customers.Add(c));            
             context.SaveChanges();
