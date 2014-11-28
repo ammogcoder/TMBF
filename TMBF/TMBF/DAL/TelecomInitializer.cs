@@ -48,6 +48,9 @@ namespace TMBF.DAL
             };
             calls.ForEach(c => context.Calls.Add(c));
             context.SaveChanges();
+
+
+ 
         }
     }
 }
