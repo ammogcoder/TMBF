@@ -15,6 +15,6 @@ namespace TMBF.Models
 
         [DataType(DataType.Password)]
         public string Password { get; set; }
-
+        //tuan edit
     }
 }
