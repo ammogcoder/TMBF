@@ -22,7 +22,7 @@ namespace TMBF.DAL
 
         public DbSet<Call> Calls { get; set; }
         
-        protected void onModelCreating(DbModelBuilder modelBuilder)
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
         }
