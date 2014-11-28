@@ -7,7 +7,7 @@ using System.Web;
 
 namespace TMBF.Models
 {
-    public abstract class User
+    public class User
     {
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public  long ID { get; set; }
