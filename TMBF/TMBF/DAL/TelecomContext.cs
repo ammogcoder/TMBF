@@ -10,10 +10,11 @@ namespace TMBF.DAL
             : base("TelecomContext") 
         {
         }
-
+        //aaa aaa
         public DbSet<Customer> Customers { get; set; }
-
+        public DbSet<Someone> Someones { get; set; }
         public DbSet<Service> Services { get; set; }
+        public DbSet<User> Users { get; set; }
 
         public DbSet<Country> Countries { get; set; }
 
