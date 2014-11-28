@@ -10,7 +10,7 @@ namespace TMBF.Models
 {
     [Table("SalesRep")]
     public class SalesRep : User
-    {
+    {        
         public virtual ICollection<Customer> Customers { get; set; }
     }    
 }

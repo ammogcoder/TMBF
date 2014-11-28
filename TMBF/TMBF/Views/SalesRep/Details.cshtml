@@ -1,0 +1,68 @@
+﻿@model TMBF.Models.SalesRep
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>SalesRep</h4>
+	<hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ID)
+        </dd>
+
+        <dt>
+            First Name
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FirstName)
+        </dd>
+
+        <dt>
+            Last Name
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LastName)
+        </dd>        
+        <br />
+        <br />
+        <dt>
+            @Html.DisplayNameFor(model => model.Customers):
+        </dt>
+        <br />        
+        <p>
+        <dd>
+            <table class="table">
+                <tr>
+                    <th>Customer Phone#</th>
+                    <th>% Commission being Charged</th>
+                </tr>
+                @foreach (var item in Model.Customers)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ID)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CommisionForSalesRep)
+                        </td>
+                    </tr>
+                }
+            </table>
+        </dd>
+        </p>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

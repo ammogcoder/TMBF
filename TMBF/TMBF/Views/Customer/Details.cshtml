@@ -11,7 +11,31 @@
 	<hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Service.Name)
+            Phone No.
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ID)
+        </dd>
+
+        <dt>
+            First Name
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FirstName)
+        </dd>
+
+        <dt>
+            Last Name
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LastName)
+        </dd>
+
+        <dt>
+            Service
         </dt>
 
         <dd>
@@ -19,77 +43,71 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Country)
+            Nationality
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Country)
+            @Html.DisplayFor(model => model.Country.Name)
+        </dd>
+        
+        <dt>
+            Address
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StreetAddress),&nbsp;@Html.DisplayFor(model => model.City)<br/>
+            @Html.DisplayFor(model => model.State),&nbsp;@Html.DisplayFor(model => model.ZipCode)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.StreetAddress)
+            % Commission to<br/> Representative
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.StreetAddress)
+           <br/> @Html.DisplayFor(model => model.CommisionForSalesRep)%
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.City)
+            Sales Representative               
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.City)
-        </dd>
-
+            @Html.DisplayFor(model => model.SalesRep.FirstName)&nbsp;@Html.DisplayFor(model => model.SalesRep.LastName)
+        </dd> 
+        
+        <br />
+        <br />
         <dt>
-            @Html.DisplayNameFor(model => model.State)
+            Call History:
         </dt>
-
+        <br />
+        <p>
         <dd>
-            @Html.DisplayFor(model => model.State)
+            <table class="table">
+                <tr>
+                    <th>Date-Time</th>
+                    <th>Source-Destination</th>
+                    <th>Duration</th>
+                </tr>
+                @foreach (var item in Model.Calls)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CallDate)&nbsp;&nbsp;
+                            @(item.CallTime/100):@(item.CallTime%100)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.SourceCountry.Name)&nbsp;-&nbsp;@Html.DisplayFor(modelItem => item.DestinationCountry.Name)
+                        </td>
+                        <td>
+                            @((int)(item.Duration.Seconds/60))min.&nbsp;@(item.Duration.Seconds % 60)sec.
+                        </td>
+                    </tr>
+                }
+            </table>
         </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ZipCode)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ZipCode)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Commision2Representative)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Commision2Representative)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.SalesRepID)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.SalesRepID)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Password)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Password)
-        </dd>
-
+        </p>
+               
     </dl>
 </div>
 <p>
