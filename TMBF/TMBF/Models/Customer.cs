@@ -4,12 +4,12 @@ using System.Web.Services;
 using System.Web.Services.Protocols;
 using System.ComponentModel;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 
 namespace TMBF.Models
 {
+    [Table("Customer")]
     public class Customer: User
-    {        
+    {
         [Display(Name = "Street Address")]
         public string StreetAddress { get; set; }
         public string City { get; set; }
@@ -27,6 +27,6 @@ namespace TMBF.Models
         public virtual Service Service { get; set; }
         public virtual SalesRep SalesRep { get; set; }
         public virtual ICollection<Call> Calls { get; set; }
-        
+
     }
 }

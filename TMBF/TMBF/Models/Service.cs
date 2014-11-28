@@ -31,7 +31,7 @@ namespace TMBF.Models
 
         [Display(Name = "Rate Expiry Date")]
         public DateTime RateEndDate { get; set; }
-        //
+       
         public virtual ICollection<Customer> Customers {  get;  set; }
     }
 }
