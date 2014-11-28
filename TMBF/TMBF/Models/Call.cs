@@ -3,6 +3,7 @@ using System.Web;
 using System.Web.Services;
 using System.Web.Services.Protocols;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 
 namespace TMBF.Models
 {
@@ -10,20 +11,26 @@ namespace TMBF.Models
     {
         public int ID { get; set; }
 
+        [Display(Name = "Call Date")]
+        [DataType(DataType.Date)]
         public DateTime CallDate { get; set; }
 
+        [Display(Name = "Call Time")]
         public int CallTime { get; set; }
 
         public TimeSpan Duration { get; set; }
 
-        public int SourceCountry { get; set; }
+        [Display(Name = "Source Country")]
+        public virtual Country SourceCountry { get; set; }
 
-        public int DestinationCountry { get; set; }        
+        [Display(Name = "Destination Country")]
+        public virtual Country DestinationCountry { get; set; }
 
-        public int ReceiverNo { get; set; }
+        [Display(Name = "Receiver #")]
+        public long ReceiverNo { get; set; }
 
-        public int CustomerID { get; set; }
-
+        [Display(Name = "Caller #")]
+        public long CustomerID { get; set; }
 
         public virtual Customer Customer { get; set; }
     }

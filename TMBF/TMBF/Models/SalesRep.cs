@@ -8,7 +8,7 @@ using System.Collections.Generic;
 namespace TMBF.Models
 {
     public class SalesRep : User
-    {
+    {        
         public virtual ICollection<Customer> Customers { get; set; }
     }    
 }

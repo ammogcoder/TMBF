@@ -12,19 +12,34 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FirstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LastName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LastName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Country.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Country.Name)
+        </dd>
+
+        <dt>
             @Html.DisplayNameFor(model => model.Service.Name)
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.Service.Name)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Country)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Country)
         </dd>
 
         <dt>
@@ -60,11 +75,11 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Commision2Representative)
+            @Html.DisplayNameFor(model => model.CommisionForSalesRep)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Commision2Representative)
+            @Html.DisplayFor(model => model.CommisionForSalesRep)
         </dd>
 
         <dt>
@@ -73,24 +88,7 @@
 
         <dd>
             @Html.DisplayFor(model => model.SalesRepID)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Password)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Password)
-        </dd>
-
+        </dd>        
     </dl>
 
     @using (Html.BeginForm()) {

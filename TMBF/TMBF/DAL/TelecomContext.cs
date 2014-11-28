@@ -15,7 +15,11 @@ namespace TMBF.DAL
 
         public DbSet<Service> Services { get; set; }
 
+        public DbSet<Country> Countries { get; set; }
+
         public DbSet<SalesRep> SalesReps { get; set; }
+
+        public DbSet<Call> Calls { get; set; }
         
         protected void onModelCreating(DbModelBuilder modelBuilder)
         {

@@ -1,7 +1,7 @@
 ﻿@{
-    ViewBag.Title = "About";
+    ViewBag.Title = "TMBF Company";
 }
 <h2>@ViewBag.Title.</h2>
 <h3>@ViewBag.Message</h3>
 
-<p>Use this area to provide additional information.</p>
+<p>Now we are at @((int)((DateTime.Now-DateTime.Parse("1990-1-1")).TotalDays/365)) th. year of your service.</p>

@@ -11,7 +11,12 @@ namespace TMBF.Models
     {
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public  long ID { get; set; }
-        public  string Name { get; set; }
+
+        [Display(Name = "First Name")]
+        public  string FirstName { get; set; }
+
+        [Display(Name = "Last Name")]
+        public string LastName { get; set; }
 
         [DataType(DataType.Password)]
         public string Password { get; set; }

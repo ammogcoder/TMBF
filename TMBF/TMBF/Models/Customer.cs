@@ -4,32 +4,29 @@ using System.Web.Services;
 using System.Web.Services.Protocols;
 using System.ComponentModel;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace TMBF.Models
 {
     public class Customer: User
-    {
-        public int Country{ get;  set; }
-
+    {        
+        [Display(Name = "Street Address")]
         public string StreetAddress { get; set; }
-
         public string City { get; set; }
-
         public string State { get; set; }
-
+        [Display(Name = "Zip Code")]
         public int ZipCode { get; set; }
+        [Display(Name = "% Commision to Representative")]
+        public float CommisionForSalesRep { get; set; }
 
-        public float Commision2Representative { get; set; }
-
+        public int CountryID { get; set; }
         public int ServiceID { get; set; }
+        public long SalesRepID { get; set; }
 
-        public int SalesRepID { get; set; }
-
+        public virtual Country Country { get; set; }
         public virtual Service Service { get; set; }
-
         public virtual SalesRep SalesRep { get; set; }
-
         public virtual ICollection<Call> Calls { get; set; }
-
+        
     }
 }

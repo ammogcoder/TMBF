@@ -121,6 +121,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
+    <Compile Include="Controllers\SalesRepController.cs" />
     <Compile Include="DAL\TelecomContext.cs" />
     <Compile Include="DAL\TelecomInitializer.cs" />
     <Compile Include="Models\Call.cs" />
@@ -169,6 +170,11 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+    <Content Include="Views\SalesRep\Create.cshtml" />
+    <Content Include="Views\SalesRep\Delete.cshtml" />
+    <Content Include="Views\SalesRep\Details.cshtml" />
+    <Content Include="Views\SalesRep\Edit.cshtml" />
+    <Content Include="Views\SalesRep\Index.cshtml" />
     <Content Include="Views\Customer\Create.cshtml" />
     <Content Include="Views\Customer\Delete.cshtml" />
     <Content Include="Views\Customer\Details.cshtml" />

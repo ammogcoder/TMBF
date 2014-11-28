@@ -11,7 +11,7 @@ namespace TMBF.Models
     {
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int ID { get; set; }
-
+        
         public string Name { get; set; }
     }
 }
