@@ -83,7 +83,7 @@ namespace TMBF.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(salesrep).State = EntityState.Modified;
+                db.Entry(salesrep).State = System.Data.Entity.EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
