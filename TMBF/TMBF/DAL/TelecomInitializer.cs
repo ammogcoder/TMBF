@@ -29,16 +29,16 @@ namespace TMBF.DAL
                         
             var customers = new List<Customer>
             {
-                new Customer{ID=6421234569,FirstName="John",LastName="Doe",CommisionForSalesRep=5,City="Fairfield",State="IA",StreetAddress="100N",ZipCode=123,ServiceID=1,SalesRepID=1,CountryID=123,phoneNo="6421234569"},
-                new Customer{ID=6421234579,FirstName="Kohn",LastName="Eoe",CommisionForSalesRep=5,City="Fairfield",State="IA",StreetAddress="100N",ZipCode=123,ServiceID=1,SalesRepID=1,CountryID=123,phoneNo="6421234579"},
-                new Customer{ID=6421234589,FirstName="Lohn",LastName="Foe",CommisionForSalesRep=5,City="Fairfield",State="IA",StreetAddress="100N",ZipCode=123,ServiceID=1,SalesRepID=1,CountryID=123,phoneNo="6421234589"},
-                new Customer{ID=6421234599,FirstName="Mohn",LastName="Goe",CommisionForSalesRep=5,City="Fairfield",State="IA",StreetAddress="100N",ZipCode=123,ServiceID=1,SalesRepID=1,CountryID=123,phoneNo="6421234599"},
-                new Customer{ID=6421234509,FirstName="Nohn",LastName="Hoe",CommisionForSalesRep=5,City="Fairfield",State="IA",StreetAddress="100N",ZipCode=123,ServiceID=1,SalesRepID=1,CountryID=123,phoneNo="6421234509"},
-                new Customer{ID=7421234569,FirstName="John",LastName="Doe",CommisionForSalesRep=5,City="Fairfield",State="IA",StreetAddress="100N",ZipCode=123,ServiceID=1,SalesRepID=1,CountryID=123,phoneNo="6421234569"},
-                new Customer{ID=7421234579,FirstName="Kohn",LastName="Eoe",CommisionForSalesRep=5,City="Fairfield",State="IA",StreetAddress="100N",ZipCode=123,ServiceID=1,SalesRepID=1,CountryID=123,phoneNo="6421234579"},
-                new Customer{ID=7421234589,FirstName="Lohn",LastName="Foe",CommisionForSalesRep=5,City="Fairfield",State="IA",StreetAddress="100N",ZipCode=123,ServiceID=1,SalesRepID=1,CountryID=123,phoneNo="6421234589"},
-                new Customer{ID=7421234599,FirstName="Mohn",LastName="Goe",CommisionForSalesRep=5,City="Fairfield",State="IA",StreetAddress="100N",ZipCode=123,ServiceID=1,SalesRepID=1,CountryID=123,phoneNo="6421234599"},
-                new Customer{ID=7421234509,FirstName="Nohn",LastName="Hoe",CommisionForSalesRep=5,City="Fairfield",State="IA",StreetAddress="100N",ZipCode=123,ServiceID=1,SalesRepID=1,CountryID=123,phoneNo="6421234509"}
+                new Customer{ID=6421234569,FirstName="John",LastName="Doe",CommisionForSalesRep=5,City="Fairfield",State="IA",StreetAddress="100N",ZipCode=123,ServiceID=1,SalesRepID=1,CountryID=123,PhoneNo="6421234569"},
+                new Customer{ID=6421234579,FirstName="Kohn",LastName="Eoe",CommisionForSalesRep=5,City="Fairfield",State="IA",StreetAddress="100N",ZipCode=123,ServiceID=1,SalesRepID=1,CountryID=123,PhoneNo="6421234579"},
+                new Customer{ID=6421234589,FirstName="Lohn",LastName="Foe",CommisionForSalesRep=5,City="Fairfield",State="IA",StreetAddress="100N",ZipCode=123,ServiceID=1,SalesRepID=1,CountryID=123,PhoneNo="6421234589"},
+                new Customer{ID=6421234599,FirstName="Mohn",LastName="Goe",CommisionForSalesRep=5,City="Fairfield",State="IA",StreetAddress="100N",ZipCode=123,ServiceID=1,SalesRepID=1,CountryID=123,PhoneNo="6421234599"},
+                new Customer{ID=6421234509,FirstName="Nohn",LastName="Hoe",CommisionForSalesRep=5,City="Fairfield",State="IA",StreetAddress="100N",ZipCode=123,ServiceID=1,SalesRepID=1,CountryID=123,PhoneNo="6421234509"},
+                new Customer{ID=7421234569,FirstName="John",LastName="Doe",CommisionForSalesRep=5,City="Fairfield",State="IA",StreetAddress="100N",ZipCode=123,ServiceID=1,SalesRepID=1,CountryID=123,PhoneNo="6421234569"},
+                new Customer{ID=7421234579,FirstName="Kohn",LastName="Eoe",CommisionForSalesRep=5,City="Fairfield",State="IA",StreetAddress="100N",ZipCode=123,ServiceID=1,SalesRepID=1,CountryID=123,PhoneNo="6421234579"},
+                new Customer{ID=7421234589,FirstName="Lohn",LastName="Foe",CommisionForSalesRep=5,City="Fairfield",State="IA",StreetAddress="100N",ZipCode=123,ServiceID=1,SalesRepID=1,CountryID=123,PhoneNo="6421234589"},
+                new Customer{ID=7421234599,FirstName="Mohn",LastName="Goe",CommisionForSalesRep=5,City="Fairfield",State="IA",StreetAddress="100N",ZipCode=123,ServiceID=1,SalesRepID=1,CountryID=123,PhoneNo="6421234599"},
+                new Customer{ID=7421234509,FirstName="Nohn",LastName="Hoe",CommisionForSalesRep=5,City="Fairfield",State="IA",StreetAddress="100N",ZipCode=123,ServiceID=1,SalesRepID=1,CountryID=123,PhoneNo="6421234509"}
             };
             customers.ForEach(c => context.Customers.Add(c));            
             context.SaveChanges();
