@@ -1,0 +1,18 @@
+﻿
+@if (@Session["UsrName"] != null)
+{
+    <text>
+        Hello, @Session["UsrName"] 
+       
+@Html.ActionLink("Log out","logout","Home")
+
+    </text>
+}
+else
+{
+    <ul>
+      
+        <li>@Html.ActionLink("Log in", "Login", "Home")</li>
+    </ul>
+}
+//
