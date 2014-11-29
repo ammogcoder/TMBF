@@ -1,0 +1,64 @@
+﻿@model TMBF.Models.Service
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Service</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PeekRate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PeekRate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OffPeekRate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OffPeekRate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RateEffectiveDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RateEffectiveDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RateEndDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RateEndDate)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

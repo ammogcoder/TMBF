@@ -1,0 +1,58 @@
+﻿@model TMBF.Models.Service
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Service</h4>
+	<hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PeekRate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PeekRate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OffPeekRate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OffPeekRate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RateEffectiveDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RateEffectiveDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RateEndDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RateEndDate)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
