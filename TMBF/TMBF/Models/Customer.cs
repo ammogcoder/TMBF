@@ -20,6 +20,8 @@ namespace TMBF.Models
         public int ZipCode { get; set; }
         [Display(Name = "% Commision to Representative")]
         public float CommisionForSalesRep { get; set; }
+        [Display(Name = "Phone Number")]
+        public string phoneNo { get; set; }
 
         public int CountryID { get; set; }
         public int ServiceID { get; set; }
