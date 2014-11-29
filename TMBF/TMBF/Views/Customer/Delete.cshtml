@@ -83,12 +83,12 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.SalesRepID)
+            Sales Representative
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.SalesRepID)
-        </dd>        
+            @Html.DisplayFor(model => model.SalesRep.FirstName)&nbsp;@Html.DisplayFor(model => model.SalesRep.LastName)
+        </dd>         
     </dl>
 
     @using (Html.BeginForm()) {

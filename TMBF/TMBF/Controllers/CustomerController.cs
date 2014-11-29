@@ -8,6 +8,8 @@ using System.Web;
 using System.Web.Mvc;
 using TMBF.Models;
 using TMBF.DAL;
+using System.Diagnostics;
+using PagedList;
 
 namespace TMBF.Controllers
 {
@@ -16,10 +18,51 @@ namespace TMBF.Controllers
         private TelecomContext db = new TelecomContext();
 
         // GET: /Customer/
-        public ActionResult Index()
+        public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page)
         {
-            var customers = db.Customers.Include(c => c.Country).Include(c => c.Service);
-            return View(customers.ToList());
+            ViewBag.CurrentSort = sortOrder;
+            ViewBag.FNameSortParm = String.IsNullOrEmpty(sortOrder) ? "fname_desc" : "";
+            ViewBag.PhoneSortParm = sortOrder == "asec" ? "phone_desc" : "asec";
+
+            if (searchString != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
+            ViewBag.CurrentFilter = searchString;
+            
+            var customers = from c in db.Customers
+                           select c;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                customers = customers.Where(c => c.LastName.Contains(searchString)
+                                       || c.FirstName.Contains(searchString));
+            }
+            switch (sortOrder)
+            {
+                case "fname_desc":
+                    customers = customers.OrderByDescending(s => s.FirstName);
+                    break; 
+                case "asec":
+                    customers = customers.OrderBy(s => s.ID);
+                    break;
+                case "phone_desc":
+                    customers = customers.OrderByDescending(s => s.ID);
+                    break;                             
+                default:                
+                    customers = customers.OrderBy(s => s.FirstName);
+                    break;                                      
+            }
+
+            int pageSize = 2;
+            int pageNumber = (page ?? 1);            
+
+            customers = customers.Include(c => c.Country).Include(c => c.Service);
+            return View(customers.ToPagedList(pageNumber, pageSize));
         }
 
         // GET: /Customer/Details/5
@@ -52,13 +95,21 @@ namespace TMBF.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include="ID,StreetAddress,City,State,ZipCode,CommisionForSalesRep,CountryID,ServiceID,SalesRepID,FirstName,LastName,Password")] Customer customer)
         {
-            if (ModelState.IsValid)
+            //Debug.WriteLine(customer.ID);
+            if (customer.ID < 1000000000)
             {
-                db.Customers.Add(customer);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                ViewBag.ErrorMessage = "Phone No.s are 10 digits long.";
+                //Debug.WriteLine(customer.ID);
             }
-
+            else
+            {
+                if (ModelState.IsValid)
+                {
+                    db.Customers.Add(customer);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+            }
             ViewBag.CountryID = new SelectList(db.Countries, "ID", "Name", customer.CountryID);
             ViewBag.ServiceID = new SelectList(db.Services, "ID", "Name", customer.ServiceID);
             return View(customer);

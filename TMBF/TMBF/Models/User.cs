@@ -19,7 +19,6 @@ namespace TMBF.Models
         public string LastName { get; set; }
 
         [DataType(DataType.Password)]
-        public string Password { get; set; }
-        //tuan edit
-    }
+        public string Password { get; set; }                
+    }    
 }
