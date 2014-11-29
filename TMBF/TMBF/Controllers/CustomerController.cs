@@ -11,6 +11,7 @@ using TMBF.DAL;
 
 namespace TMBF.Controllers
 {
+    [SalesRepR]
     public class CustomerController : Controller
     {
         private TelecomContext db = new TelecomContext();

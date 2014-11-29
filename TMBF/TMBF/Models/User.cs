@@ -7,8 +7,14 @@ using System.Web;
 
 namespace TMBF.Models
 {
+    
     public class User
     {
+       public enum Role
+        {
+            Admin = 0, Customer = 1, SalesRep = 2
+        };
+
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public  long ID { get; set; }
         [Display(Name = "User Name")]
@@ -23,6 +29,8 @@ namespace TMBF.Models
 
         [DataType(DataType.Password)]
         public string Password { get; set; }
-        //tuan edit
+
+        public Role role { get; set; }
+        
     }
 }
