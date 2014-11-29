@@ -100,7 +100,7 @@
                             @Html.DisplayFor(modelItem => item.SourceCountry.Name)&nbsp;-&nbsp;@Html.DisplayFor(modelItem => item.DestinationCountry.Name)
                         </td>
                         <td>
-                            @((int)(item.Duration.Seconds/60))min.&nbsp;@(item.Duration.Seconds % 60)sec.
+                            @((int)(item.Duration/60))min.&nbsp;@(item.Duration % 60)sec.
                         </td>
                     </tr>
                 }

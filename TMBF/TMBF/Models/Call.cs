@@ -9,7 +9,7 @@ namespace TMBF.Models
 {
     public class Call
     {
-        public int ID { get; set; }
+        public long ID { get; set; }
 
         [Display(Name = "Call Date")]
         [DataType(DataType.Date)]
@@ -18,7 +18,7 @@ namespace TMBF.Models
         [Display(Name = "Call Time")]
         public int CallTime { get; set; }
 
-        public TimeSpan Duration { get; set; }
+        public int Duration { get; set; }
 
         [Display(Name = "Source Country")]
         public virtual Country SourceCountry { get; set; }
@@ -27,7 +27,7 @@ namespace TMBF.Models
         public virtual Country DestinationCountry { get; set; }
 
         [Display(Name = "Receiver #")]
-        public long ReceiverNo { get; set; }
+        public string ReceiverNo { get; set; }
 
         [Display(Name = "Caller #")]
         public long CustomerID { get; set; }

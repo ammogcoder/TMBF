@@ -1,7 +1,9 @@
-﻿@model IEnumerable<TMBF.Models.Customer>
+﻿@model PagedList.IPagedList<TMBF.Models.Customer>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Customers";
 }
 
 <h2>Customers</h2>
@@ -9,13 +11,24 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
+
+<p>
+@using (Html.BeginForm("Index", "Customer", FormMethod.Get))
+{
+    <p>
+        Find by name: @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
+        <input type="submit" value="Search" />
+    </p>
+}
+</p>
+
 <table class="table">
     <tr>
         <th>
-            Phone#
+            @Html.ActionLink("Phone#", "Index", new { sortOrder = ViewBag.PhoneSortParm, currentFilter = ViewBag.CurrentFilter })            
         </th>
         <th>
-            First Name
+            @Html.ActionLink("First Name", "Index", new { sortOrder = ViewBag.FNameSortParm, currentFilter = ViewBag.CurrentFilter })            
         </th>
         <th>
             Last Name
@@ -48,3 +61,8 @@
     </tr>
 }
 </table>
+<br />
+Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+@Html.PagedListPager(Model, page => Url.Action("Index",
+    new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))

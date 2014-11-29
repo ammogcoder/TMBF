@@ -11,6 +11,7 @@ using TMBF.DAL;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
+using System.Diagnostics;
 
 namespace TMBF.Controllers
 {
@@ -51,8 +52,14 @@ namespace TMBF.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include="ID,FirstName,LastName,Password")] SalesRep salesrep)
+        public ActionResult Create([Bind(Include="FirstName,LastName,Password")] SalesRep salesrep)
         {
+            long max = 1;
+            foreach(var sr in db.SalesReps){
+                if (max < sr.ID) max = sr.ID;
+            }
+            // Debug.WriteLine(max);
+            salesrep.ID = max + 1;
             if (ModelState.IsValid)
             {
                 db.SalesReps.Add(salesrep);
