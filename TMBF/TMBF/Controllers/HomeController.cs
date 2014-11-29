@@ -39,19 +39,22 @@ namespace TMBF.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Login(User usr)
         {
-            //if (ModelState.IsValid)
-            //{
-            //    using (DAL.TelecomContext Context = new DAL.TelecomContext())
-            //    {
-            //        var v = Context.Users.Where(m => m..Equals(usr.Name) && m.Password.Equals(usr.Password)).FirstOrDefault();
-            //        if (v != null)
-            //        {
-            //            //Session["Role"]=
-            //            Session["UsrID"] = v.ID;
-            //            return RedirectToAction("Index");
-            //        }
-            //    }
-            //}
+            if (ModelState.IsValid)
+            {
+                using (DAL.TelecomContext Context = new DAL.TelecomContext())
+                {
+                    var v = Context.Users.Where(m => m.UserName.Equals(usr.UserName) && m.Password.Equals(usr.Password)).FirstOrDefault();
+                    if (v != null)
+                    {
+                        //Session["Role"]=
+                        Session["UsrID"] = v.ID;
+                        return RedirectToAction("Index");
+                    }
+                    else 
+                        return View("Wrong Username / password");
+
+                }
+            }
             return View(usr);
         }
         ///////////////////////
