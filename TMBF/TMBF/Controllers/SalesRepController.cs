@@ -8,10 +8,14 @@ using System.Web;
 using System.Web.Mvc;
 using TMBF.Models;
 using TMBF.DAL;
+using System.Web;
+using System.Web.Mvc;
+using System.Web.Security;
 using System.Diagnostics;
 
 namespace TMBF.Controllers
 {
+  
     public class SalesRepController : Controller
     {
         private TelecomContext db = new TelecomContext();

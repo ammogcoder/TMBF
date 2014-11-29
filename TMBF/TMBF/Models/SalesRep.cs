@@ -8,6 +8,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace TMBF.Models
 {
+    
     [Table("SalesRep")]
     public class SalesRep : User
     {        

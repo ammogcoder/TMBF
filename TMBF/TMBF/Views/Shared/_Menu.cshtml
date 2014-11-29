@@ -1,0 +1,41 @@
+﻿@{
+    var menus = new[]
+                {
+                   new { LinkText="Home", ActionName="Index",ControllerName="Home",Roles="Anonymous,All"  }, 
+                   new { LinkText="Customers Bill", ActionName="Index",ControllerName="Customer",Roles="Customer,Anonymous"  },                  
+                   new { LinkText="Customers", ActionName="Index",ControllerName="Customer",Roles="SalesRep,Anonymous"  },                   
+                   new { LinkText="Sales Representatives", ActionName="Index",ControllerName="SalesRep",Roles="Admin,Anonymous"},                   
+                   new { LinkText="Services", ActionName="Index",ControllerName="Service",Roles="Admin,Anonymous"  },                   
+                   new { LinkText="Calls", ActionName="Index",ControllerName="Call",Roles="Admin,Anonymous"},            
+                   new { LinkText="About", ActionName="About",ControllerName="Home",Roles="Anonymous,All"  },
+                   new { LinkText="Contact", ActionName="Contact",ControllerName="Home",Roles="Anonymous,All"  }                   
+                };
+}  
+
+<ul id="menu" class="nav navbar-nav">
+    @if (@Session["UsrName"] != null)
+    {
+        String[] roles = new String[] { @Session["Role"].ToString() };
+        var links = from item in menus
+                    where item.Roles.Split(new String[] { "," }, StringSplitOptions.RemoveEmptyEntries)
+                    .Any(x => roles.Contains(x) || x == "All")
+                    select item;
+        foreach (var link in links)
+        {
+            @:
+            <li> @Html.ActionLink(link.LinkText, link.ActionName, link.ControllerName)</li>
+        }
+    }
+    else
+    {
+        var links = from item in menus
+                    where item.Roles.Split(new String[] { "," }, StringSplitOptions.RemoveEmptyEntries)
+                    .Any(x => new String[] { "All", "Anonymous" }.Contains(x))
+                    select item;
+        foreach (var link in links)
+        {
+            @:
+            <li> @Html.ActionLink(link.LinkText, link.ActionName, link.ControllerName)</li>
+        }
+    }
+</ul> 

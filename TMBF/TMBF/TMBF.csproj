@@ -131,10 +131,9 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\CallController.cs" />
+    <Compile Include="Controllers\Auth.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\SalesRepController.cs" />
-    <Compile Include="Controllers\ServiceController.cs" />
     <Compile Include="DAL\TelecomContext.cs" />
     <Compile Include="DAL\TelecomInitializer.cs" />
     <Compile Include="Models\Call.cs" />
@@ -195,16 +194,8 @@
     <Content Include="Views\Customer\Edit.cshtml" />
     <Content Include="Views\Customer\Index.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />
-    <Content Include="Views\Service\Create.cshtml" />
-    <Content Include="Views\Service\Delete.cshtml" />
-    <Content Include="Views\Service\Details.cshtml" />
-    <Content Include="Views\Service\Edit.cshtml" />
-    <Content Include="Views\Service\Index.cshtml" />
-    <Content Include="Views\Call\Create.cshtml" />
-    <Content Include="Views\Call\Delete.cshtml" />
-    <Content Include="Views\Call\Details.cshtml" />
-    <Content Include="Views\Call\Edit.cshtml" />
-    <Content Include="Views\Call\Index.cshtml" />
+    <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Shared\_Menu.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
