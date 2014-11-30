@@ -38,7 +38,7 @@
 @if (Model != null)
 {
     <section class="social" id="ReportDisplayPanel">
-        <img src="@Url.Action("GenerateAndDisplayReport", "Report", new { month = Model.Month, year = Model.Year})" />
+        <img src="@Url.Action("GenerateAndDisplayReport", "Report", new { month = Model.Month, year = Model.Year, format = "pdf" })" />
     </section>
 }
 @section Scripts {
