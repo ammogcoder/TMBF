@@ -5,6 +5,10 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using MyExcelTest;
+using System.Data;
+using TMBF.Business;
+using System.Diagnostics;
+using System.Collections;
 
 namespace TMBF.Controllers
 {
@@ -16,6 +20,110 @@ namespace TMBF.Controllers
         {
             return View();
         }
+        /// <summary>
+        /// Inserts a Tab from an excel file, gets the service name from tabName
+        /// </summary>
+        /// <param name="dsRates"> DataSet with the information in the xls file</param>
+        /// <param name="serviceInfo">format: Servicename_Sourcecountry</param>
+        /// <param name="htCountry">DataSet with the countries and its ids</param>
+        private void insertSheet(DataSet dsRates, Hashtable htCountry, int tabIndex, DateTime startDate, DateTime endDate)
+        {
+            int destCountryID;
+            float peekRate;
+            float offPeekRate;
+            int sourceCountryID = 0;
+
+            DataTable table = dsRates.Tables[tabIndex];
+            string[] words = table.TableName.Split('_');
+            if (words.Length < 2) return;
+            
+            string serviceName = words[0];
+            string sourceCountryName = words[1];
+            /*
+            DataRow rowCountry = dsCountry.Tables[0].Rows.Find(sourceCountryName);
+            if(rowCountry == null){
+                Debug.WriteLine("Country {0} not found in the database", sourceCountryName);
+                return;
+            }
+            */
+            try
+            {
+                 sourceCountryID = Int16.Parse( htCountry[sourceCountryName].ToString() );//constant acces time
+            }
+            catch (Exception)
+            {
+                Debug.WriteLine("Error looking up for country {0}", sourceCountryName);   
+             
+            }
+            
+           
+            for (int i = 0; i < table.Rows.Count; i++)
+			{
+   			    DataRow tmp = table.Rows[ i ];
+                destCountryID = Int16.Parse ( tmp[0].ToString() );
+                peekRate = float.Parse( tmp[1].ToString() );
+                offPeekRate = float.Parse(tmp[2].ToString());
+
+                ServicesDataAccess.insertService(serviceName, peekRate, offPeekRate, startDate, endDate, sourceCountryID, destCountryID);
+			}
+
+
+        }
+
+        /// <summary>
+        /// converts the name of a spreadsheet into a date
+        /// </summary>
+        /// <param name="name">filename of the ratesheet to parse</param>
+        private DateTime getDateFromName(string name)
+        {
+            string[] words = name.Split('_');
+            string sYear = words[1].Substring(0, 4);
+            string sMonth = words[1].Substring(4, 2);
+            string sDay = words[1].Substring(6, 2);
+
+            int year = Int16.Parse(sYear);
+            int month = Int16.Parse(sMonth);
+            int day = Int16.Parse(sDay);
+
+            DateTime result = new DateTime(year,month,day);
+            return result;
+        }
+
+        public Hashtable CreateIndexHashtable(DataTable table)
+        {
+            Hashtable indexTable = new Hashtable(255);
+
+            for (int rowIndex = 0; rowIndex < table.Rows.Count; rowIndex++)
+            {
+                int id = (int)table.Rows[rowIndex]["ID"];
+                string name = (string)table.Rows[rowIndex]["Name"];
+                name = name.Trim();
+                indexTable[name] = id;
+            }
+              return indexTable;
+         }
+
+        private bool insertToDatabase(string filename) {
+            ExcelSheet sheet = new ExcelSheet();
+            sheet.open(filename);
+
+            if (!sheet.isOpen()) return false;
+            DataSet dsCountry = CountriesDataAccess.getAsDataset();
+            DataSet dsRates = sheet.getDataSet();
+            DateTime startDate = getDateFromName(sheet.getName());
+            DateTime endDate = new DateTime(3015,1,1);//FIXME hardcoded end date
+            Hashtable hCountry = CreateIndexHashtable(dsCountry.Tables[0]);
+            
+
+            for (int i = 0; i < sheet.getTabCount(); i++)
+            {
+                insertSheet(dsRates, hCountry, i, startDate, endDate);    
+            }
+
+            return true;
+        }
+
+        
 
         [HttpPost]
         public ActionResult FileUpload(HttpPostedFileBase file)
@@ -45,9 +153,8 @@ namespace TMBF.Controllers
                         var path = Path.Combine(Server.MapPath("~/Content/Upload"), fileName);
                         file.SaveAs(path);
                         ModelState.Clear();
-                        ExcelSheet sheet = new ExcelSheet();
-                        sheet.open(path);
-                        if (!sheet.isOpen())
+                        bool inserted = insertToDatabase(path);
+                        if ( !inserted )
                         {
                             ViewBag.Message = "Error processing XLS file";
                         }
