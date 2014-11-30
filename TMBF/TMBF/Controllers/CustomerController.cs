@@ -150,33 +150,7 @@ namespace TMBF.Controllers
             ViewBag.ServiceID = new SelectList(db.Services, "ID", "Name", customer.ServiceID);
             return View(customer);
         }
-
-        // GET: /Customer/Delete/5
-        public ActionResult Delete(long? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Customer customer = db.Customers.Find(id);
-            if (customer == null)
-            {
-                return HttpNotFound();
-            }
-            return View(customer);
-        }
-
-        // POST: /Customer/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(long id)
-        {
-            Customer customer = db.Customers.Find(id);
-            db.Customers.Remove(customer);
-            db.SaveChanges();
-            return RedirectToAction("Index");
-        }
-
+    
         protected override void Dispose(bool disposing)
         {
             if (disposing)
