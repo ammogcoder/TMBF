@@ -38,6 +38,33 @@ namespace TMBF.DAL
             }
             return list;
         }
+        public double GetSalesRepCommision(long salesRepID, int month, int year)
+        {
+            double  commision = 0;
+            using (TelecomContext context = new TelecomContext())
+            {
+                using (var ctx = new TelecomContext())
+                {
+                    var pSalesRepID = new SqlParameter
+                    {
+                        ParameterName = "salesRepID",
+                        Value = salesRepID
+                    };
+                    var pMonth = new SqlParameter
+                    {
+                        ParameterName = "month",
+                        Value = month
+                    }; var pYear = new SqlParameter
+                    {
+                        ParameterName = "year",
+                        Value = year
+                    };
+                    commision= ctx.Database.SqlQuery<double>("exec GetSalesRepCommision @salesRepID, @month, @year ", pSalesRepID, pMonth, pYear).FirstOrDefault<double>();
+                }
+
+            }
+            return commision;
+        }
       
     }
 }
