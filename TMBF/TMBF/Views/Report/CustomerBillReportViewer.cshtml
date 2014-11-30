@@ -31,14 +31,15 @@
                     @Html.ValidationMessageFor(m => m.Year)
                 </li>
             </ol>
-            <input type="submit" class id="btnSubmit" value="View Report" />
+            <input type="submit" id="btnSubmit" value="View Report" />
         </fieldset>
     }
 </section>
 @if (Model != null)
 {
     <section class="social" id="ReportDisplayPanel">
-        <img src="@Url.Action("GenerateAndDisplayReport", "Report", new { month = Model.Month, year = Model.Year, format = "pdf" })" />
+        @Html.ActionLink("Download Excel", "DownloadReport", new { reportName = "CustomerBill", month = Model.Month, year = Model.Year, format = "Excel" })
+        <br><img style="border:1px solid gray;" src="@Url.Action("GenerateReport", "Report", new {reportName="CustomerBill", month = Model.Month, year = Model.Year, format = "Image" })" />
     </section>
 }
 @section Scripts {
