@@ -48,6 +48,14 @@
     <Reference Include="EntityFramework.SqlServer">
       <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="Excel.4.5, Version=2.1.2.0, Culture=neutral, PublicKeyToken=93517dbe6a4012fa, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>D:\Fixxxer\DOCUMENTS\escuela\Master MUM\Capstone - Lester\Sheets\MyExcelTest\MyExcelTest\Lib\Excel.4.5.dll</HintPath>
+    </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib, Version=0.85.5.452, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>D:\Fixxxer\DOCUMENTS\escuela\Master MUM\Capstone - Lester\Sheets\MyExcelTest\MyExcelTest\Lib\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.QualityTools.Testing.Fakes, Version=11.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.ReportViewer.WebForms, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
@@ -126,15 +134,21 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\Upload\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Admin.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Business\ConnectionManager.cs" />
     <Compile Include="Controllers\Auth.cs" />
+	<Compile Include="Business\CountriesDataAccess.cs" />
+    <Compile Include="Business\ExcelSheet.cs" />
+    <Compile Include="Business\ServicesDataAccess.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\ReportController.cs" />
+    <Compile Include="Controllers\RateController.cs" />
     <Compile Include="Controllers\SalesRepController.cs" />
     <Compile Include="DAL\ItemDTO.cs" />
     <Compile Include="DAL\ReportDAL.cs" />
@@ -181,6 +195,7 @@
       <DependentUpon>dsColDTO.xsd</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\fileUpload.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
@@ -215,6 +230,7 @@
     <Content Include="Views\Customer\Edit.cshtml" />
     <Content Include="Views\Customer\Index.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />
+    <Content Include="Views\Rate\FileUpload.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\_Menu.cshtml" />
     <Content Include="Views\Report\CustomerBillReportViewer.cshtml" />
