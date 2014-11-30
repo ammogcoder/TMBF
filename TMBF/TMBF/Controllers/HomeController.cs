@@ -21,17 +21,11 @@ namespace TMBF.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Telecom Solutions";
+            ViewBag.Message = "TMBF Telecom Solutions";
 
             return View();
         }
 
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Contact Us";
-
-            return View();
-        }
         /// <summary>
         /// Login Actions By Magdy
         /// </summary>

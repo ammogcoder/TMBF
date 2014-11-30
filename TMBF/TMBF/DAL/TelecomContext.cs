@@ -21,6 +21,8 @@ namespace TMBF.DAL
         public DbSet<SalesRep> SalesReps { get; set; }
 
         public DbSet<Call> Calls { get; set; }
+
+        public DbSet<Admin> Admins { get; set; }
         
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

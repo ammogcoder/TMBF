@@ -12,7 +12,7 @@ namespace MyExcelTest
 	using System.Text;
     using System.IO;
     using System.Data;
-    using Excel;
+    //using Excel;
 
 	internal class ExcelSheet
 	{
@@ -35,10 +35,10 @@ namespace MyExcelTest
             name = Path.GetFileNameWithoutExtension(fileName);
             FileStream stream = File.Open(fileName, FileMode.Open, FileAccess.Read);
 
-            IExcelDataReader excelReader = ExcelReaderFactory.CreateBinaryReader(stream);
+            /*IExcelDataReader excelReader = ExcelReaderFactory.CreateBinaryReader(stream);
             excelReader.IsFirstRowAsColumnNames = true;
             result = excelReader.AsDataSet();
-            excelReader.Close();
+            excelReader.Close();*/
 
 		}
 

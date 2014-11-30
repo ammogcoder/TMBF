@@ -1,0 +1,64 @@
+﻿@model IEnumerable<TMBF.Models.Service>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Rate History of Services</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            Source Country
+        </th>
+        <th>
+            Destination Country
+        </th>        
+        <th>
+            @Html.DisplayNameFor(model => model.PeekRate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OffPeekRate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RateEffectiveDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RateEndDate)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SourceCountry.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DestinationCountry.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PeekRate)/min.
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OffPeekRate)/min.
+        </td>        
+        <td>
+            @Html.DisplayFor(modelItem => item.RateEffectiveDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RateEndDate)
+        </td>
+        <td>            
+            @Html.ActionLink("Details", "Details", new { id=item.ID })            
+        </td>
+    </tr>
+}
+
+</table>
