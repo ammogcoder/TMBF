@@ -4,14 +4,18 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
+using TMBF.DAL;
 using TMBF.Models;
 
 namespace TMBF.Controllers
 {
     public class HomeController : Controller
     {
+        private TelecomContext db = new TelecomContext();
+
         public ActionResult Index()
         {
+          
             return View();
         }
 
@@ -34,6 +38,8 @@ namespace TMBF.Controllers
         /// <returns></returns>
         public ActionResult Login()
         {
+            
+
             return View();
         }
         [HttpPost]
