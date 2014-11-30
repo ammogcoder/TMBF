@@ -1,14 +1,14 @@
 ﻿@{
     var menus = new[]
                 {
-                   new { LinkText="Home", ActionName="Index",ControllerName="Home",Roles="Anonymous,All"  }, 
-                   new { LinkText="Customers Bill", ActionName="Index",ControllerName="Customer",Roles="Customer,Anonymous"  },                  
-                   new { LinkText="Customers", ActionName="Index",ControllerName="Customer",Roles="SalesRep,Anonymous"  },                   
-                   new { LinkText="Sales Representatives", ActionName="Index",ControllerName="SalesRep",Roles="Admin,Anonymous"},                   
-                   new { LinkText="Services", ActionName="Index",ControllerName="Service",Roles="Admin,Anonymous"  },                   
-                   new { LinkText="Calls", ActionName="Index",ControllerName="Call",Roles="Admin,Anonymous"},            
+                   new { LinkText="Home", ActionName="Index",ControllerName="Home",Roles="Anonymous,All"  },
+                   new { LinkText="Customers Bill", ActionName="CustomerBillReportViewer",ControllerName="Report",Roles="Customer,Anonymous"  },
+                   new { LinkText="Customers", ActionName="Index",ControllerName="Customer",Roles="SalesRep,Anonymous"  },
+                   new { LinkText="Sales Representatives", ActionName="Index",ControllerName="SalesRep",Roles="Admin,Anonymous"},
+                   new { LinkText="Services", ActionName="Index",ControllerName="Service",Roles="Admin,Anonymous"  },
+                   new { LinkText="Calls", ActionName="Index",ControllerName="Call",Roles="Admin,Anonymous"},
                    new { LinkText="About", ActionName="About",ControllerName="Home",Roles="Anonymous,All"  },
-                   new { LinkText="Contact", ActionName="Contact",ControllerName="Home",Roles="Anonymous,All"  }                   
+                   new { LinkText="Contact", ActionName="Contact",ControllerName="Home",Roles="Anonymous,All"  }
                 };
 }  
 
