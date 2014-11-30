@@ -5,6 +5,10 @@
                    new { LinkText="My Bill", ActionName="CustomerBillReportViewer",ControllerName="Report",Roles="Customer,Anonymous"  },
                    new { LinkText="Customers", ActionName="Index",ControllerName="Customer",Roles="SalesRep,Anonymous"  },
                    new { LinkText="Sales Reps", ActionName="Index",ControllerName="SalesRep",Roles="Admin,Anonymous"},
+                    
+                   new { LinkText="Commision checking", ActionName="Index",ControllerName="Report",Roles="SalesRep,Anonymous"},
+                   new { LinkText="Traffic Tracking", ActionName="Index",ControllerName="Report",Roles="Admin,Anonymous"},
+               
                    new { LinkText="Admin", ActionName="Index",ControllerName="Admin",Roles="Admin,Anonymous"},                                      
                    new { LinkText="Services", ActionName="Index",ControllerName="Service",Roles="Admin,Anonymous"  },
                    new { LinkText="Calls", ActionName="Index",ControllerName="Call",Roles="Admin,Anonymous"},
