@@ -5,8 +5,7 @@
                    new { LinkText="About", ActionName="About",ControllerName="Home",Roles="Anonymous,All"  },
                    new { LinkText="Sales Representatives", ActionName="Index",ControllerName="SalesRep",Roles="Admin,Anonymous"},
                    new { LinkText="Customers", ActionName="Index",ControllerName="Customer",Roles="SalesRep,Anonymous"  },
-                   new { LinkText="Customers Bill", ActionName="Index",ControllerName="Customer",Roles="Customer,Anonymous"  }
-                 
+                   new { LinkText="Customers Bill", ActionName="CustomerBillReportViewer",ControllerName="Report",Roles="Customer,Anonymous"  }                   
                 };
 }  
 
