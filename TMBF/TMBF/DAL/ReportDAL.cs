@@ -5,14 +5,15 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using TMBF.Models;
+using TMBF.Report;
 
 namespace TMBF.DAL
 {
     public class ReportDAL
     {
-        public IList<ColDTO> GetCustomerBill(long customerID, int month, int year)
+        public IList<CustomerBill> GetCustomerBill(long customerID, int month, int year)
         {
-            IList<ColDTO> list = null;
+            IList<CustomerBill> list = null;
             using (TelecomContext context = new TelecomContext())
             {
                 using (var ctx = new  TelecomContext())
@@ -31,7 +32,7 @@ namespace TMBF.DAL
                         ParameterName = "year",
                         Value = year
                     };
-                    list = ctx.Database.SqlQuery<ColDTO>("exec GetCustomerBill @customerID, @month, @year ", pCustomerID, pMonth, pYear).ToList<ColDTO>();
+                    list = ctx.Database.SqlQuery<CustomerBill>("exec GetCustomerBill @customerID, @month, @year ", pCustomerID, pMonth, pYear).ToList<CustomerBill>();
                 }       
 
             }
