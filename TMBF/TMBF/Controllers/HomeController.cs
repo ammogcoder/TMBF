@@ -50,18 +50,18 @@ namespace TMBF.Controllers
             {
                 using (DAL.TelecomContext Context = new DAL.TelecomContext())
                 {
-                    var v = Context.Users.Where(m => m.UserName.Equals(usr.UserName) && m.Password.Equals(usr.Password)).FirstOrDefault();
-                    if (v != null)
+                    var USER = Context.Users.Where(m => m.UserName.Equals(usr.UserName) && m.Password.Equals(usr.Password)).FirstOrDefault();
+                    if (USER != null)
                     {
-                        //if(v.role==TMBF.)
-                        //      Session["LoggedUser"] = Context.Users.Where(m => m.UserName.Equals(usr.UserName) && m.Password.Equals(usr.Password)).FirstOrDefault();
-                        //else if(v.role=="SalesRep")
-                        //    Session["LoggedUser"] = Context.Users.Where(m => m.UserName.Equals(usr.UserName) && m.Password.Equals(usr.Password)).FirstOrDefault();
-                        //Session["LoggedUser"] = v;
+                        if (USER.role == TMBF.Models.User.Role.Customer)
+                            Session["LoggedUser"] = Context.Customers.Where(m => m.ID.Equals(USER.ID)).FirstOrDefault();
+                        else if (USER.role == TMBF.Models.User.Role.SalesRep)
+                            Session["LoggedUser"] = Context.SalesReps.Where(m => m.ID.Equals(USER.ID)).FirstOrDefault();
+                      
                         Session["MyMenu"] = null;
-                        Session["Role"]=v.role;
-                        Session["UsrID"] = v.ID;
-                        Session["UsrName"] = v.FirstName + " " + v.LastName;
+                        Session["Role"] = USER.role;
+                        Session["UsrID"] = USER.ID;
+                        Session["UsrName"] = USER.FirstName + " " + USER.LastName;
                         return RedirectToAction("Index");
                     }
                     
