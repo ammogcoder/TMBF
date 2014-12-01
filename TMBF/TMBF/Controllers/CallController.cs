@@ -95,14 +95,7 @@ namespace TMBF.Controllers
           
             for (int i = 0; i < Data.Count && Data[i][0].ToString()!=""; i++)
             {
-                 //call = new Call();
-                 //call.SourceCountry = db.Countries.Where(m => m.ID.Equals((long)Data[i][0])).FirstOrDefault();
-                 //call.DestinationCountry = db.Countries.Where(m => m.ID.Equals((long)Data[i][1])).FirstOrDefault();
-                 //call.CustomerID = (long)Data[i][2];
-                 //call.ReceiverNo = (String)Data[i][3];
-                 //call.Duration = (int)Data[i][4];
-                 //call.CallDate = Convert.ToDateTime(Data[i][5]);
-                 //call.CallTime = (int)Data[i][6];
+                 
                 Business.CallsDataAccess.insertCalls(DateTime.FromOADate((double)Data[i][5]), (double)Data[i][6], (double)Data[i][4], Data[i][3].ToString(), (double)Data[i][2], (double)Data[i][0], (double)Data[i][1]);
           
             }
