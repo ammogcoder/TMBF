@@ -12,6 +12,7 @@ using System.Collections;
 
 namespace TMBF.Controllers
 {
+    [AdminR]
     public class RateController : Controller
     {
         //

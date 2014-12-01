@@ -13,7 +13,7 @@ using System.Diagnostics;
 
 namespace TMBF.Controllers
 {
-
+    [AdminR]
     public class SalesRepController : Controller
     {
         private TelecomContext db = new TelecomContext();

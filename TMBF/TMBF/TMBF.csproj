@@ -142,6 +142,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Business\CallsDataAccess.cs" />
     <Compile Include="Business\ConnectionManager.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\Auth.cs" />
@@ -273,6 +274,7 @@
     <Content Include="Views\Country\Index.cshtml" />
     <Content Include="Views\Service\Details.cshtml" />
     <Content Include="Views\Service\Index.cshtml" />
+    <Content Include="Views\Call\ImportCalls.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />

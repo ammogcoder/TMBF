@@ -14,6 +14,7 @@ using System.Data.OleDb;
 
 namespace TMBF.Controllers
 {
+   [AdminR]
     public class CallController : Controller
     {
         private TelecomContext db = new TelecomContext();

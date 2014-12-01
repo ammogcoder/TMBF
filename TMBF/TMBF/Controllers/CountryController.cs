@@ -11,6 +11,7 @@ using TMBF.DAL;
 
 namespace TMBF.Controllers
 {
+    [AdminR]
     public class CountryController : Controller
     {
         private TelecomContext db = new TelecomContext();

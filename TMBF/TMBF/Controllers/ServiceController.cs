@@ -10,7 +10,7 @@ using TMBF.Models;
 using TMBF.DAL;
 
 namespace TMBF.Controllers
-{
+{[AdminR]
     public class ServiceController : Controller
     {
         private TelecomContext db = new TelecomContext();
