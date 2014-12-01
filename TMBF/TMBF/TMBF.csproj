@@ -138,7 +138,7 @@
     <Folder Include="Content\Upload\" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Admin.cs" />
+    <Compile Include="Models\Admin.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -232,8 +232,10 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\SqlScripts\Add Users.sql" />
     <Content Include="Scripts\SqlScripts\CreateSP.Sql" />
     <Content Include="Scripts\SqlScripts\CreateView.Sql" />
+    <Content Include="Scripts\SqlScripts\ImportCountries.sql" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>

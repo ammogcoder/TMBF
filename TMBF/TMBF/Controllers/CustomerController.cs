@@ -86,6 +86,7 @@ namespace TMBF.Controllers
         {
             ViewBag.CountryID = new SelectList(db.Countries, "ID", "Name");
             ViewBag.ServiceID = new SelectList(db.Services, "ID", "Name");
+            ViewBag.UsrRole = Session["Role"].ToString();
             return View();
         }
 
@@ -105,7 +106,8 @@ namespace TMBF.Controllers
             else
             {
                 if (ModelState.IsValid)
-                {
+                {                    
+                    customer.SalesRepID = ((SalesRep)Session["LoggedUser"]).ID;                    
                     db.Customers.Add(customer);
                     db.SaveChanges();
                     return RedirectToAction("Index");

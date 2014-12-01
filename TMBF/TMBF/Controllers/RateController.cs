@@ -56,8 +56,13 @@ namespace TMBF.Controllers
                 Debug.WriteLine("Error looking up for country {0}", sourceCountryName);   
              
             }
-            
-           
+
+            DataTable dt = new DataTable();
+            dt.Clear();
+            dt.Columns.Add("Name", typeof(string));
+            dt.Columns.Add("Age", typeof(int));
+
+
             for (int i = 0; i < table.Rows.Count; i++)
 			{
    			    DataRow tmp = table.Rows[ i ];
@@ -112,13 +117,19 @@ namespace TMBF.Controllers
             DataSet dsCountry = CountriesDataAccess.getAsDataset();
             DataSet dsRates = sheet.getDataSet();
             DateTime startDate = getDateFromName(sheet.getName());
+              
             DateTime endDate = new DateTime(3015,1,1);//FIXME hardcoded end date
+            DateTime capDate = endDate;
             Hashtable hCountry = CreateIndexHashtable(dsCountry.Tables[0]);
-            
+            capDate.AddSeconds(-1);
+
+            ServicesDataAccess.capEndDate(capDate);
 
             for (int i = 0; i < sheet.getTabCount(); i++)
             {
-                insertSheet(dsRates, hCountry, i, startDate, endDate);    
+                int st = Environment.TickCount;
+                insertSheet(dsRates, hCountry, i, startDate, endDate);
+                Debug.WriteLine("insertSheet took:{0}ms", Environment.TickCount - st);
             }
 
             return true;
@@ -154,14 +165,26 @@ namespace TMBF.Controllers
                         var path = Path.Combine(Server.MapPath("~/Content/Upload"), fileName);
                         file.SaveAs(path);
                         ModelState.Clear();
-                        bool inserted = insertToDatabase(path);
-                        if ( !inserted )
+                        try
                         {
-                            ViewBag.Message = "Error processing XLS file";
+                            int st = Environment.TickCount;
+                            bool inserted = insertToDatabase(path);
+                            Debug.WriteLine("InsertToDatabase took:{0}ms", Environment.TickCount - st);
+                            if (!inserted)
+                            {
+                                ModelState.AddModelError(String.Empty, "Error processing XLS file");
+                            }
+                            else
+                            {
+                                ModelState.AddModelError(String.Empty, "File uploaded successfully");
+                            }
                         }
-                        else {
-                            ViewBag.Message = "File uploaded successfully";
+                        catch (Exception)
+                        {
+                            ModelState.AddModelError(String.Empty, "File is not a RATES file ");
+                            
                         }
+                        
 
                         
                     }
