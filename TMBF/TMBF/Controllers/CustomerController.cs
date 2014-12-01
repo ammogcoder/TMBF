@@ -13,7 +13,7 @@ using PagedList;
  
 namespace TMBF.Controllers
 {
-
+    [SalesRepR]
     public class CustomerController : Controller
     {
         private TelecomContext db = new TelecomContext();

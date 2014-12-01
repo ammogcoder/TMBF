@@ -12,6 +12,7 @@ using TMBF.DAL;
 
 namespace TMBF.Controllers
 {
+    [AdminR]
     public class AdminController : Controller
     {
         private TelecomContext db = new TelecomContext();

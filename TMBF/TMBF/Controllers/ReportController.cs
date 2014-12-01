@@ -11,7 +11,7 @@ namespace TMBF.Controllers
 {
     public class ReportController : Controller
     {
-        [AllowAnonymous]
+        [CustomerR]
         public ActionResult CustomerBillReportViewer(string returnUrl)
         {
             ViewBag.ReturnUrl = returnUrl;
@@ -19,13 +19,14 @@ namespace TMBF.Controllers
         }
 
         [HttpPost]
-        [AllowAnonymous]
+        [CustomerR]
         [ValidateAntiForgeryToken]
         public ViewResult CustomerBillReportViewer(SearchParameterModel searchParameterModel)
         {
             return View(searchParameterModel);
         }
-
+        [CustomerR]
+        [SalesRepR]
         public FileContentResult GenerateReport(string reportName, string month, string year, string format)
         {
             //Render the report            
@@ -102,6 +103,8 @@ namespace TMBF.Controllers
             renderedBytes = localReport.Render(format, deviceInfo, out mimeType, out encoding, out fileNameExtension, out streams, out warnings);
             return renderedBytes;
         }
+        [CustomerR]
+        [SalesRepR]
         public ActionResult DownloadReport(string reportName, string month, string year, string format)
         {
              //Render the report            
@@ -132,7 +135,7 @@ namespace TMBF.Controllers
                 return View();
             }
         }
-        [AllowAnonymous]
+        [SalesRepR]
         public ActionResult SalesRepComissionReportViewer(string returnUrl)
         {
             ViewBag.ReturnUrl = returnUrl;
@@ -140,7 +143,7 @@ namespace TMBF.Controllers
         }
 
         [HttpPost]
-        [AllowAnonymous]
+        [SalesRepR]
         [ValidateAntiForgeryToken]
         public ViewResult SalesRepComissionReportViewer(SearchParameterModel searchParameterModel)
         {
