@@ -36,7 +36,7 @@ namespace TMBF.Controllers
 		            renderedBytes = GenerateCustomerBillReportData(month, year, format);
 		            break;
                 case "SalesRepCommission":
-                    renderedBytes = GenerateSalesRepCommisionData(month, year, format);
+                    renderedBytes = GenerateSalesRepCommissionData(month, year, format);
                     break;
 	        }
 
@@ -112,7 +112,7 @@ namespace TMBF.Controllers
                     renderedBytes = GenerateCustomerBillReportData(month, year, format);
                     break;
                 case "SalesRepCommission":
-                    renderedBytes = GenerateSalesRepCommisionData(month, year, format);
+                    renderedBytes = GenerateSalesRepCommissionData(month, year, format);
                     break;
             }
             if (format == null)
@@ -147,7 +147,7 @@ namespace TMBF.Controllers
             return View(searchParameterModel);
         }
 
-        public byte[] GenerateSalesRepCommisionData(string month, string year, string format)
+        public byte[] GenerateSalesRepCommissionData(string month, string year, string format)
         {
             if (month == null || year == null)
                 return null;
@@ -157,15 +157,15 @@ namespace TMBF.Controllers
             SalesRep salesRep = new SalesRep();
             salesRep.ID = 1;
 
-            var salesRepComission = new ReportDAL().GetSalesRepCommision(salesRep.ID, int.Parse(month), int.Parse(year));
+            var salesRepComission = new ReportDAL().GetSalesRepCommission(salesRep.ID, int.Parse(month), int.Parse(year));
 
             string period = string.Format("{0}/{1}", month, year);
 
             ReportParameter pSalesRepName = new ReportParameter("SalesRepName", string.Format("{0} {1}", salesRep.FirstName, salesRep.LastName));
-            ReportParameter pSalesRepCommision = new ReportParameter("SalesRepCommision", string.Format("{0}", salesRepComission));
+            ReportParameter pSalesRepCommission = new ReportParameter("SalesRepCommission", string.Format("{0}", salesRepComission));
             ReportParameter pPeriod = new ReportParameter("Period", period);
             localReport.SetParameters(pSalesRepName);
-            localReport.SetParameters(pSalesRepCommision);
+            localReport.SetParameters(pSalesRepCommission);
             localReport.SetParameters(pPeriod);
 
             string mimeType;

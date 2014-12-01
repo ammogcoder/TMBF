@@ -38,9 +38,9 @@ namespace TMBF.DAL
             }
             return list;
         }
-        public double GetSalesRepCommision(long salesRepID, int month, int year)
+        public double GetSalesRepCommission(long salesRepID, int month, int year)
         {
-            double  commision = 0;
+            double  Commission = 0;
             using (TelecomContext context = new TelecomContext())
             {
                 using (var ctx = new TelecomContext())
@@ -59,11 +59,11 @@ namespace TMBF.DAL
                         ParameterName = "year",
                         Value = year
                     };
-                    commision= ctx.Database.SqlQuery<double>("exec GetSalesRepCommision @salesRepID, @month, @year ", pSalesRepID, pMonth, pYear).FirstOrDefault<double>();
+                    Commission= ctx.Database.SqlQuery<double>("exec GetSalesRepCommission @salesRepID, @month, @year ", pSalesRepID, pMonth, pYear).FirstOrDefault<double>();
                 }
 
             }
-            return commision;
+            return Commission;
         }
       
     }
