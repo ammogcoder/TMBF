@@ -185,6 +185,7 @@ namespace TMBF.Controllers
             Warning[] warnings;
             string[] streams;
             byte[] renderedBytes;
+
             //Render the report            
             renderedBytes = localReport.Render(format, deviceInfo, out mimeType, out encoding, out fileNameExtension, out streams, out warnings);
             return renderedBytes;
