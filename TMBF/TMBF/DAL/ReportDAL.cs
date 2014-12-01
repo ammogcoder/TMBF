@@ -38,6 +38,7 @@ namespace TMBF.DAL
             }
             return list;
         }
+
         public double GetSalesRepCommission(long salesRepID, int month, int year)
         {
             double  Commission = 0;
