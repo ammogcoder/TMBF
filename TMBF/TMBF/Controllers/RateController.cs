@@ -111,9 +111,13 @@ namespace TMBF.Controllers
             DataSet dsCountry = CountriesDataAccess.getAsDataset();
             DataSet dsRates = sheet.getDataSet();
             DateTime startDate = getDateFromName(sheet.getName());
+              
             DateTime endDate = new DateTime(3015,1,1);//FIXME hardcoded end date
+            DateTime capDate = endDate;
             Hashtable hCountry = CreateIndexHashtable(dsCountry.Tables[0]);
-            
+            capDate.AddSeconds(-1);
+
+            ServicesDataAccess.capEndDate(capDate);
 
             for (int i = 0; i < sheet.getTabCount(); i++)
             {
