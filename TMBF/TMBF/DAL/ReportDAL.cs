@@ -66,6 +66,5 @@ namespace TMBF.DAL
             }
             return Commission;
         }
-      
     }
 }
