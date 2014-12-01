@@ -37,7 +37,7 @@
 </section>
 @if (Model != null)
 {
-    <section class="social" id="ReportDisplayPanel"> 
+    <section class="social" id="ReportDisplayPanel">
         @Html.ActionLink("Download Excel", "DownloadReport", new { reportName = "SalesRepCommission", month = Model.Month, year = Model.Year, format = "Excel" })
         <br><img style="border:1px solid gray;" src="@Url.Action("GenerateReport", "Report", new { reportName = "SalesRepCommission", month = Model.Month, year = Model.Year, format = "Image" })" />
     </section>
