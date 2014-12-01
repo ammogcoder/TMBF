@@ -157,7 +157,7 @@ namespace TMBF.Controllers
             SalesRep salesRep = new SalesRep();
             salesRep.ID = 1;
 
-            var salesRepComission = new ReportDAL().GetSalesRepCommision(salesRep.ID, int.Parse(month), int.Parse(year));
+            var salesRepComission = new ReportDAL().GetSalesRepCommission(salesRep.ID, int.Parse(month), int.Parse(year));
 
             string period = string.Format("{0}/{1}", month, year);
 

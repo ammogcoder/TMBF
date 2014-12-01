@@ -143,14 +143,18 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Business\ConnectionManager.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\Auth.cs" />
     <Compile Include="Business\CountriesDataAccess.cs" />
     <Compile Include="Business\ExcelSheet.cs" />
     <Compile Include="Business\ServicesDataAccess.cs" />
+    <Compile Include="Controllers\CallController.cs" />
+    <Compile Include="Controllers\CountryController.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\ReportController.cs" />
     <Compile Include="Controllers\RateController.cs" />
     <Compile Include="Controllers\SalesRepController.cs" />
+    <Compile Include="Controllers\ServiceController.cs" />
     <Compile Include="DAL\ItemDTO.cs" />
     <Compile Include="DAL\ReportDAL.cs" />
     <Compile Include="DAL\TelecomContext.cs" />
@@ -228,6 +232,8 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\SqlScripts\CreateSP.Sql" />
+    <Content Include="Scripts\SqlScripts\CreateView.Sql" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -243,16 +249,13 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\SalesRep\Create.cshtml" />
-    <Content Include="Views\SalesRep\Delete.cshtml" />
     <Content Include="Views\SalesRep\Details.cshtml" />
     <Content Include="Views\SalesRep\Edit.cshtml" />
     <Content Include="Views\SalesRep\Index.cshtml" />
     <Content Include="Views\Customer\Create.cshtml" />
-    <Content Include="Views\Customer\Delete.cshtml" />
     <Content Include="Views\Customer\Details.cshtml" />
     <Content Include="Views\Customer\Edit.cshtml" />
     <Content Include="Views\Customer\Index.cshtml" />
@@ -261,6 +264,16 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\_Menu.cshtml" />
     <Content Include="Views\Report\CustomerBillReportViewer.cshtml" />
+    <Content Include="Views\Admin\Create.cshtml" />
+    <Content Include="Views\Admin\Details.cshtml" />
+    <Content Include="Views\Admin\Edit.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\Call\Details.cshtml" />
+    <Content Include="Views\Call\Index.cshtml" />
+    <Content Include="Views\Country\Details.cshtml" />
+    <Content Include="Views\Country\Index.cshtml" />
+    <Content Include="Views\Service\Details.cshtml" />
+    <Content Include="Views\Service\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
