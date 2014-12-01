@@ -138,7 +138,7 @@
     <Folder Include="Content\Upload\" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Admin.cs" />
+    <Compile Include="Models\Admin.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />

@@ -4,9 +4,11 @@ using System.Web.Services;
 using System.Web.Services.Protocols;
 using System.ComponentModel;
 using TMBF.Models;
+using System.ComponentModel.DataAnnotations.Schema;
 
-namespace TMBF
+namespace TMBF.Models
 {
+    [Table("SalesRep")]
     public class Admin:User
     {
     }
