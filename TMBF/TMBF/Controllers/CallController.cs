@@ -103,7 +103,7 @@ namespace TMBF.Controllers
             for (int i = 0; i < Data.Count && Data[i][0].ToString()!=""; i++)
             {
                  
-                //NoErrors=NoErrors&&Business.CallsDataAccess.insertCalls(DateTime.FromOADate((double)Data[i][5]), (double)Data[i][6], (double)Data[i][4], Data[i][3].ToString(), (double)Data[i][2], (double)Data[i][0], (double)Data[i][1]);
+                NoErrors=NoErrors&&Business.CallsDataAccess.insertCalls(DateTime.FromOADate((double)Data[i][5]), (double)Data[i][6], (double)Data[i][4], Data[i][3].ToString(), (double)Data[i][2], (double)Data[i][0], (double)Data[i][1]);
           
             }
            return NoErrors;
