@@ -72,16 +72,21 @@ namespace TMBF.Controllers
                         var path = Path.Combine(Server.MapPath("~/Content/Upload"), fileName);
                         file.SaveAs(path);
                         ModelState.Clear();
+                        try { 
                         bool inserted = insertToDatabase(path);
                         if (!inserted)
                         {
-                            ViewBag.Message = "Error processing XLS file";
+                             ModelState.AddModelError(String.Empty,"Some Customers Are not Avaible in Customer Table so we didn't add their Calls Records");
                         }
                         else
                         {
-                            ViewBag.Message = "File uploaded successfully";
+                            ModelState.AddModelError(String.Empty,"Call File successfully Imported to DataBase");
                         }
-
+                    }
+                        catch
+                        {
+                            ModelState.AddModelError(String.Empty, "File Is not Formatted As Calls File");
+                        }
 
                     }
                 }
@@ -92,14 +97,15 @@ namespace TMBF.Controllers
 
         private bool FillToDataBase(DataRowCollection Data)
         {
+            Boolean NoErrors = true;
           
             for (int i = 0; i < Data.Count && Data[i][0].ToString()!=""; i++)
             {
                  
-                Business.CallsDataAccess.insertCalls(DateTime.FromOADate((double)Data[i][5]), (double)Data[i][6], (double)Data[i][4], Data[i][3].ToString(), (double)Data[i][2], (double)Data[i][0], (double)Data[i][1]);
+                NoErrors=NoErrors&&Business.CallsDataAccess.insertCalls(DateTime.FromOADate((double)Data[i][5]), (double)Data[i][6], (double)Data[i][4], Data[i][3].ToString(), (double)Data[i][2], (double)Data[i][0], (double)Data[i][1]);
           
             }
-           return true;
+           return NoErrors;
         }
         private bool insertToDatabase(string filename)
         {
