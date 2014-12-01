@@ -25,8 +25,7 @@ namespace TMBF.Controllers
         {
             return View(searchParameterModel);
         }
-        [CustomerR]
-        [SalesRepR]
+
         public FileContentResult GenerateReport(string reportName, string month, string year, string format)
         {
             //Render the report            
