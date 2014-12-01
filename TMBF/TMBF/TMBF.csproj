@@ -138,7 +138,7 @@
     <Folder Include="Content\Upload\" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Admin.cs" />
+    <Compile Include="Models\Admin.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -155,7 +155,6 @@
     <Compile Include="Controllers\RateController.cs" />
     <Compile Include="Controllers\SalesRepController.cs" />
     <Compile Include="Controllers\ServiceController.cs" />
-    <Compile Include="DAL\ItemDTO.cs" />
     <Compile Include="DAL\ReportDAL.cs" />
     <Compile Include="DAL\TelecomContext.cs" />
     <Compile Include="DAL\TelecomInitializer.cs" />

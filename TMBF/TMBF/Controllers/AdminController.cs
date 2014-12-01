@@ -9,6 +9,7 @@ using System.Web;
 using System.Web.Mvc;
 using TMBF;
 using TMBF.DAL;
+using TMBF.Models;
 
 namespace TMBF.Controllers
 {
