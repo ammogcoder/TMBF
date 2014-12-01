@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsCustomerBill" targetNamespace="http://tempuri.org/dsCustomerBill.xsd" xmlns:mstns="http://tempuri.org/dsCustomerBill.xsd" xmlns="http://tempuri.org/dsCustomerBill.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Web.config" AppSettingsPropertyName="TelecomContext" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="TelecomContext (Web.config)" ParameterPrefix="@" PropertyReference="AppConfig.System.Configuration.ConfigurationManager.0.ConnectionStrings.TelecomContext.ConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="CustomerBillTableAdapter" GeneratorDataComponentClassName="CustomerBillTableAdapter" Name="CustomerBill" UserDataComponentName="CustomerBillTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="TelecomContext (Web.config)" DbObjectName="TMBF.dbo.CustomerBill" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT PhoneNo, Length, CallDate, CallTime, Cost FROM dbo.CustomerBill</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="PhoneNo" DataSetColumn="PhoneNo" />
+              <Mapping SourceColumn="Length" DataSetColumn="Length" />
+              <Mapping SourceColumn="CallDate" DataSetColumn="CallDate" />
+              <Mapping SourceColumn="CallTime" DataSetColumn="CallTime" />
+              <Mapping SourceColumn="Cost" DataSetColumn="Cost" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsCustomerBill" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="dsCustomerBill" msprop:Generator_UserDSName="dsCustomerBill">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="CustomerBill" msprop:Generator_TableClassName="CustomerBillDataTable" msprop:Generator_TableVarName="tableCustomerBill" msprop:Generator_TablePropName="CustomerBill" msprop:Generator_RowDeletingName="CustomerBillRowDeleting" msprop:Generator_RowChangingName="CustomerBillRowChanging" msprop:Generator_RowEvHandlerName="CustomerBillRowChangeEventHandler" msprop:Generator_RowDeletedName="CustomerBillRowDeleted" msprop:Generator_UserTableName="CustomerBill" msprop:Generator_RowChangedName="CustomerBillRowChanged" msprop:Generator_RowEvArgName="CustomerBillRowChangeEvent" msprop:Generator_RowClassName="CustomerBillRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="PhoneNo" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnPhoneNo" msprop:Generator_ColumnPropNameInRow="PhoneNo" msprop:Generator_ColumnPropNameInTable="PhoneNoColumn" msprop:Generator_UserColumnName="PhoneNo" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="1" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Length" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnLength" msprop:Generator_ColumnPropNameInRow="Length" msprop:Generator_ColumnPropNameInTable="LengthColumn" msprop:Generator_UserColumnName="Length" type="xs:int" minOccurs="0" />
+              <xs:element name="CallDate" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnCallDate" msprop:Generator_ColumnPropNameInRow="CallDate" msprop:Generator_ColumnPropNameInTable="CallDateColumn" msprop:Generator_UserColumnName="CallDate" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CallTime" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnCallTime" msprop:Generator_ColumnPropNameInRow="CallTime" msprop:Generator_ColumnPropNameInTable="CallTimeColumn" msprop:Generator_UserColumnName="CallTime" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="5" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Cost" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnCost" msprop:Generator_ColumnPropNameInRow="Cost" msprop:Generator_ColumnPropNameInTable="CostColumn" msprop:Generator_UserColumnName="Cost" type="xs:int" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

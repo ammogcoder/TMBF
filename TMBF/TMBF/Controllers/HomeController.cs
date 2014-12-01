@@ -21,17 +21,11 @@ namespace TMBF.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Telecom Solutions";
+            ViewBag.Message = "TMBF Telecom Solutions";
 
             return View();
         }
 
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Contact Us";
-
-            return View();
-        }
         /// <summary>
         /// Login Actions By Magdy
         /// </summary>
@@ -46,6 +40,8 @@ namespace TMBF.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Login(User usr)
         {
+            if (usr.UserName == null || usr.UserName == "")
+                goto Skip;
             if (ModelState.IsValid)
             {
                 using (DAL.TelecomContext Context = new DAL.TelecomContext())
@@ -67,6 +63,7 @@ namespace TMBF.Controllers
                     
                 }
             }
+            Skip:
             this.ModelState.AddModelError(string.Empty, "The user name or password provided is incorrect.");
             return View(usr);
         }

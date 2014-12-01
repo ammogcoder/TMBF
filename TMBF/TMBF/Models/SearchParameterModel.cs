@@ -12,5 +12,7 @@ namespace TMBF.Models
         public string Month { get; set; }
         [Display(Name = "Year")]
         public string Year { get; set; }
+        [Display(Name = "Output Format ")]
+        public string OutputFormat { get; set; }
     }
 }

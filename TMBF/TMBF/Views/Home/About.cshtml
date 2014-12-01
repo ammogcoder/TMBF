@@ -1,9 +1,21 @@
 ﻿@{
     ViewBag.Title = "TMBF Company";
 }
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
 
-<p>Now we are at @((int)((DateTime.Now-DateTime.Parse("1990-1-1")).TotalDays/365)) th. year of your service.</p>
+<h2>@ViewBag.Message</h2>
 
-Tuantest1
+<p>Now we are at @((int)((DateTime.Now - DateTime.Parse("1990-1-1")).TotalDays / 365)) th. year of your service.</p>
+
+<h4>Contact Us</h4>
+
+<address>
+    Pleasant Estates<br />
+    Ashtabula, Rhode Island 6565<br />
+    <abbr title="Phone">P:</abbr>
+    (401) 005-1670
+</address>
+
+<address>
+    <strong>Support:</strong>   <a href="mailto:Support@tmbf.com">Support@tmbf.com</a><br />
+    <strong>Marketing:</strong> <a href="mailto:Marketing@tmbf.com">Marketing@tmbf.com</a>
+</address>

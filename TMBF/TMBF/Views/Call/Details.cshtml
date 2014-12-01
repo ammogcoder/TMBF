@@ -1,0 +1,57 @@
+﻿@model TMBF.Models.Call
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Call</h4>
+	<hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Caller #
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Customer.ID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CallDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CallDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CallTime)
+        </dt>
+
+        <dd>
+            @(Model.CallTime/100):@(Model.CallTime%100)
+        </dd>
+        
+        <dt>
+            @Html.DisplayNameFor(model => model.ReceiverNo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ReceiverNo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Duration)
+        </dt>
+
+        <dd>            
+            @(Model.Duration / 60)min.&nbsp;@(Model.Duration % 60)sec.
+        </dd>
+
+    </dl>
+</div>
+<p>    
+    @Html.ActionLink("Back to List", "Index")
+</p>

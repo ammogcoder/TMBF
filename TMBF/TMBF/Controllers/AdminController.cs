@@ -2,103 +2,105 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Diagnostics;
 using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using TMBF.Models;
+using TMBF;
 using TMBF.DAL;
-using System.Web.Security;
-using System.Diagnostics;
+using TMBF.Models;
 
 namespace TMBF.Controllers
 {
     [AdminR]
-    public class SalesRepController : Controller
+    public class AdminController : Controller
     {
         private TelecomContext db = new TelecomContext();
 
-        // GET: /SalesRep/
+        // GET: /Admin/
         public ActionResult Index()
         {
-            return View(db.SalesReps.ToList());
+            return View(db.Admins.ToList());
         }
 
-        // GET: /SalesRep/Details/5
+        // GET: /Admin/Details/5
         public ActionResult Details(long? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            SalesRep salesrep = db.SalesReps.Find(id);
-            if (salesrep == null)
+            Admin admin = db.Admins.Find(id);
+            if (admin == null)
             {
                 return HttpNotFound();
             }
-            return View(salesrep);
+            return View(admin);
         }
 
-        // GET: /SalesRep/Create
+        // GET: /Admin/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: /SalesRep/Create
+        // POST: /Admin/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include="FirstName,LastName,Password")] SalesRep salesrep)
+        public ActionResult Create([Bind(Include="UserName,FirstName,LastName,Password")] Admin admin)
         {
-            long max = 1;
-            foreach(var sr in db.SalesReps){
-                if (max < sr.ID) max = sr.ID;
+            long min = 0;
+            foreach (var sr in db.Admins)
+            {
+                if (min > sr.ID) min = sr.ID;
             }
-            // Debug.WriteLine(max);
-            salesrep.ID = max + 1;
+            Debug.WriteLine(min);
+            admin.ID = min-1;
             if (ModelState.IsValid)
             {
-                db.SalesReps.Add(salesrep);
+                admin.role = TMBF.Models.User.Role.Admin;
+                db.Admins.Add(admin);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(salesrep);
+            return View(admin);
         }
 
-        // GET: /SalesRep/Edit/5
+        // GET: /Admin/Edit/5
         public ActionResult Edit(long? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            SalesRep salesrep = db.SalesReps.Find(id);
-            if (salesrep == null)
+            Admin admin = db.Admins.Find(id);
+            if (admin == null)
             {
                 return HttpNotFound();
             }
-            return View(salesrep);
+            return View(admin);
         }
 
-        // POST: /SalesRep/Edit/5
+        // POST: /Admin/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include="ID,FirstName,LastName,Password")] SalesRep salesrep)
+        public ActionResult Edit([Bind(Include="ID,UserName,FirstName,LastName,Password,role")] Admin admin)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(salesrep).State = System.Data.Entity.EntityState.Modified;
+                db.Entry(admin).State = System.Data.Entity.EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(salesrep);
+            return View(admin);
         }
-
+        
         protected override void Dispose(bool disposing)
         {
             if (disposing)
