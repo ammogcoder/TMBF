@@ -37,10 +37,9 @@ AS
 SELECT Cast(0.56 as float) as Commission
 
 GO
-
-CREATE  PROCEDURE [dbo].GetAllSalesRepCommission
+Create  PROCEDURE [dbo].GetSummarySalesRepCommission
 	@month int,
 	@year int
 AS
 
-SELECT  'SP1' as SalesRep, Cast(0.56 as float) as Commission
+SELECT  'Mike Tyson' as SalesRepName, Cast(0.123456 as float) as Commission
