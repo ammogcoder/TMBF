@@ -62,10 +62,12 @@ namespace TMBF.Controllers
 
             ReportDataSource reportDataSource = new ReportDataSource();
             reportDataSource.Name = "dsCustomerBill";
-            Customer customer = new Customer();
+            /* Customer customer = new Customer();
             customer.ID = 6421234599;
-            customer.PhoneNo = "23234234";
-
+            customer.PhoneNo = "6421234599"; */
+            
+            Customer customer = (Customer)Session["LoggedUser"];
+            
             var customerBill = new ReportDAL().GetCustomerBill(customer.ID, int.Parse(month), int.Parse(year));
 
             reportDataSource.Value = customerBill;
