@@ -11,6 +11,7 @@ using TMBF.DAL;
 using System.IO;
 using MyExcelTest;
 using System.Data.OleDb;
+using System.Globalization;
 
 namespace TMBF.Controllers
 {
@@ -84,7 +85,7 @@ namespace TMBF.Controllers
                             ModelState.AddModelError(String.Empty,"Call File successfully Imported to DataBase");
                         }
                     }
-                        catch
+                        catch (Exception exception)
                         {
                             ModelState.AddModelError(String.Empty, "File Is not Formatted As Calls File");
                         }
@@ -94,16 +95,32 @@ namespace TMBF.Controllers
             }
             return View();
         }
-
-
+        private DateTime ReturnDate(String Date)
+        {
+            string[] date = Date.Split('/');
+      
+            return new DateTime(int.Parse(date[2]), int.Parse(date[0]), int.Parse(date[1]));
+        }
         private bool FillToDataBase(DataRowCollection Data)
+        {
+            Boolean NoErrors = true;
+
+            for (int i = 0; i < Data.Count && Data[i][0].ToString() != ""; i++)
+            {
+          
+                NoErrors = NoErrors && Business.CallsDataAccess.insertCalls(ReturnDate(Data[i][5].ToString()), (double)Data[i][6], (double)Data[i][4], Data[i][3].ToString(), (double)Data[i][2], (double)Data[i][0], (double)Data[i][1]);
+
+            }
+            return NoErrors;
+        }
+        private bool FillToDataBaseOA(DataRowCollection Data)
         {
             Boolean NoErrors = true;
           
             for (int i = 0; i < Data.Count && Data[i][0].ToString()!=""; i++)
             {
-                 
-                NoErrors=NoErrors&&Business.CallsDataAccess.insertCalls(DateTime.FromOADate((double)Data[i][5]), (double)Data[i][6], (double)Data[i][4], Data[i][3].ToString(), (double)Data[i][2], (double)Data[i][0], (double)Data[i][1]);
+         
+                NoErrors = NoErrors && Business.CallsDataAccess.insertCalls(DateTime.FromOADate((double)Data[i][5]), (double)Data[i][6], (double)Data[i][4], Data[i][3].ToString(), (double)Data[i][2], (double)Data[i][0], (double)Data[i][1]);
           
             }
            return NoErrors;
@@ -116,8 +133,13 @@ namespace TMBF.Controllers
             if (!sheet.isOpen()) return false;
 
             DataRowCollection CallsData = sheet.getDataSet().Tables[0].Rows;
-        
-            return FillToDataBase(CallsData);
+            try
+            {
+                DateTime.FromOADate((double)CallsData[0][5]);
+                return FillToDataBaseOA(CallsData);
+            }
+            catch { return FillToDataBase(CallsData); }
+     
         }
 
         protected override void Dispose(bool disposing)
