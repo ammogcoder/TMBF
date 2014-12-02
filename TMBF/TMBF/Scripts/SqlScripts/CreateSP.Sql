@@ -52,3 +52,9 @@ Create  PROCEDURE [dbo].GetTrafficSummary
 AS
 -- –service name–from country name –to country name –total minutes of calls
 SELECT  'Spectra' as ServiceName, 'VietNam' as  FromCountryName, 'Nepal' as ToCountryName, 12345 as Duration
+
+GO
+Create  PROCEDURE [dbo].GetRate
+AS
+SELECT  'Brazin' as DestinationCountryName, 0.123 as  PeekRate, 0.987 as OffPeekRate
+

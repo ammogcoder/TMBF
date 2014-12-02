@@ -110,5 +110,38 @@ namespace TMBF.DAL
             }
             return list;
         }
+        public IList<Rate> GetRate(long serviceID, long sourceCountryID, int month, int year)
+        {
+            IList<Rate> list = null;
+            using (TelecomContext context = new TelecomContext())
+            {
+                using (var ctx = new TelecomContext())
+                {
+                    var pServiceID = new SqlParameter
+                    {
+                        ParameterName = "serviceID",
+                        Value = serviceID
+                    };
+                    var pSourceCountryID = new SqlParameter
+                    {
+                        ParameterName = "sourceCountryID",
+                        Value = sourceCountryID
+                    };
+                    var pMonth = new SqlParameter
+                    {
+                        ParameterName = "month",
+                        Value = month
+                    }; var pYear = new SqlParameter
+                    {
+                        ParameterName = "year",
+                        Value = year
+                    };
+                    list = ctx.Database.SqlQuery<Rate>("exec GetRate @serviceID, @sourceCountryID, @month, @year ", pServiceID, pSourceCountryID, pMonth, pYear).ToList<Rate>();
+                }
+
+            }
+            return list;
+        }
+
     }
 }

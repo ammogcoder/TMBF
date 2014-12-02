@@ -171,6 +171,11 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Report\dsRate.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsRate.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Report\dsSummarySalesRepCommission.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -217,6 +222,17 @@
     </Content>
     <Content Include="Report\dsSummarySalesRepCommission.xsc">
       <DependentUpon>dsSummarySalesRepCommission.xsd</DependentUpon>
+    </Content>
+    <Content Include="Report\dsRate.xsc">
+      <DependentUpon>dsRate.xsd</DependentUpon>
+    </Content>
+    <None Include="Report\dsRate.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsRate.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="Report\dsRate.xss">
+      <DependentUpon>dsRate.xsd</DependentUpon>
     </Content>
     <None Include="Report\dsSummarySalesRepCommission.xsd">
       <SubType>Designer</SubType>
@@ -304,6 +320,7 @@
     <Content Include="Views\Report\SalesRepCommissionReportViewer.cshtml" />
     <Content Include="Views\Report\SummarySalesRepCommissionReportViewer.cshtml" />
     <Content Include="Views\Report\TrafficSummaryReportViewer.cshtml" />
+    <Content Include="Views\Report\RateReportViewer.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
@@ -317,6 +334,7 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Report\rpRate.rdlc" />
     <EmbeddedResource Include="Report\rpSalesRepCommission.rdlc" />
     <EmbeddedResource Include="Report\rpSummarySalesRepCommission.rdlc" />
     <EmbeddedResource Include="Report\rpTrafficSummary.rdlc" />

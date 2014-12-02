@@ -11,6 +11,7 @@ namespace TMBF.Controllers
 {
     public class ReportController : Controller
     {
+        private TelecomContext db = new TelecomContext();
         [CustomerR]
         public ActionResult CustomerBillReportViewer(string returnUrl)
         {
@@ -26,8 +27,13 @@ namespace TMBF.Controllers
             return View(searchParameterModel);
         }
 
-        public FileContentResult GenerateReport(string reportName, string month, string year, string format)
+        public FileContentResult GenerateReport(string reportName, string month, string year, string format, string serviceID, string countryID)
         {
+            if ( month == null || year == null)
+                return null;
+            serviceID = serviceID == null ? string.Empty : serviceID;
+            countryID = countryID == null ? string.Empty : countryID;
+
             //Render the report            
             byte[] renderedBytes = null;
             switch (reportName)
@@ -43,6 +49,9 @@ namespace TMBF.Controllers
                     break;
                 case "TrafficSummary":
                     renderedBytes = GenerateTrafficSummaryData(month, year, format);
+                    break;
+                case "Rate":
+                    renderedBytes = GenerateRateData(Convert.ToInt64( serviceID), Convert.ToInt64(countryID), Convert.ToInt32(month), Convert.ToInt32(year), format);
                     break;
             }
 
@@ -68,9 +77,10 @@ namespace TMBF.Controllers
 
             ReportDataSource reportDataSource = new ReportDataSource();
             reportDataSource.Name = "dsCustomerBill";
-            Customer customer = new Customer();
-            customer.ID = 6421234599;
-            customer.PhoneNo = "23234234";
+            if (Session["LoggedUser"] == null || !(Session["LoggedUser"] is Customer))
+                return null;
+
+            Customer customer = (Customer)Session["LoggedUser"];
 
             var customerBill = new ReportDAL().GetCustomerBill(customer.ID, int.Parse(month), int.Parse(year));
 
@@ -112,6 +122,10 @@ namespace TMBF.Controllers
 
         public ActionResult DownloadExcel(string reportName, string month, string year, string format)
         {
+            return DownloadExcel(reportName, month, year, format, string.Empty, string.Empty);
+        }
+        public ActionResult DownloadExcel(string reportName, string month, string year, string format, string serviceID, string countryID)
+        {
             //Render the report            
             byte[] renderedBytes = null;
             switch (reportName)
@@ -127,6 +141,9 @@ namespace TMBF.Controllers
                     break;
                 case "TrafficSummary":
                     renderedBytes = GenerateTrafficSummaryData(month, year, format);
+                    break;
+                case "Rate":
+                    renderedBytes = GenerateRateData(Convert.ToInt64( serviceID), Convert.ToInt64(countryID), Convert.ToInt32(month), Convert.ToInt32(year), format);
                     break;
             }
             if (format == null)
@@ -294,6 +311,65 @@ namespace TMBF.Controllers
 
             ReportParameter pPeriod = new ReportParameter("Period", period);
             localReport.SetParameters(pPeriod);
+
+            string mimeType;
+            string encoding;
+            string fileNameExtension;
+            //The DeviceInfo settings should be changed based on the reportType            
+            //http://msdn2.microsoft.com/en-us/library/ms155397.aspx            
+            string deviceInfo = "<DeviceInfo>" +
+                "  <OutputFormat>jpeg</OutputFormat>" +
+                "  <PageWidth>8.5in</PageWidth>" +
+                "  <PageHeight>11in</PageHeight>" +
+                "  <MarginTop>0.5in</MarginTop>" +
+                "  <MarginLeft>1in</MarginLeft>" +
+                "  <MarginRight>1in</MarginRight>" +
+                "  <MarginBottom>0.5in</MarginBottom>" +
+                "</DeviceInfo>";
+            Warning[] warnings;
+            string[] streams;
+            byte[] renderedBytes;
+            //Render the report            
+            renderedBytes = localReport.Render(format, deviceInfo, out mimeType, out encoding, out fileNameExtension, out streams, out warnings);
+            return renderedBytes;
+        }
+        [AdminR]
+        public ActionResult RateReportViewer(string returnUrl)
+        {
+            ViewBag.ReturnUrl = returnUrl;
+            return View();
+        }
+
+        [HttpPost]
+        [AdminR]
+        [ValidateAntiForgeryToken]
+        public ViewResult RateReportViewer(SearchParameterModel searchParameterModel)
+        {
+            return View(searchParameterModel);
+        }
+        private byte[] GenerateRateData(long serviceID,  long sourceCountryID, int month, int year, string format)
+        {
+            LocalReport localReport = new LocalReport();
+            localReport.ReportPath = Server.MapPath("~/Report/rpRate.rdlc");
+
+            ReportDataSource reportDataSource = new ReportDataSource();
+            reportDataSource.Name = "dsRate";
+
+            var rate = new ReportDAL().GetRate(serviceID, sourceCountryID, month, year);
+
+            reportDataSource.Value = rate;
+            localReport.DataSources.Add(reportDataSource);
+
+            string period = string.Format("{0}/{1}", month, year);
+            Service service = db.Services.Where(s => s.ID == serviceID).FirstOrDefault();
+            Country country = db.Countries.Where(c => c.ID == sourceCountryID).FirstOrDefault();
+
+            ReportParameter pPeriod = new ReportParameter("Period", period);
+            localReport.SetParameters(pPeriod);
+            ReportParameter pServiceName = new ReportParameter("ServiceName", service.Name);
+            localReport.SetParameters(pServiceName);
+            ReportParameter pSourceCountryName = new ReportParameter("SourceCountryName", country.Name);
+            localReport.SetParameters(pSourceCountryName);
 
             string mimeType;
             string encoding;
