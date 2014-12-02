@@ -6,7 +6,8 @@
                    new { LinkText="Customers", ActionName="Index",ControllerName="Customer",Roles="SalesRep"  },
                    new { LinkText="Sales Representative", ActionName="Index",ControllerName="SalesRep",Roles="Admin"},
                     
-                   new { LinkText="Commission checking", ActionName="Index",ControllerName="Report",Roles="SalesRep"},
+                   new { LinkText="Commission checking", ActionName="SalesRepCommissionReportViewer",ControllerName="Report",Roles="SalesRep"},
+                   new { LinkText="Commission Summary", ActionName="AdminCommissionReportViewer",ControllerName="Report",Roles="Admin"},
                    new { LinkText="Traffic Tracking", ActionName="Index",ControllerName="Report",Roles="Admin"},
                
                    new { LinkText="Admin", ActionName="Index",ControllerName="Admin",Roles="Admin"},                                      
