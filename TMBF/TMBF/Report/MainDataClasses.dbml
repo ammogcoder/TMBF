@@ -9,4 +9,10 @@
       <Column Name="Cost" Type="System.Double" DbType="Float" CanBeNull="true" />
     </Type>
   </Table>
+  <Table Name="dbo.SummarySalesRepCommision" Member="SummarySalesRepCommisions">
+    <Type Name="SummarySalesRepCommision">
+      <Column Name="SalesRepName" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="Commission" Type="System.Double" DbType="Float" CanBeNull="true" />
+    </Type>
+  </Table>
 </Database>

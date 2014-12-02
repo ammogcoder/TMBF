@@ -69,6 +69,14 @@ namespace TMBF.Report
 				return this.GetTable<CustomerBill>();
 			}
 		}
+		
+		public System.Data.Linq.Table<SummarySalesRepCommision> SummarySalesRepCommisions
+		{
+			get
+			{
+				return this.GetTable<SummarySalesRepCommision>();
+			}
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.CustomerBill")]
@@ -165,6 +173,51 @@ namespace TMBF.Report
 				if ((this._Cost != value))
 				{
 					this._Cost = value;
+				}
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.SummarySalesRepCommision")]
+	public partial class SummarySalesRepCommision
+	{
+		
+		private string _SalesRepName;
+		
+		private System.Nullable<double> _Commission;
+		
+		public SummarySalesRepCommision()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SalesRepName", DbType="VarChar(10) NOT NULL", CanBeNull=false)]
+		public string SalesRepName
+		{
+			get
+			{
+				return this._SalesRepName;
+			}
+			set
+			{
+				if ((this._SalesRepName != value))
+				{
+					this._SalesRepName = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Commission", DbType="Float")]
+		public System.Nullable<double> Commission
+		{
+			get
+			{
+				return this._Commission;
+			}
+			set
+			{
+				if ((this._Commission != value))
+				{
+					this._Commission = value;
 				}
 			}
 		}
