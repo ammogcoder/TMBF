@@ -239,6 +239,7 @@
     <Content Include="Scripts\SqlScripts\Countries.data.sql" />
     <Content Include="Scripts\SqlScripts\Service.data.sql" />
     <Content Include="Scripts\_references.js" />
+    <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -263,7 +264,6 @@
     <Content Include="Views\Customer\Details.cshtml" />
     <Content Include="Views\Customer\Edit.cshtml" />
     <Content Include="Views\Customer\Index.cshtml" />
-    <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\Rate\FileUpload.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\_Menu.cshtml" />
