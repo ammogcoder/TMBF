@@ -48,5 +48,12 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)      
+    <script>
+        $(".text-box").toggleClass("form-control")
+        $("select").toggleClass("form-control")
+        $("#SearchString").toggleClass("form-control")
+        $(".btn-default").toggleClass("btn-primary")
+        $("validation-summary-errors").toggleClass("alert alert-dismissable alert-danger")
+    </script> 
 </body>
 </html>

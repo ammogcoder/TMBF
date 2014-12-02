@@ -206,6 +206,10 @@
       <LastGenOutput>MainDataClasses.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="Content\bootswatch.less" />
+    <Content Include="Content\variables.less" />
+    <Content Include="Content\_variables.scss" />
+    <Content Include="Content\_bootswatch.scss" />
     <None Include="Report\dsColDTO.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
