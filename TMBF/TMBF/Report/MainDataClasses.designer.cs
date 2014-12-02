@@ -32,8 +32,8 @@ namespace TMBF.Report
     partial void OnCreated();
     #endregion
 		
-		public DataClasses1DataContext() :
-        base(global::System.Configuration.ConfigurationManager.ConnectionStrings["TelecomContext"].ConnectionString, mappingSource)
+		public DataClasses1DataContext() : 
+				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["TelecomContext"].ConnectionString, mappingSource)
 		{
 			OnCreated();
 		}
@@ -78,11 +78,11 @@ namespace TMBF.Report
 			}
 		}
 		
-		public System.Data.Linq.Table<TraficSummary> TraficSummaries
+		public System.Data.Linq.Table<TrafficSummary> TrafficSummaries
 		{
 			get
 			{
-				return this.GetTable<TraficSummary>();
+				return this.GetTable<TrafficSummary>();
 			}
 		}
 	}
@@ -231,8 +231,8 @@ namespace TMBF.Report
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TraficSummary")]
-	public partial class TraficSummary
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TrafficSummary")]
+	public partial class TrafficSummary
 	{
 		
 		private string _ServiceName;
@@ -243,7 +243,7 @@ namespace TMBF.Report
 		
 		private int _Duration;
 		
-		public TraficSummary()
+		public TrafficSummary()
 		{
 		}
 		

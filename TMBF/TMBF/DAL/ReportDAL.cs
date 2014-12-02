@@ -88,5 +88,27 @@ namespace TMBF.DAL
             }
             return list;
         }
+        public IList<TrafficSummary> GetTrafficSummary(int month, int year)
+        {
+            IList<TrafficSummary> list = null;
+            using (TelecomContext context = new TelecomContext())
+            {
+                using (var ctx = new TelecomContext())
+                {
+                    var pMonth = new SqlParameter
+                    {
+                        ParameterName = "month",
+                        Value = month
+                    }; var pYear = new SqlParameter
+                    {
+                        ParameterName = "year",
+                        Value = year
+                    };
+                    list = ctx.Database.SqlQuery<TrafficSummary>("exec GetTrafficSummary @month, @year ", pMonth, pYear).ToList();
+                }
+
+            }
+            return list;
+        }
     }
 }

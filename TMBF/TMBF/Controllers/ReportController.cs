@@ -41,6 +41,9 @@ namespace TMBF.Controllers
                 case "SummarySalesRepCommission":
                     renderedBytes = GenerateSummarySalesRepCommissionData(month, year, format);
                     break;
+                case "TrafficSummary":
+                    renderedBytes = GenerateTrafficSummarynData(month, year, format);
+                    break;
             }
 
             if (format == null)
@@ -121,6 +124,9 @@ namespace TMBF.Controllers
                     break;
                 case "SummarySalesRepCommission":
                     renderedBytes = GenerateSummarySalesRepCommissionData(month, year, format);
+                    break;
+                case "TrafficSummary":
+                    renderedBytes = GenerateTrafficSummarynData(month, year, format);
                     break;
             }
             if (format == null)
@@ -226,6 +232,47 @@ namespace TMBF.Controllers
             var summarySalesRepCommission = new ReportDAL().GetSummarySalesRepCommission(int.Parse(month), int.Parse(year));
 
             reportDataSource.Value = summarySalesRepCommission;
+            localReport.DataSources.Add(reportDataSource);
+
+            string period = string.Format("{0}/{1}", month, year);
+
+            ReportParameter pPeriod = new ReportParameter("Period", period);
+            localReport.SetParameters(pPeriod);
+
+            string mimeType;
+            string encoding;
+            string fileNameExtension;
+            //The DeviceInfo settings should be changed based on the reportType            
+            //http://msdn2.microsoft.com/en-us/library/ms155397.aspx            
+            string deviceInfo = "<DeviceInfo>" +
+                "  <OutputFormat>jpeg</OutputFormat>" +
+                "  <PageWidth>8.5in</PageWidth>" +
+                "  <PageHeight>11in</PageHeight>" +
+                "  <MarginTop>0.5in</MarginTop>" +
+                "  <MarginLeft>1in</MarginLeft>" +
+                "  <MarginRight>1in</MarginRight>" +
+                "  <MarginBottom>0.5in</MarginBottom>" +
+                "</DeviceInfo>";
+            Warning[] warnings;
+            string[] streams;
+            byte[] renderedBytes;
+            //Render the report            
+            renderedBytes = localReport.Render(format, deviceInfo, out mimeType, out encoding, out fileNameExtension, out streams, out warnings);
+            return renderedBytes;
+        }
+        private byte[] GenerateTrafficSummarynData(string month, string year, string format)
+        {
+            if (month == null || year == null)
+                return null;
+            LocalReport localReport = new LocalReport();
+            localReport.ReportPath = Server.MapPath("~/Report/rpTrafficSummary.rdlc");
+
+            ReportDataSource reportDataSource = new ReportDataSource();
+            reportDataSource.Name = "dsSummarySalesRepCommission";
+
+            var trafficSummary = new ReportDAL().GetTrafficSummary(int.Parse(month), int.Parse(year));
+
+            reportDataSource.Value = trafficSummary;
             localReport.DataSources.Add(reportDataSource);
 
             string period = string.Format("{0}/{1}", month, year);

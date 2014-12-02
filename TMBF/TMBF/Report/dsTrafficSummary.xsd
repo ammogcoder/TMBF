@@ -7,12 +7,12 @@
           <Connection AppSettingsObjectName="Web.config" AppSettingsPropertyName="TelecomContext" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="TelecomContext (Web.config)" ParameterPrefix="@" PropertyReference="AppConfig.System.Configuration.ConfigurationManager.0.ConnectionStrings.TelecomContext.ConnectionString" Provider="System.Data.SqlClient" />
         </Connections>
         <Tables>
-          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="TraficSummaryTableAdapter" GeneratorDataComponentClassName="TraficSummaryTableAdapter" Name="TraficSummary" UserDataComponentName="TraficSummaryTableAdapter">
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="TrafficSummaryTableAdapter" GeneratorDataComponentClassName="TrafficSummaryTableAdapter" Name="TrafficSummary" UserDataComponentName="TrafficSummaryTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="TelecomContext (Web.config)" DbObjectName="TMBF.dbo.TraficSummary" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="TelecomContext (Web.config)" DbObjectName="TMBF.dbo.TrafficSummary" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>SELECT ServiceName, FromCountryName, ToCountryName, Duration FROM dbo.TraficSummary</CommandText>
+                    <CommandText>SELECT ServiceName, FromCountryName, ToCountryName, Duration FROM dbo.TrafficSummary</CommandText>
                     <Parameters />
                   </DbCommand>
                 </SelectCommand>
@@ -34,7 +34,7 @@
   <xs:element name="dsTrafficSummary" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="dsTrafficSummary" msprop:Generator_UserDSName="dsTrafficSummary">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="TraficSummary" msprop:Generator_TableClassName="TraficSummaryDataTable" msprop:Generator_TableVarName="tableTraficSummary" msprop:Generator_TablePropName="TraficSummary" msprop:Generator_RowDeletingName="TraficSummaryRowDeleting" msprop:Generator_RowChangingName="TraficSummaryRowChanging" msprop:Generator_RowEvHandlerName="TraficSummaryRowChangeEventHandler" msprop:Generator_RowDeletedName="TraficSummaryRowDeleted" msprop:Generator_UserTableName="TraficSummary" msprop:Generator_RowChangedName="TraficSummaryRowChanged" msprop:Generator_RowEvArgName="TraficSummaryRowChangeEvent" msprop:Generator_RowClassName="TraficSummaryRow">
+        <xs:element name="TrafficSummary" msprop:Generator_TableClassName="TrafficSummaryDataTable" msprop:Generator_TableVarName="tableTrafficSummary" msprop:Generator_TablePropName="TrafficSummary" msprop:Generator_RowDeletingName="TrafficSummaryRowDeleting" msprop:Generator_RowChangingName="TrafficSummaryRowChanging" msprop:Generator_RowEvHandlerName="TrafficSummaryRowChangeEventHandler" msprop:Generator_RowDeletedName="TrafficSummaryRowDeleted" msprop:Generator_UserTableName="TrafficSummary" msprop:Generator_RowChangedName="TrafficSummaryRowChanged" msprop:Generator_RowEvArgName="TrafficSummaryRowChangeEvent" msprop:Generator_RowClassName="TrafficSummaryRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="ServiceName" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnServiceName" msprop:Generator_ColumnPropNameInRow="ServiceName" msprop:Generator_ColumnPropNameInTable="ServiceNameColumn" msprop:Generator_UserColumnName="ServiceName" minOccurs="0">
