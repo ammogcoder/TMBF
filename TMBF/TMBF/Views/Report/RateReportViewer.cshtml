@@ -52,7 +52,7 @@
                 @if (Model != null)
                 {
                     <section class="social" id="ReportDisplayPanel">
-                        @Html.ActionLink("Download Excel", "DownloadReport", new { reportName = "Rate", month = Model.Month, year = Model.Year, format = "Excel" })
+                        @Html.ActionLink("Download Excel", "DownloadExcel", new { reportName = "Rate", month = Model.Month, year = Model.Year, format = "Excel", serviceID = Model.ServiceID, countryID = Model.CountryID })
                         <br><img style="border:1px solid gray;" src="@Url.Action("GenerateReport", "Report", new { reportName = "Rate", month = Model.Month, year = Model.Year, format = "Image", serviceID= Model.ServiceID, countryID = Model.CountryID })" />
                     </section>
                 }

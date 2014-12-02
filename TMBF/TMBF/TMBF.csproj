@@ -269,6 +269,7 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\SqlScripts\Add Users.sql" />
+    <Content Include="Scripts\SqlScripts\BillSPTestData.sql" />
     <Content Include="Scripts\SqlScripts\CreateSP.Sql" />
     <Content Include="Scripts\SqlScripts\CreateView.Sql" />
     <Content Include="Scripts\SqlScripts\DataBase Script.sql" />

@@ -29,7 +29,7 @@ namespace TMBF.DAL
             context.SaveChanges();
             
              
-            var salesRep = new SalesRep { ID = 1, FirstName = "Dinesh", LastName = "Rahul", Password = "sales", role = User.Role.SalesRep };
+            var salesRep = new SalesRep { ID = 1,UserName="sales", FirstName = "Dinesh", LastName = "Rahul", Password = "sales", role = User.Role.SalesRep };
             context.SalesReps.Add(salesRep);
             context.SaveChanges();
 
