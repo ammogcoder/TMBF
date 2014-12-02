@@ -70,5 +70,25 @@ namespace TMBF.Business
         }//InsertService
 
 
+
+        internal static bool insertServiceTable(System.Data.DataTable dt)
+        {
+            SqlConnection connection = ConnectionManager.GetTMConnection();
+            using (SqlBulkCopy bulkCopy = new SqlBulkCopy(connection))
+            {
+                bulkCopy.DestinationTableName = "dbo.Service";
+
+                try
+                {
+                    // Write from the source to the destination.
+                    bulkCopy.WriteToServer(dt);
+                }
+                catch (Exception ex)
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
     }
 }

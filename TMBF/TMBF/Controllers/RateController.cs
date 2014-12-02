@@ -57,22 +57,47 @@ namespace TMBF.Controllers
              
             }
 
-            DataTable dt = new DataTable();
-            dt.Clear();
-            dt.Columns.Add("Name", typeof(string));
-            dt.Columns.Add("Age", typeof(int));
-
+            DataTable dt = initBatchTable();
+            
 
             for (int i = 0; i < table.Rows.Count; i++)
 			{
    			    DataRow tmp = table.Rows[ i ];
+                DataRow newRow = dt.NewRow();
                 destCountryID = Int16.Parse ( tmp[0].ToString() );
                 peekRate = float.Parse( tmp[1].ToString() );
                 offPeekRate = float.Parse(tmp[2].ToString());
 
-                ServicesDataAccess.insertService(serviceName, peekRate, offPeekRate, startDate, endDate, sourceCountryID, destCountryID);
-			}
+                newRow["Name"] = serviceName;
+                newRow["PeekRate"] = peekRate;
+                newRow["OffPeekRate"] = offPeekRate;
+                newRow["RateEffectiveDate"] = startDate;
+                newRow["RateEndDate"] = endDate;
+                newRow["DestinationCountry_ID"] = destCountryID;
+                newRow["SourceCountry_ID"] = sourceCountryID;
 
+                dt.Rows.Add( newRow );
+                //ServicesDataAccess.insertService(serviceName, peekRate, offPeekRate, startDate, endDate, sourceCountryID, destCountryID);
+			}
+            ServicesDataAccess.insertServiceTable(dt);
+
+        }
+
+        private DataTable initBatchTable()
+        {
+            DataTable dt = new DataTable();
+            dt.Clear();
+            dt.Columns.Add("ID", typeof(int));
+            dt.Columns.Add("Name", typeof(string) );
+            dt.Columns.Add("PeekRate", typeof(float));
+            dt.Columns.Add("OffPeekRate", typeof( float) );
+            dt.Columns.Add("RateEffectiveDate", typeof(DateTime));
+            dt.Columns.Add("RateEndDate", typeof(DateTime));
+            dt.Columns.Add("DestinationCountry_ID", typeof( int ));
+            dt.Columns.Add("SourceCountry_ID", typeof( int ));
+
+            return dt;
+            
 
         }
 
