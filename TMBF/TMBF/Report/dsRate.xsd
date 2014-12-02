@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsRate" targetNamespace="http://tempuri.org/dsRate.xsd" xmlns:mstns="http://tempuri.org/dsRate.xsd" xmlns="http://tempuri.org/dsRate.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Web.config" AppSettingsPropertyName="TelecomContext" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="TelecomContext (Web.config)" ParameterPrefix="@" PropertyReference="AppConfig.System.Configuration.ConfigurationManager.0.ConnectionStrings.TelecomContext.ConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="RateTableAdapter" GeneratorDataComponentClassName="RateTableAdapter" Name="Rate" UserDataComponentName="RateTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="TelecomContext (Web.config)" DbObjectName="TMBF.dbo.Rate" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT DestinationCountryName, PeekRate, OffPeekRate FROM dbo.Rate</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="DestinationCountryName" DataSetColumn="DestinationCountryName" />
+              <Mapping SourceColumn="PeekRate" DataSetColumn="PeekRate" />
+              <Mapping SourceColumn="OffPeekRate" DataSetColumn="OffPeekRate" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsRate" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="dsRate" msprop:Generator_UserDSName="dsRate">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Rate" msprop:Generator_TableClassName="RateDataTable" msprop:Generator_TableVarName="tableRate" msprop:Generator_TablePropName="Rate" msprop:Generator_RowDeletingName="RateRowDeleting" msprop:Generator_RowChangingName="RateRowChanging" msprop:Generator_RowEvHandlerName="RateRowChangeEventHandler" msprop:Generator_RowDeletedName="RateRowDeleted" msprop:Generator_UserTableName="Rate" msprop:Generator_RowChangedName="RateRowChanged" msprop:Generator_RowEvArgName="RateRowChangeEvent" msprop:Generator_RowClassName="RateRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="DestinationCountryName" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnDestinationCountryName" msprop:Generator_ColumnPropNameInRow="DestinationCountryName" msprop:Generator_ColumnPropNameInTable="DestinationCountryNameColumn" msprop:Generator_UserColumnName="DestinationCountryName" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="6" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="PeekRate" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnPeekRate" msprop:Generator_ColumnPropNameInRow="PeekRate" msprop:Generator_ColumnPropNameInTable="PeekRateColumn" msprop:Generator_UserColumnName="PeekRate" type="xs:double" minOccurs="0" />
+              <xs:element name="OffPeekRate" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnOffPeekRate" msprop:Generator_ColumnPropNameInRow="OffPeekRate" msprop:Generator_ColumnPropNameInTable="OffPeekRateColumn" msprop:Generator_UserColumnName="OffPeekRate" type="xs:double" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
