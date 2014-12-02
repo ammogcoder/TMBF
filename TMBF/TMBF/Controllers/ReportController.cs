@@ -42,7 +42,7 @@ namespace TMBF.Controllers
                     renderedBytes = GenerateSummarySalesRepCommissionData(month, year, format);
                     break;
                 case "TrafficSummary":
-                    renderedBytes = GenerateTrafficSummarynData(month, year, format);
+                    renderedBytes = GenerateTrafficSummaryData(month, year, format);
                     break;
             }
 
@@ -126,7 +126,7 @@ namespace TMBF.Controllers
                     renderedBytes = GenerateSummarySalesRepCommissionData(month, year, format);
                     break;
                 case "TrafficSummary":
-                    renderedBytes = GenerateTrafficSummarynData(month, year, format);
+                    renderedBytes = GenerateTrafficSummaryData(month, year, format);
                     break;
             }
             if (format == null)
@@ -260,7 +260,22 @@ namespace TMBF.Controllers
             renderedBytes = localReport.Render(format, deviceInfo, out mimeType, out encoding, out fileNameExtension, out streams, out warnings);
             return renderedBytes;
         }
-        private byte[] GenerateTrafficSummarynData(string month, string year, string format)
+
+        [AdminR]
+        public ActionResult TrafficSummaryReportViewer(string returnUrl)
+        {
+            ViewBag.ReturnUrl = returnUrl;
+            return View();
+        }
+
+        [HttpPost]
+        [AdminR]
+        [ValidateAntiForgeryToken]
+        public ViewResult TrafficSummaryReportViewer(SearchParameterModel searchParameterModel)
+        {
+            return View(searchParameterModel);
+        }
+        private byte[] GenerateTrafficSummaryData(string month, string year, string format)
         {
             if (month == null || year == null)
                 return null;
@@ -268,7 +283,7 @@ namespace TMBF.Controllers
             localReport.ReportPath = Server.MapPath("~/Report/rpTrafficSummary.rdlc");
 
             ReportDataSource reportDataSource = new ReportDataSource();
-            reportDataSource.Name = "dsSummarySalesRepCommission";
+            reportDataSource.Name = "dsTrafficSummary";
 
             var trafficSummary = new ReportDAL().GetTrafficSummary(int.Parse(month), int.Parse(year));
 

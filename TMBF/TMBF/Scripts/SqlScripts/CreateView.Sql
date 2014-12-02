@@ -9,6 +9,6 @@ Create  VIEW SummarySalesRepCommision
 	SELECT  'Mike Tyson' as SalesRepName, Cast(0.123456 as float) as Commission
 
 GO
-Create  View GetTraficSummary
+Create  View GetTrafficSummary
 AS
 SELECT  'Spectra' as ServiceName, 'VietNam' as  FromCountryName, 'Nepal' as ToCountryName, 12345 as Duration

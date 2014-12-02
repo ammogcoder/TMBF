@@ -46,7 +46,7 @@ SELECT  'Mike Tyson' as SalesRepName, Cast(0.123456 as float) as Commission
 
 
 GO
-Create  PROCEDURE [dbo].GetTraficSummary
+Create  PROCEDURE [dbo].GetTrafficSummary
 	@month int,
 	@year int
 AS
