@@ -241,6 +241,7 @@
     <Content Include="Scripts\SqlScripts\CreateView.Sql" />
     <Content Include="Scripts\SqlScripts\DataBase Script.sql" />
     <Content Include="Scripts\SqlScripts\Countries.data.sql" />
+    <Content Include="Scripts\SqlScripts\DataOnly IntialData.sql" />
     <Content Include="Scripts\SqlScripts\Service.data.sql" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Views\Home\Login.cshtml" />
