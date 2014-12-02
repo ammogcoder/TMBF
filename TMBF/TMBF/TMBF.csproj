@@ -235,6 +235,9 @@
     <Content Include="Scripts\SqlScripts\Add Users.sql" />
     <Content Include="Scripts\SqlScripts\CreateSP.Sql" />
     <Content Include="Scripts\SqlScripts\CreateView.Sql" />
+    <Content Include="Scripts\SqlScripts\DataBase Script.sql" />
+    <Content Include="Scripts\SqlScripts\Countries.data.sql" />
+    <Content Include="Scripts\SqlScripts\Service.data.sql" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>

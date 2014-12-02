@@ -25,8 +25,7 @@ namespace TMBF.Controllers
         {
             return View(searchParameterModel);
         }
-        [CustomerR]
-        [SalesRepR]
+
         public FileContentResult GenerateReport(string reportName, string month, string year, string format)
         {
             //Render the report            
@@ -138,7 +137,7 @@ namespace TMBF.Controllers
             }
         }
         [SalesRepR]
-        public ActionResult SalesRepComissionReportViewer(string returnUrl)
+        public ActionResult SalesRepCommissionReportViewer(string returnUrl)
         {
             ViewBag.ReturnUrl = returnUrl;
             return View();
@@ -147,7 +146,7 @@ namespace TMBF.Controllers
         [HttpPost]
         [SalesRepR]
         [ValidateAntiForgeryToken]
-        public ViewResult SalesRepComissionReportViewer(SearchParameterModel searchParameterModel)
+        public ViewResult SalesRepCommissionReportViewer(SearchParameterModel searchParameterModel)
         {
             return View(searchParameterModel);
         }
@@ -157,17 +156,17 @@ namespace TMBF.Controllers
             if (month == null || year == null)
                 return null;
             LocalReport localReport = new LocalReport();
-            localReport.ReportPath = Server.MapPath("~/Report/rpSalesRepComission.rdlc");
+            localReport.ReportPath = Server.MapPath("~/Report/rpSalesRepCommission.rdlc");
 
             SalesRep salesRep = new SalesRep();
             salesRep.ID = 1;
 
-            var salesRepComission = new ReportDAL().GetSalesRepCommission(salesRep.ID, int.Parse(month), int.Parse(year));
+            var salesRepCommission = new ReportDAL().GetSalesRepCommission(salesRep.ID, int.Parse(month), int.Parse(year));
 
             string period = string.Format("{0}/{1}", month, year);
 
             ReportParameter pSalesRepName = new ReportParameter("SalesRepName", string.Format("{0} {1}", salesRep.FirstName, salesRep.LastName));
-            ReportParameter pSalesRepCommission = new ReportParameter("SalesRepCommission", string.Format("{0}", salesRepComission));
+            ReportParameter pSalesRepCommission = new ReportParameter("SalesRepCommission", string.Format("{0}", salesRepCommission));
             ReportParameter pPeriod = new ReportParameter("Period", period);
             localReport.SetParameters(pSalesRepName);
             localReport.SetParameters(pSalesRepCommission);
@@ -195,5 +194,21 @@ namespace TMBF.Controllers
             renderedBytes = localReport.Render(format, deviceInfo, out mimeType, out encoding, out fileNameExtension, out streams, out warnings);
             return renderedBytes;
         }
+                [SalesRepR]
+        public ActionResult AdminCommissionReportViewer(string returnUrl)
+        {
+            ViewBag.ReturnUrl = returnUrl;
+            return View();
+        }
+
+        [HttpPost]
+        [SalesRepR]
+        [ValidateAntiForgeryToken]
+                public ViewResult AdminCommissionReportViewer(SearchParameterModel searchParameterModel)
+        {
+            return View(searchParameterModel);
+        }
+
+        
     }
 }

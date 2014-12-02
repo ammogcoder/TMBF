@@ -11,22 +11,24 @@ namespace TMBF.DAL
     {
         protected override void Seed(TelecomContext context)
         {
-            var tanzania = new Country { ID = 123, Name = "Tanzania" };
+            
+            var tanzania = new Country { ID = 123, Name = "NotTanzania" };
             context.Countries.Add(tanzania);
             var usa = new Country { ID = 1, Name = "USA" };
             context.Countries.Add(usa);
             var canada = new Country { ID = 2, Name = "Canada" };
             context.Countries.Add(canada);
             context.SaveChanges();
-
-            var admin = new Admin { ID = 0, FirstName = "Admin", LastName = "Babu", Password = "admin", role = User.Role.Admin };
+            
+            var admin = new Admin { ID = 0, UserName="admin", FirstName = "Admin", LastName = "Babu", Password = "admin", role = User.Role.Admin };
             context.Admins.Add(admin);
             context.SaveChanges();
 
             var service = new Service { ID = 1, SourceCountry = usa, DestinationCountry = canada, Name = "Spectra", OffPeekRate = 2.5, PeekRate = 5.0, RateEffectiveDate = DateTime.Parse("2010-1-14"), RateEndDate = DateTime.Parse("2010-12-12"), PeekRateStartTime=800, OffPeekRateStartTime=1700};
             context.Services.Add(service);
             context.SaveChanges();
-
+            
+             
             var salesRep = new SalesRep { ID = 1, FirstName = "Dinesh", LastName = "Rahul", Password = "sales", role = User.Role.SalesRep };
             context.SalesReps.Add(salesRep);
             context.SaveChanges();

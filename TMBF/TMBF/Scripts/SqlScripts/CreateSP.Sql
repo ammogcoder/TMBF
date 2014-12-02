@@ -28,7 +28,7 @@ SELECT CallDate, Concat(Concat(Cast((CallTime/100) as nvarchar),':'),Cast((CallT
 			  month(CallDate) = @month
 GO
 
-CREATE  PROCEDURE [dbo].GetSalesRepCommision
+CREATE  PROCEDURE [dbo].GetSalesRepCommission
 	@salesRepID bigint,
 	@month int,
 	@year int
@@ -38,7 +38,7 @@ SELECT Cast(0.56 as float) as Commission
 
 GO
 
-CREATE  PROCEDURE [dbo].GetAllSalesRepCommision
+CREATE  PROCEDURE [dbo].GetAllSalesRepCommission
 	@month int,
 	@year int
 AS

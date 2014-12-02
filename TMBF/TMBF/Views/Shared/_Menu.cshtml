@@ -6,13 +6,15 @@
                    new { LinkText="Customers", ActionName="Index",ControllerName="Customer",Roles="SalesRep"  },
                    new { LinkText="Sales Representative", ActionName="Index",ControllerName="SalesRep",Roles="Admin"},
                     
-                   new { LinkText="Commission checking", ActionName="Index",ControllerName="Report",Roles="SalesRep"},
+                   new { LinkText="Commission checking", ActionName="SalesRepCommissionReportViewer",ControllerName="Report",Roles="SalesRep"},
+                   new { LinkText="Commission Summary", ActionName="AdminCommissionReportViewer",ControllerName="Report",Roles="Admin"},
                    new { LinkText="Traffic Tracking", ActionName="Index",ControllerName="Report",Roles="Admin"},
                
                    new { LinkText="Admin", ActionName="Index",ControllerName="Admin",Roles="Admin"},                                      
                    new { LinkText="Services", ActionName="Index",ControllerName="Service",Roles="Admin"  },
                    new { LinkText="Calls", ActionName="Index",ControllerName="Call",Roles="Admin"},
-                   new { LinkText="Country", ActionName="Index",ControllerName="Country",Roles="Admin"},            
+                   new { LinkText="Country", ActionName="Index",ControllerName="Country",Roles="Admin"},
+                   new { LinkText="Update Rates", ActionName="FileUpload",ControllerName="Rate",Roles="Admin"},                        
                    new { LinkText="About", ActionName="About",ControllerName="Home",Roles="Anonymous,All"  }
                 };
 }  
