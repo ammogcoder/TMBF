@@ -1,7 +1,7 @@
 USE [TMBF]
 GO
 
-/****** Object:  StoredProcedure [dbo].[GetTraficSummary]    Script Date: 12/2/2014 2:04:57 AM ******/
+/****** Object:  StoredProcedure [dbo].[GetTraficSummary]    Script Date: 12/2/2014 2:09:09 AM ******/
 SET ANSI_NULLS ON
 GO
 
@@ -22,13 +22,12 @@ BEGIN
 	-- interfering with SELECT statements.
 	SET NOCOUNT ON;
 	
-SELECT Service.Name As 'Service name', (select name from Country where ID=Call.SourceCountry_ID) As 'From country name', 
-(select name from Country where ID=Call.DestinationCountry_ID) As 'To Country Name' , SUM(Duration) As 'Total Minutes Of Calls'
+SELECT Service.Name As 'ServiceName', (select name from Country where ID=Call.SourceCountry_ID) As 'FromCountryName', 
+(select name from Country where ID=Call.DestinationCountry_ID) As 'ToCountryName' , SUM(Duration) As 'Duration'
 from [dbo].[Service] Inner Join [dbo].[Customer] ON Service.ID=ServiceID 
 Inner Join [dbo].[Call] on Call.CustomerID=Customer.PhoneNo
 where DATEDIFF(month,CallDate,DATEFROMPARTS (@year, @month, 1))<=0
 Group By Call.SourceCountry_ID,Call.DestinationCountry_ID,Service.Name
-
 
 
 
