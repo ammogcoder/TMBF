@@ -18,12 +18,12 @@ VALUES (CAST(@CallDate AS DateTime), @CallTime, @Duration, @ReceiverNo, @Custome
             SqlCommand command = new SqlCommand(sql, connection);
 
             command.Parameters.AddWithValue("@CallDate", CallDate);
-            command.Parameters.AddWithValue("@CallTime", CallTime);
-            command.Parameters.AddWithValue("@Duration", Duration);
+            command.Parameters.AddWithValue("@CallTime", (int)CallTime);
+            command.Parameters.AddWithValue("@Duration", (int)Duration);
             command.Parameters.AddWithValue("@ReceiverNo", ReceiverNo);
-            command.Parameters.AddWithValue("@CustomerID", CustomerID);
-            command.Parameters.AddWithValue("@DestinationCountry_ID", DestinationCountry_ID);
-            command.Parameters.AddWithValue("@SourceCountry_ID", SourceCountry_ID);
+            command.Parameters.AddWithValue("@CustomerID", (long)CustomerID);
+            command.Parameters.AddWithValue("@DestinationCountry_ID", (int)DestinationCountry_ID);
+            command.Parameters.AddWithValue("@SourceCountry_ID", (int)SourceCountry_ID);
             try
             {
                 ret = command.ExecuteNonQuery();
