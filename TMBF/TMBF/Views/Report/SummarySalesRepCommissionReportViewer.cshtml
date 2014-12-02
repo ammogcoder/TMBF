@@ -17,31 +17,37 @@
 
 
         <fieldset>
-            <ol>
-                <li>
+            <ul>
+
                     @Html.LabelFor(m => m.Month)
                     @Html.TextBoxFor(m => m.Month, new { @Value = DateTime.Today.Month })
                     @Html.ValidationMessageFor(m => m.Month)
-                </li>
-            </ol>
-            <ol>
-                <li>
+
+            </ul>
+            <ul>
+
                     @Html.LabelFor(m => m.Year)
                     @Html.TextBoxFor(m => m.Year, new { @Value = DateTime.Today.Year })
                     @Html.ValidationMessageFor(m => m.Year)
-                </li>
-            </ol>
-            <input type="submit" id="btnSubmit" value="View Report" />
-        </fieldset>
+
+            </ul>
+            <ul>
+                <input type="submit" id="btnSubmit" value="View Report" />
+            </ul>
+            <ul>
+                @if (Model != null)
+                {
+                    <section class="social" id="ReportDisplayPanel">
+                        @Html.ActionLink("Download Excel", "DownloadExcel", new { reportName = "SummarySalesRepCommission", month = Model.Month, year = Model.Year, format = "Excel" })
+                        <br><img style="border:1px solid gray;" src="@Url.Action("GenerateReport", "Report", new { reportName = "SummarySalesRepCommission", month = Model.Month, year = Model.Year, format = "Image" })" />
+                    </section>
+                }
+            </ul>
+
+</fieldset>
     }
 </section>
-@if (Model != null)
-{
-    <section class="social" id="ReportDisplayPanel">
-        @Html.ActionLink("Download Excel", "DownloadExcel", new { reportName = "SummarySalesRepCommission", month = Model.Month, year = Model.Year, format = "Excel" })
-        <br><img style="border:1px solid gray;" src="@Url.Action("GenerateReport", "Report", new { reportName = "SummarySalesRepCommission", month = Model.Month, year = Model.Year, format = "Image" })" />
-    </section>
-}
+
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }
