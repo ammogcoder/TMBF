@@ -20,17 +20,17 @@ namespace TMBF.Report {
     [global::System.ComponentModel.DesignerCategoryAttribute("code")]
     [global::System.ComponentModel.ToolboxItem(true)]
     [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedDataSetSchema")]
-    [global::System.Xml.Serialization.XmlRootAttribute("dsColDTO")]
+    [global::System.Xml.Serialization.XmlRootAttribute("dsTrafficSummary")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.DataSet")]
-    public partial class dsColDTO : global::System.Data.DataSet {
+    public partial class dsTrafficSummary : global::System.Data.DataSet {
         
-        private ColDTODataTable tableColDTO;
+        private TrafficSummaryDataTable tableTrafficSummary;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public dsColDTO() {
+        public dsTrafficSummary() {
             this.BeginInit();
             this.InitClass();
             global::System.ComponentModel.CollectionChangeEventHandler schemaChangedHandler = new global::System.ComponentModel.CollectionChangeEventHandler(this.SchemaChanged);
@@ -41,7 +41,7 @@ namespace TMBF.Report {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        protected dsColDTO(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+        protected dsTrafficSummary(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                 base(info, context, false) {
             if ((this.IsBinarySerialized(info, context) == true)) {
                 this.InitVars(false);
@@ -54,8 +54,8 @@ namespace TMBF.Report {
             if ((this.DetermineSchemaSerializationMode(info, context) == global::System.Data.SchemaSerializationMode.IncludeSchema)) {
                 global::System.Data.DataSet ds = new global::System.Data.DataSet();
                 ds.ReadXmlSchema(new global::System.Xml.XmlTextReader(new global::System.IO.StringReader(strSchema)));
-                if ((ds.Tables["ColDTO"] != null)) {
-                    base.Tables.Add(new ColDTODataTable(ds.Tables["ColDTO"]));
+                if ((ds.Tables["TrafficSummary"] != null)) {
+                    base.Tables.Add(new TrafficSummaryDataTable(ds.Tables["TrafficSummary"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -79,9 +79,9 @@ namespace TMBF.Report {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public ColDTODataTable ColDTO {
+        public TrafficSummaryDataTable TrafficSummary {
             get {
-                return this.tableColDTO;
+                return this.tableTrafficSummary;
             }
         }
         
@@ -127,7 +127,7 @@ namespace TMBF.Report {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public override global::System.Data.DataSet Clone() {
-            dsColDTO cln = ((dsColDTO)(base.Clone()));
+            dsTrafficSummary cln = ((dsTrafficSummary)(base.Clone()));
             cln.InitVars();
             cln.SchemaSerializationMode = this.SchemaSerializationMode;
             return cln;
@@ -152,8 +152,8 @@ namespace TMBF.Report {
                 this.Reset();
                 global::System.Data.DataSet ds = new global::System.Data.DataSet();
                 ds.ReadXml(reader);
-                if ((ds.Tables["ColDTO"] != null)) {
-                    base.Tables.Add(new ColDTODataTable(ds.Tables["ColDTO"]));
+                if ((ds.Tables["TrafficSummary"] != null)) {
+                    base.Tables.Add(new TrafficSummaryDataTable(ds.Tables["TrafficSummary"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -188,10 +188,10 @@ namespace TMBF.Report {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         internal void InitVars(bool initTable) {
-            this.tableColDTO = ((ColDTODataTable)(base.Tables["ColDTO"]));
+            this.tableTrafficSummary = ((TrafficSummaryDataTable)(base.Tables["TrafficSummary"]));
             if ((initTable == true)) {
-                if ((this.tableColDTO != null)) {
-                    this.tableColDTO.InitVars();
+                if ((this.tableTrafficSummary != null)) {
+                    this.tableTrafficSummary.InitVars();
                 }
             }
         }
@@ -199,18 +199,18 @@ namespace TMBF.Report {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitClass() {
-            this.DataSetName = "dsColDTO";
+            this.DataSetName = "dsTrafficSummary";
             this.Prefix = "";
-            this.Namespace = "http://tempuri.org/dsColDTO.xsd";
+            this.Namespace = "http://tempuri.org/dsTrafficSummary.xsd";
             this.EnforceConstraints = true;
             this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
-            this.tableColDTO = new ColDTODataTable();
-            base.Tables.Add(this.tableColDTO);
+            this.tableTrafficSummary = new TrafficSummaryDataTable();
+            base.Tables.Add(this.tableTrafficSummary);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private bool ShouldSerializeColDTO() {
+        private bool ShouldSerializeTrafficSummary() {
             return false;
         }
         
@@ -225,7 +225,7 @@ namespace TMBF.Report {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedDataSetSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
-            dsColDTO ds = new dsColDTO();
+            dsTrafficSummary ds = new dsTrafficSummary();
             global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
             global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
             global::System.Xml.Schema.XmlSchemaAny any = new global::System.Xml.Schema.XmlSchemaAny();
@@ -270,39 +270,27 @@ namespace TMBF.Report {
         }
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public delegate void ColDTORowChangeEventHandler(object sender, ColDTORowChangeEvent e);
+        public delegate void TrafficSummaryRowChangeEventHandler(object sender, TrafficSummaryRowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class ColDTODataTable : global::System.Data.TypedTableBase<ColDTORow> {
+        public partial class TrafficSummaryDataTable : global::System.Data.TypedTableBase<TrafficSummaryRow> {
             
-            private global::System.Data.DataColumn columnCol1;
+            private global::System.Data.DataColumn columnServiceName;
             
-            private global::System.Data.DataColumn columnCol2;
+            private global::System.Data.DataColumn columnFromCountryName;
             
-            private global::System.Data.DataColumn columnCol3;
+            private global::System.Data.DataColumn columnToCountryName;
             
-            private global::System.Data.DataColumn columnCol4;
-            
-            private global::System.Data.DataColumn columnCol5;
-            
-            private global::System.Data.DataColumn columnCol6;
-            
-            private global::System.Data.DataColumn columnCol7;
-            
-            private global::System.Data.DataColumn columnCol8;
-            
-            private global::System.Data.DataColumn columnCol9;
-            
-            private global::System.Data.DataColumn columnCol10;
+            private global::System.Data.DataColumn columnDuration;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ColDTODataTable() {
-                this.TableName = "ColDTO";
+            public TrafficSummaryDataTable() {
+                this.TableName = "TrafficSummary";
                 this.BeginInit();
                 this.InitClass();
                 this.EndInit();
@@ -310,7 +298,7 @@ namespace TMBF.Report {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal ColDTODataTable(global::System.Data.DataTable table) {
+            internal TrafficSummaryDataTable(global::System.Data.DataTable table) {
                 this.TableName = table.TableName;
                 if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
                     this.CaseSensitive = table.CaseSensitive;
@@ -327,88 +315,40 @@ namespace TMBF.Report {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected ColDTODataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+            protected TrafficSummaryDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn Col1Column {
+            public global::System.Data.DataColumn ServiceNameColumn {
                 get {
-                    return this.columnCol1;
+                    return this.columnServiceName;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn Col2Column {
+            public global::System.Data.DataColumn FromCountryNameColumn {
                 get {
-                    return this.columnCol2;
+                    return this.columnFromCountryName;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn Col3Column {
+            public global::System.Data.DataColumn ToCountryNameColumn {
                 get {
-                    return this.columnCol3;
+                    return this.columnToCountryName;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn Col4Column {
+            public global::System.Data.DataColumn DurationColumn {
                 get {
-                    return this.columnCol4;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn Col5Column {
-                get {
-                    return this.columnCol5;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn Col6Column {
-                get {
-                    return this.columnCol6;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn Col7Column {
-                get {
-                    return this.columnCol7;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn Col8Column {
-                get {
-                    return this.columnCol8;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn Col9Column {
-                get {
-                    return this.columnCol9;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn Col10Column {
-                get {
-                    return this.columnCol10;
+                    return this.columnDuration;
                 }
             }
             
@@ -423,54 +363,48 @@ namespace TMBF.Report {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ColDTORow this[int index] {
+            public TrafficSummaryRow this[int index] {
                 get {
-                    return ((ColDTORow)(this.Rows[index]));
+                    return ((TrafficSummaryRow)(this.Rows[index]));
                 }
             }
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event ColDTORowChangeEventHandler ColDTORowChanging;
+            public event TrafficSummaryRowChangeEventHandler TrafficSummaryRowChanging;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event ColDTORowChangeEventHandler ColDTORowChanged;
+            public event TrafficSummaryRowChangeEventHandler TrafficSummaryRowChanged;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event ColDTORowChangeEventHandler ColDTORowDeleting;
+            public event TrafficSummaryRowChangeEventHandler TrafficSummaryRowDeleting;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event ColDTORowChangeEventHandler ColDTORowDeleted;
+            public event TrafficSummaryRowChangeEventHandler TrafficSummaryRowDeleted;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void AddColDTORow(ColDTORow row) {
+            public void AddTrafficSummaryRow(TrafficSummaryRow row) {
                 this.Rows.Add(row);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ColDTORow AddColDTORow(string Col1, string Col2, string Col3, string Col4, string Col5, string Col6, string Col7, string Col8, string Col9, string Col10) {
-                ColDTORow rowColDTORow = ((ColDTORow)(this.NewRow()));
+            public TrafficSummaryRow AddTrafficSummaryRow(string ServiceName, string FromCountryName, string ToCountryName, int Duration) {
+                TrafficSummaryRow rowTrafficSummaryRow = ((TrafficSummaryRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        Col1,
-                        Col2,
-                        Col3,
-                        Col4,
-                        Col5,
-                        Col6,
-                        Col7,
-                        Col8,
-                        Col9,
-                        Col10};
-                rowColDTORow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowColDTORow);
-                return rowColDTORow;
+                        ServiceName,
+                        FromCountryName,
+                        ToCountryName,
+                        Duration};
+                rowTrafficSummaryRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowTrafficSummaryRow);
+                return rowTrafficSummaryRow;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public override global::System.Data.DataTable Clone() {
-                ColDTODataTable cln = ((ColDTODataTable)(base.Clone()));
+                TrafficSummaryDataTable cln = ((TrafficSummaryDataTable)(base.Clone()));
                 cln.InitVars();
                 return cln;
             }
@@ -478,93 +412,62 @@ namespace TMBF.Report {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Data.DataTable CreateInstance() {
-                return new ColDTODataTable();
+                return new TrafficSummaryDataTable();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             internal void InitVars() {
-                this.columnCol1 = base.Columns["Col1"];
-                this.columnCol2 = base.Columns["Col2"];
-                this.columnCol3 = base.Columns["Col3"];
-                this.columnCol4 = base.Columns["Col4"];
-                this.columnCol5 = base.Columns["Col5"];
-                this.columnCol6 = base.Columns["Col6"];
-                this.columnCol7 = base.Columns["Col7"];
-                this.columnCol8 = base.Columns["Col8"];
-                this.columnCol9 = base.Columns["Col9"];
-                this.columnCol10 = base.Columns["Col10"];
+                this.columnServiceName = base.Columns["ServiceName"];
+                this.columnFromCountryName = base.Columns["FromCountryName"];
+                this.columnToCountryName = base.Columns["ToCountryName"];
+                this.columnDuration = base.Columns["Duration"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             private void InitClass() {
-                this.columnCol1 = new global::System.Data.DataColumn("Col1", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnCol1);
-                this.columnCol2 = new global::System.Data.DataColumn("Col2", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnCol2);
-                this.columnCol3 = new global::System.Data.DataColumn("Col3", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnCol3);
-                this.columnCol4 = new global::System.Data.DataColumn("Col4", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnCol4);
-                this.columnCol5 = new global::System.Data.DataColumn("Col5", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnCol5);
-                this.columnCol6 = new global::System.Data.DataColumn("Col6", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnCol6);
-                this.columnCol7 = new global::System.Data.DataColumn("Col7", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnCol7);
-                this.columnCol8 = new global::System.Data.DataColumn("Col8", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnCol8);
-                this.columnCol9 = new global::System.Data.DataColumn("Col9", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnCol9);
-                this.columnCol10 = new global::System.Data.DataColumn("Col10", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnCol10);
-                this.columnCol1.ReadOnly = true;
-                this.columnCol1.MaxLength = 1;
-                this.columnCol2.ReadOnly = true;
-                this.columnCol2.MaxLength = 1;
-                this.columnCol3.ReadOnly = true;
-                this.columnCol3.MaxLength = 1;
-                this.columnCol4.ReadOnly = true;
-                this.columnCol4.MaxLength = 1;
-                this.columnCol5.ReadOnly = true;
-                this.columnCol5.MaxLength = 1;
-                this.columnCol6.ReadOnly = true;
-                this.columnCol6.MaxLength = 1;
-                this.columnCol7.ReadOnly = true;
-                this.columnCol7.MaxLength = 1;
-                this.columnCol8.ReadOnly = true;
-                this.columnCol8.MaxLength = 1;
-                this.columnCol9.ReadOnly = true;
-                this.columnCol9.MaxLength = 1;
-                this.columnCol10.ReadOnly = true;
-                this.columnCol10.MaxLength = 1;
+                this.columnServiceName = new global::System.Data.DataColumn("ServiceName", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnServiceName);
+                this.columnFromCountryName = new global::System.Data.DataColumn("FromCountryName", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnFromCountryName);
+                this.columnToCountryName = new global::System.Data.DataColumn("ToCountryName", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnToCountryName);
+                this.columnDuration = new global::System.Data.DataColumn("Duration", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDuration);
+                this.columnServiceName.ReadOnly = true;
+                this.columnServiceName.MaxLength = 7;
+                this.columnFromCountryName.ReadOnly = true;
+                this.columnFromCountryName.MaxLength = 7;
+                this.columnToCountryName.ReadOnly = true;
+                this.columnToCountryName.MaxLength = 5;
+                this.columnDuration.ReadOnly = true;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ColDTORow NewColDTORow() {
-                return ((ColDTORow)(this.NewRow()));
+            public TrafficSummaryRow NewTrafficSummaryRow() {
+                return ((TrafficSummaryRow)(this.NewRow()));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new ColDTORow(builder);
+                return new TrafficSummaryRow(builder);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Type GetRowType() {
-                return typeof(ColDTORow);
+                return typeof(TrafficSummaryRow);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanged(e);
-                if ((this.ColDTORowChanged != null)) {
-                    this.ColDTORowChanged(this, new ColDTORowChangeEvent(((ColDTORow)(e.Row)), e.Action));
+                if ((this.TrafficSummaryRowChanged != null)) {
+                    this.TrafficSummaryRowChanged(this, new TrafficSummaryRowChangeEvent(((TrafficSummaryRow)(e.Row)), e.Action));
                 }
             }
             
@@ -572,8 +475,8 @@ namespace TMBF.Report {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanging(e);
-                if ((this.ColDTORowChanging != null)) {
-                    this.ColDTORowChanging(this, new ColDTORowChangeEvent(((ColDTORow)(e.Row)), e.Action));
+                if ((this.TrafficSummaryRowChanging != null)) {
+                    this.TrafficSummaryRowChanging(this, new TrafficSummaryRowChangeEvent(((TrafficSummaryRow)(e.Row)), e.Action));
                 }
             }
             
@@ -581,8 +484,8 @@ namespace TMBF.Report {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleted(e);
-                if ((this.ColDTORowDeleted != null)) {
-                    this.ColDTORowDeleted(this, new ColDTORowChangeEvent(((ColDTORow)(e.Row)), e.Action));
+                if ((this.TrafficSummaryRowDeleted != null)) {
+                    this.TrafficSummaryRowDeleted(this, new TrafficSummaryRowChangeEvent(((TrafficSummaryRow)(e.Row)), e.Action));
                 }
             }
             
@@ -590,14 +493,14 @@ namespace TMBF.Report {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleting(e);
-                if ((this.ColDTORowDeleting != null)) {
-                    this.ColDTORowDeleting(this, new ColDTORowChangeEvent(((ColDTORow)(e.Row)), e.Action));
+                if ((this.TrafficSummaryRowDeleting != null)) {
+                    this.TrafficSummaryRowDeleting(this, new TrafficSummaryRowChangeEvent(((TrafficSummaryRow)(e.Row)), e.Action));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void RemoveColDTORow(ColDTORow row) {
+            public void RemoveTrafficSummaryRow(TrafficSummaryRow row) {
                 this.Rows.Remove(row);
             }
             
@@ -606,7 +509,7 @@ namespace TMBF.Report {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                dsColDTO ds = new dsColDTO();
+                dsTrafficSummary ds = new dsTrafficSummary();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -624,7 +527,7 @@ namespace TMBF.Report {
                 type.Attributes.Add(attribute1);
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "ColDTODataTable";
+                attribute2.FixedValue = "TrafficSummaryDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -668,295 +571,127 @@ namespace TMBF.Report {
         /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
-        public partial class ColDTORow : global::System.Data.DataRow {
+        public partial class TrafficSummaryRow : global::System.Data.DataRow {
             
-            private ColDTODataTable tableColDTO;
+            private TrafficSummaryDataTable tableTrafficSummary;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal ColDTORow(global::System.Data.DataRowBuilder rb) : 
+            internal TrafficSummaryRow(global::System.Data.DataRowBuilder rb) : 
                     base(rb) {
-                this.tableColDTO = ((ColDTODataTable)(this.Table));
+                this.tableTrafficSummary = ((TrafficSummaryDataTable)(this.Table));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string Col1 {
+            public string ServiceName {
                 get {
                     try {
-                        return ((string)(this[this.tableColDTO.Col1Column]));
+                        return ((string)(this[this.tableTrafficSummary.ServiceNameColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Col1\' in table \'ColDTO\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'ServiceName\' in table \'TrafficSummary\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableColDTO.Col1Column] = value;
+                    this[this.tableTrafficSummary.ServiceNameColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string Col2 {
+            public string FromCountryName {
                 get {
                     try {
-                        return ((string)(this[this.tableColDTO.Col2Column]));
+                        return ((string)(this[this.tableTrafficSummary.FromCountryNameColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Col2\' in table \'ColDTO\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'FromCountryName\' in table \'TrafficSummary\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableColDTO.Col2Column] = value;
+                    this[this.tableTrafficSummary.FromCountryNameColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string Col3 {
+            public string ToCountryName {
                 get {
                     try {
-                        return ((string)(this[this.tableColDTO.Col3Column]));
+                        return ((string)(this[this.tableTrafficSummary.ToCountryNameColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Col3\' in table \'ColDTO\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'ToCountryName\' in table \'TrafficSummary\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableColDTO.Col3Column] = value;
+                    this[this.tableTrafficSummary.ToCountryNameColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string Col4 {
+            public int Duration {
                 get {
                     try {
-                        return ((string)(this[this.tableColDTO.Col4Column]));
+                        return ((int)(this[this.tableTrafficSummary.DurationColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Col4\' in table \'ColDTO\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'Duration\' in table \'TrafficSummary\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableColDTO.Col4Column] = value;
+                    this[this.tableTrafficSummary.DurationColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string Col5 {
-                get {
-                    try {
-                        return ((string)(this[this.tableColDTO.Col5Column]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Col5\' in table \'ColDTO\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableColDTO.Col5Column] = value;
-                }
+            public bool IsServiceNameNull() {
+                return this.IsNull(this.tableTrafficSummary.ServiceNameColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string Col6 {
-                get {
-                    try {
-                        return ((string)(this[this.tableColDTO.Col6Column]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Col6\' in table \'ColDTO\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableColDTO.Col6Column] = value;
-                }
+            public void SetServiceNameNull() {
+                this[this.tableTrafficSummary.ServiceNameColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string Col7 {
-                get {
-                    try {
-                        return ((string)(this[this.tableColDTO.Col7Column]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Col7\' in table \'ColDTO\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableColDTO.Col7Column] = value;
-                }
+            public bool IsFromCountryNameNull() {
+                return this.IsNull(this.tableTrafficSummary.FromCountryNameColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string Col8 {
-                get {
-                    try {
-                        return ((string)(this[this.tableColDTO.Col8Column]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Col8\' in table \'ColDTO\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableColDTO.Col8Column] = value;
-                }
+            public void SetFromCountryNameNull() {
+                this[this.tableTrafficSummary.FromCountryNameColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string Col9 {
-                get {
-                    try {
-                        return ((string)(this[this.tableColDTO.Col9Column]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Col9\' in table \'ColDTO\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableColDTO.Col9Column] = value;
-                }
+            public bool IsToCountryNameNull() {
+                return this.IsNull(this.tableTrafficSummary.ToCountryNameColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string Col10 {
-                get {
-                    try {
-                        return ((string)(this[this.tableColDTO.Col10Column]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Col10\' in table \'ColDTO\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableColDTO.Col10Column] = value;
-                }
+            public void SetToCountryNameNull() {
+                this[this.tableTrafficSummary.ToCountryNameColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsCol1Null() {
-                return this.IsNull(this.tableColDTO.Col1Column);
+            public bool IsDurationNull() {
+                return this.IsNull(this.tableTrafficSummary.DurationColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetCol1Null() {
-                this[this.tableColDTO.Col1Column] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsCol2Null() {
-                return this.IsNull(this.tableColDTO.Col2Column);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetCol2Null() {
-                this[this.tableColDTO.Col2Column] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsCol3Null() {
-                return this.IsNull(this.tableColDTO.Col3Column);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetCol3Null() {
-                this[this.tableColDTO.Col3Column] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsCol4Null() {
-                return this.IsNull(this.tableColDTO.Col4Column);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetCol4Null() {
-                this[this.tableColDTO.Col4Column] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsCol5Null() {
-                return this.IsNull(this.tableColDTO.Col5Column);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetCol5Null() {
-                this[this.tableColDTO.Col5Column] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsCol6Null() {
-                return this.IsNull(this.tableColDTO.Col6Column);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetCol6Null() {
-                this[this.tableColDTO.Col6Column] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsCol7Null() {
-                return this.IsNull(this.tableColDTO.Col7Column);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetCol7Null() {
-                this[this.tableColDTO.Col7Column] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsCol8Null() {
-                return this.IsNull(this.tableColDTO.Col8Column);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetCol8Null() {
-                this[this.tableColDTO.Col8Column] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsCol9Null() {
-                return this.IsNull(this.tableColDTO.Col9Column);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetCol9Null() {
-                this[this.tableColDTO.Col9Column] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsCol10Null() {
-                return this.IsNull(this.tableColDTO.Col10Column);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetCol10Null() {
-                this[this.tableColDTO.Col10Column] = global::System.Convert.DBNull;
+            public void SetDurationNull() {
+                this[this.tableTrafficSummary.DurationColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -964,22 +699,22 @@ namespace TMBF.Report {
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public class ColDTORowChangeEvent : global::System.EventArgs {
+        public class TrafficSummaryRowChangeEvent : global::System.EventArgs {
             
-            private ColDTORow eventRow;
+            private TrafficSummaryRow eventRow;
             
             private global::System.Data.DataRowAction eventAction;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ColDTORowChangeEvent(ColDTORow row, global::System.Data.DataRowAction action) {
+            public TrafficSummaryRowChangeEvent(TrafficSummaryRow row, global::System.Data.DataRowAction action) {
                 this.eventRow = row;
                 this.eventAction = action;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ColDTORow Row {
+            public TrafficSummaryRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -995,7 +730,7 @@ namespace TMBF.Report {
         }
     }
 }
-namespace TMBF.Report.dsColDTOTableAdapters {
+namespace TMBF.Report.dsTrafficSummaryTableAdapters {
     
     
     /// <summary>
@@ -1007,7 +742,7 @@ namespace TMBF.Report.dsColDTOTableAdapters {
     [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
         ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-    public partial class ColDTOTableAdapter : global::System.ComponentModel.Component {
+    public partial class TrafficSummaryTableAdapter : global::System.ComponentModel.Component {
         
         private global::System.Data.SqlClient.SqlDataAdapter _adapter;
         
@@ -1021,7 +756,7 @@ namespace TMBF.Report.dsColDTOTableAdapters {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public ColDTOTableAdapter() {
+        public TrafficSummaryTableAdapter() {
             this.ClearBeforeFill = true;
         }
         
@@ -1118,17 +853,11 @@ namespace TMBF.Report.dsColDTOTableAdapters {
             this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
-            tableMapping.DataSetTable = "ColDTO";
-            tableMapping.ColumnMappings.Add("Col1", "Col1");
-            tableMapping.ColumnMappings.Add("Col2", "Col2");
-            tableMapping.ColumnMappings.Add("Col3", "Col3");
-            tableMapping.ColumnMappings.Add("Col4", "Col4");
-            tableMapping.ColumnMappings.Add("Col5", "Col5");
-            tableMapping.ColumnMappings.Add("Col6", "Col6");
-            tableMapping.ColumnMappings.Add("Col7", "Col7");
-            tableMapping.ColumnMappings.Add("Col8", "Col8");
-            tableMapping.ColumnMappings.Add("Col9", "Col9");
-            tableMapping.ColumnMappings.Add("Col10", "Col10");
+            tableMapping.DataSetTable = "TrafficSummary";
+            tableMapping.ColumnMappings.Add("ServiceName", "ServiceName");
+            tableMapping.ColumnMappings.Add("FromCountryName", "FromCountryName");
+            tableMapping.ColumnMappings.Add("ToCountryName", "ToCountryName");
+            tableMapping.ColumnMappings.Add("Duration", "Duration");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -1145,8 +874,8 @@ namespace TMBF.Report.dsColDTOTableAdapters {
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT Col1, Col2, Col3, Col4, Col5, Col6, Col7, Col8, Col9, Col10 FROM dbo.ColDT" +
-                "O";
+            this._commandCollection[0].CommandText = "SELECT ServiceName, FromCountryName, ToCountryName, Duration FROM dbo.TrafficSumm" +
+                "ary";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -1154,7 +883,7 @@ namespace TMBF.Report.dsColDTOTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(dsColDTO.ColDTODataTable dataTable) {
+        public virtual int Fill(dsTrafficSummary.TrafficSummaryDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -1167,9 +896,9 @@ namespace TMBF.Report.dsColDTOTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual dsColDTO.ColDTODataTable GetData() {
+        public virtual dsTrafficSummary.TrafficSummaryDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            dsColDTO.ColDTODataTable dataTable = new dsColDTO.ColDTODataTable();
+            dsTrafficSummary.TrafficSummaryDataTable dataTable = new dsTrafficSummary.TrafficSummaryDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -1243,7 +972,7 @@ namespace TMBF.Report.dsColDTOTableAdapters {
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private int UpdateUpdatedRows(dsColDTO dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
+        private int UpdateUpdatedRows(dsTrafficSummary dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
             return result;
         }
@@ -1253,7 +982,7 @@ namespace TMBF.Report.dsColDTOTableAdapters {
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private int UpdateInsertedRows(dsColDTO dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
+        private int UpdateInsertedRows(dsTrafficSummary dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
             return result;
         }
@@ -1263,7 +992,7 @@ namespace TMBF.Report.dsColDTOTableAdapters {
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private int UpdateDeletedRows(dsColDTO dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
+        private int UpdateDeletedRows(dsTrafficSummary dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
             int result = 0;
             return result;
         }
@@ -1297,7 +1026,7 @@ namespace TMBF.Report.dsColDTOTableAdapters {
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public virtual int UpdateAll(dsColDTO dataSet) {
+        public virtual int UpdateAll(dsTrafficSummary dataSet) {
             if ((dataSet == null)) {
                 throw new global::System.ArgumentNullException("dataSet");
             }

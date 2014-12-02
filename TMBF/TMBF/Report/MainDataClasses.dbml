@@ -15,4 +15,12 @@
       <Column Name="Commission" Type="System.Double" DbType="Float" CanBeNull="true" />
     </Type>
   </Table>
+  <Table Name="dbo.TrafficSummary" Member="TrafficSummaries">
+    <Type Name="TrafficSummary">
+      <Column Name="ServiceName" Type="System.String" DbType="VarChar(7) NOT NULL" CanBeNull="false" />
+      <Column Name="FromCountryName" Type="System.String" DbType="VarChar(7) NOT NULL" CanBeNull="false" />
+      <Column Name="ToCountryName" Type="System.String" DbType="VarChar(5) NOT NULL" CanBeNull="false" />
+      <Column Name="Duration" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
 </Database>

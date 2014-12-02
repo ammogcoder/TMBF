@@ -33,7 +33,7 @@ namespace TMBF.Report
     #endregion
 		
 		public DataClasses1DataContext() : 
-				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["TMBFConnectionString"].ConnectionString, mappingSource)
+				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["TelecomContext"].ConnectionString, mappingSource)
 		{
 			OnCreated();
 		}
@@ -75,6 +75,14 @@ namespace TMBF.Report
 			get
 			{
 				return this.GetTable<SummarySalesRepCommision>();
+			}
+		}
+		
+		public System.Data.Linq.Table<TrafficSummary> TrafficSummaries
+		{
+			get
+			{
+				return this.GetTable<TrafficSummary>();
 			}
 		}
 	}
@@ -218,6 +226,87 @@ namespace TMBF.Report
 				if ((this._Commission != value))
 				{
 					this._Commission = value;
+				}
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TrafficSummary")]
+	public partial class TrafficSummary
+	{
+		
+		private string _ServiceName;
+		
+		private string _FromCountryName;
+		
+		private string _ToCountryName;
+		
+		private int _Duration;
+		
+		public TrafficSummary()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ServiceName", DbType="VarChar(7) NOT NULL", CanBeNull=false)]
+		public string ServiceName
+		{
+			get
+			{
+				return this._ServiceName;
+			}
+			set
+			{
+				if ((this._ServiceName != value))
+				{
+					this._ServiceName = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FromCountryName", DbType="VarChar(7) NOT NULL", CanBeNull=false)]
+		public string FromCountryName
+		{
+			get
+			{
+				return this._FromCountryName;
+			}
+			set
+			{
+				if ((this._FromCountryName != value))
+				{
+					this._FromCountryName = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ToCountryName", DbType="VarChar(5) NOT NULL", CanBeNull=false)]
+		public string ToCountryName
+		{
+			get
+			{
+				return this._ToCountryName;
+			}
+			set
+			{
+				if ((this._ToCountryName != value))
+				{
+					this._ToCountryName = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Duration", DbType="Int NOT NULL")]
+		public int Duration
+		{
+			get
+			{
+				return this._Duration;
+			}
+			set
+			{
+				if ((this._Duration != value))
+				{
+					this._Duration = value;
 				}
 			}
 		}

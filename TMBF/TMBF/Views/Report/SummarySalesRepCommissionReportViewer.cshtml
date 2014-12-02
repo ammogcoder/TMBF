@@ -1,0 +1,48 @@
+﻿@model TMBF.Models.SearchParameterModel
+@{
+    ViewBag.Title = "Summary SalesRep Commission";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script type="text/javascript">
+</script>
+<hgroup class="title">
+    <h1>@ViewBag.Title</h1>
+</hgroup>
+
+<section id="ReportViewer">
+    @using (Html.BeginForm(new { ReturnUrl = ViewBag.ReturnUrl }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+
+
+        <fieldset>
+            <ol>
+                <li>
+                    @Html.LabelFor(m => m.Month)
+                    @Html.TextBoxFor(m => m.Month, new { @Value = DateTime.Today.Month })
+                    @Html.ValidationMessageFor(m => m.Month)
+                </li>
+            </ol>
+            <ol>
+                <li>
+                    @Html.LabelFor(m => m.Year)
+                    @Html.TextBoxFor(m => m.Year, new { @Value = DateTime.Today.Year })
+                    @Html.ValidationMessageFor(m => m.Year)
+                </li>
+            </ol>
+            <input type="submit" id="btnSubmit" value="View Report" />
+        </fieldset>
+    }
+</section>
+@if (Model != null)
+{
+    <section class="social" id="ReportDisplayPanel">
+        @Html.ActionLink("Download Excel", "DownloadExcel", new { reportName = "SummarySalesRepCommission", month = Model.Month, year = Model.Year, format = "Excel" })
+        <br><img style="border:1px solid gray;" src="@Url.Action("GenerateReport", "Report", new { reportName = "SummarySalesRepCommission", month = Model.Month, year = Model.Year, format = "Image" })" />
+    </section>
+}
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
