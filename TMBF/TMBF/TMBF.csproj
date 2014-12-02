@@ -319,7 +319,7 @@
   <ItemGroup>
     <EmbeddedResource Include="Report\rpSalesRepCommission.rdlc" />
     <EmbeddedResource Include="Report\rpSummarySalesRepCommission.rdlc" />
-    <EmbeddedResource Include="Report\TrafficSummary.rdlc" />
+    <EmbeddedResource Include="Report\rpTrafficSummary.rdlc" />
     <None Include="Report\MainDataClasses.dbml.layout">
       <DependentUpon>MainDataClasses.dbml</DependentUpon>
     </None>
