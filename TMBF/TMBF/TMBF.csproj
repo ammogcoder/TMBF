@@ -171,15 +171,25 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Report\dsRate.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsRate.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Report\dsSummarySalesRepCommission.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsSummarySalesRepCommission.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Report\dsTrafficSummary.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsTrafficSummary.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Report\MainDataClasses.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>MainDataClasses.dbml</DependentUpon>
-    </Compile>
-    <Compile Include="Report\dsColDTO.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>dsColDTO.xsd</DependentUpon>
     </Compile>
     <Compile Include="Report\dsCustomerBill.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -198,9 +208,6 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Models\ClassDiagram1.cd" />
-    <Content Include="Report\dsColDTO.xsc">
-      <DependentUpon>dsColDTO.xsd</DependentUpon>
-    </Content>
     <Content Include="Report\MainDataClasses.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
       <LastGenOutput>MainDataClasses.designer.cs</LastGenOutput>
@@ -210,16 +217,30 @@
     <Content Include="Content\variables.less" />
     <Content Include="Content\_variables.scss" />
     <Content Include="Content\_bootswatch.scss" />
-    <None Include="Report\dsColDTO.xsd">
-      <SubType>Designer</SubType>
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>dsColDTO.Designer.cs</LastGenOutput>
-    </None>
-    <Content Include="Report\dsColDTO.xss">
-      <DependentUpon>dsColDTO.xsd</DependentUpon>
-    </Content>
     <Content Include="Report\dsCustomerBill.xsc">
       <DependentUpon>dsCustomerBill.xsd</DependentUpon>
+    </Content>
+    <Content Include="Report\dsSummarySalesRepCommission.xsc">
+      <DependentUpon>dsSummarySalesRepCommission.xsd</DependentUpon>
+    </Content>
+    <Content Include="Report\dsRate.xsc">
+      <DependentUpon>dsRate.xsd</DependentUpon>
+    </Content>
+    <None Include="Report\dsRate.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsRate.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="Report\dsRate.xss">
+      <DependentUpon>dsRate.xsd</DependentUpon>
+    </Content>
+    <None Include="Report\dsSummarySalesRepCommission.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsSummarySalesRepCommission.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="Report\dsSummarySalesRepCommission.xss">
+      <DependentUpon>dsSummarySalesRepCommission.xsd</DependentUpon>
     </Content>
     <None Include="Report\dsCustomerBill.xsd">
       <SubType>Designer</SubType>
@@ -228,6 +249,17 @@
     </None>
     <Content Include="Report\dsCustomerBill.xss">
       <DependentUpon>dsCustomerBill.xsd</DependentUpon>
+    </Content>
+    <Content Include="Report\dsTrafficSummary.xsc">
+      <DependentUpon>dsTrafficSummary.xsd</DependentUpon>
+    </Content>
+    <None Include="Report\dsTrafficSummary.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsTrafficSummary.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="Report\dsTrafficSummary.xss">
+      <DependentUpon>dsTrafficSummary.xsd</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\fileUpload.js" />
@@ -243,6 +275,7 @@
     <Content Include="Scripts\SqlScripts\DataBase Script.sql" />
     <Content Include="Scripts\SqlScripts\Countries.data.sql" />
     <Content Include="Scripts\SqlScripts\DataOnly IntialData.sql" />
+    <Content Include="Scripts\SqlScripts\GetTrafficSummary.sql" />
     <Content Include="Scripts\SqlScripts\Service.data.sql" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Views\Home\Login.cshtml" />
@@ -285,6 +318,10 @@
     <Content Include="Views\Service\Details.cshtml" />
     <Content Include="Views\Service\Index.cshtml" />
     <Content Include="Views\Call\ImportCalls.cshtml" />
+    <Content Include="Views\Report\SalesRepCommissionReportViewer.cshtml" />
+    <Content Include="Views\Report\SummarySalesRepCommissionReportViewer.cshtml" />
+    <Content Include="Views\Report\TrafficSummaryReportViewer.cshtml" />
+    <Content Include="Views\Report\RateReportViewer.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
@@ -298,6 +335,10 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Report\rpRate.rdlc" />
+    <EmbeddedResource Include="Report\rpSalesRepCommission.rdlc" />
+    <EmbeddedResource Include="Report\rpSummarySalesRepCommission.rdlc" />
+    <EmbeddedResource Include="Report\rpTrafficSummary.rdlc" />
     <None Include="Report\MainDataClasses.dbml.layout">
       <DependentUpon>MainDataClasses.dbml</DependentUpon>
     </None>

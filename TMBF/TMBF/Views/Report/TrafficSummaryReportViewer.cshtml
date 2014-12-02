@@ -1,6 +1,6 @@
 ﻿@model TMBF.Models.SearchParameterModel
 @{
-    ViewBag.Title = "Customer bill";
+    ViewBag.Title = "Traffic Summary";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <script type="text/javascript">
@@ -18,11 +18,11 @@
 
         <fieldset>
             <ul>
-
+                
                     @Html.LabelFor(m => m.Month)
                     @Html.TextBoxFor(m => m.Month, new { @Value = DateTime.Today.Month })
                     @Html.ValidationMessageFor(m => m.Month)
-
+                
             </ul>
             <ul>
 
@@ -38,12 +38,11 @@
                 @if (Model != null)
                 {
                     <section class="social" id="ReportDisplayPanel">
-                        @Html.ActionLink("Download Excel", "DownloadReport", new { reportName = "CustomerBill", month = Model.Month, year = Model.Year, format = "Excel" })
-                        <br><img style="border:1px solid gray;" src="@Url.Action("GenerateReport", "Report", new {reportName="CustomerBill", month = Model.Month, year = Model.Year, format = "Image" })" />
+                        @Html.ActionLink("Download Excel", "DownloadExcel", new { reportName = "TrafficSummary", month = Model.Month, year = Model.Year, format = "Excel" })
+                        <br><img style="border:1px solid gray;" src="@Url.Action("GenerateReport", "Report", new { reportName = "TrafficSummary", month = Model.Month, year = Model.Year, format = "Image" })" />
                     </section>
                 }
             </ul>
-
 </fieldset>
     }
 </section>

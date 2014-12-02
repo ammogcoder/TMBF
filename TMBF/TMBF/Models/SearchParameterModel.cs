@@ -14,5 +14,9 @@ namespace TMBF.Models
         public string Year { get; set; }
         [Display(Name = "Output Format ")]
         public string OutputFormat { get; set; }
+        [Display(Name = "Service")]
+        public string ServiceID { get; set; }
+        [Display(Name = "Country")]
+        public string CountryID { get; set; }
     }
 }

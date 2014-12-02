@@ -6,10 +6,16 @@
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
-              <Width>2.2825in</Width>
+              <Width>1.97656in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1in</Width>
+              <Width>1.83073in</Width>
+            </TablixColumn>
+            <TablixColumn>
+              <Width>1.50781in</Width>
+            </TablixColumn>
+            <TablixColumn>
+              <Width>0.94531in</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
@@ -18,14 +24,14 @@
               <TablixCells>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Textbox1">
+                    <Textbox Name="Textbox5">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Sales Rep Name</Value>
+                              <Value>Service Name</Value>
                               <Style>
                                 <FontWeight>Bold</FontWeight>
                               </Style>
@@ -34,7 +40,7 @@
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Textbox1</rd:DefaultName>
+                      <rd:DefaultName>Textbox5</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -50,14 +56,14 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Textbox3">
+                    <Textbox Name="Textbox7">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Commission</Value>
+                              <Value>From Country Name</Value>
                               <Style>
                                 <FontWeight>Bold</FontWeight>
                               </Style>
@@ -66,7 +72,71 @@
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Textbox3</rd:DefaultName>
+                      <rd:DefaultName>Textbox7</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox9">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>To Country Name</Value>
+                              <Style>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox9</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox11">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>Duration</Value>
+                              <Style>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox11</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -87,21 +157,21 @@
               <TablixCells>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="SalesRepName">
+                    <Textbox Name="ServiceName">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!SalesRepName.Value</Value>
+                              <Value>=Fields!ServiceName.Value</Value>
                               <Style />
                             </TextRun>
                           </TextRuns>
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>SalesRepName</rd:DefaultName>
+                      <rd:DefaultName>ServiceName</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -117,21 +187,81 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Commission">
+                    <Textbox Name="FromCountryName">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!Commission.Value</Value>
+                              <Value>=Fields!FromCountryName.Value</Value>
                               <Style />
                             </TextRun>
                           </TextRuns>
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Commission</rd:DefaultName>
+                      <rd:DefaultName>FromCountryName</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="ToCountryName">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Fields!ToCountryName.Value</Value>
+                              <Style />
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>ToCountryName</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Duration">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Fields!Duration.Value</Value>
+                              <Style />
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Duration</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -153,6 +283,8 @@
           <TablixMembers>
             <TablixMember />
             <TablixMember />
+            <TablixMember />
+            <TablixMember />
           </TablixMembers>
         </TablixColumnHierarchy>
         <TablixRowHierarchy>
@@ -165,11 +297,11 @@
             </TablixMember>
           </TablixMembers>
         </TablixRowHierarchy>
-        <DataSetName>dsSummarySalesRepCommission</DataSetName>
-        <Top>0.23514in</Top>
-        <Left>2.06125in</Left>
+        <DataSetName>dsTrafficSummary</DataSetName>
+        <Top>0.06944in</Top>
+        <Left>0.29784in</Left>
         <Height>0.5in</Height>
-        <Width>3.2825in</Width>
+        <Width>6.26041in</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -177,13 +309,13 @@
         </Style>
       </Tablix>
     </ReportItems>
-    <Height>2in</Height>
+    <Height>3in</Height>
     <Style />
   </Body>
-  <Width>6.5in</Width>
+  <Width>7.12076in</Width>
   <Page>
     <PageHeader>
-      <Height>1.34694in</Height>
+      <Height>1.41667in</Height>
       <PrintOnFirstPage>true</PrintOnFirstPage>
       <PrintOnLastPage>true</PrintOnLastPage>
       <ReportItems>
@@ -237,7 +369,7 @@
             <Paragraph>
               <TextRuns>
                 <TextRun>
-                  <Value>SUMMARY SALES REPRESENTATIVES COMMISSION</Value>
+                  <Value>TRAFFIC SUMMARY</Value>
                   <Style>
                     <FontWeight>Bold</FontWeight>
                   </Style>
@@ -248,9 +380,9 @@
           </Paragraphs>
           <rd:DefaultName>Textbox17</rd:DefaultName>
           <Top>0.60042in</Top>
-          <Left>2in</Left>
+          <Left>2.29784in</Left>
           <Height>0.25in</Height>
-          <Width>4.125in</Width>
+          <Width>2.59375in</Width>
           <ZIndex>2</ZIndex>
           <Style>
             <Border>
@@ -278,7 +410,7 @@
           </Paragraphs>
           <rd:DefaultName>Textbox17</rd:DefaultName>
           <Top>0.96688in</Top>
-          <Left>2.64237in</Left>
+          <Left>2.10417in</Left>
           <Height>0.25in</Height>
           <Width>0.46875in</Width>
           <ZIndex>3</ZIndex>
@@ -308,7 +440,7 @@
           </Paragraphs>
           <rd:DefaultName>Period</rd:DefaultName>
           <Top>0.96688in</Top>
-          <Left>3.18057in</Left>
+          <Left>2.85292in</Left>
           <Height>0.25in</Height>
           <Width>1in</Width>
           <ZIndex>4</ZIndex>
@@ -337,37 +469,45 @@
   </Page>
   <AutoRefresh>0</AutoRefresh>
   <DataSources>
-    <DataSource Name="dsSummarySalesRepCommission">
+    <DataSource Name="dsTrafficSummary">
       <ConnectionProperties>
         <DataProvider>System.Data.DataSet</DataProvider>
         <ConnectString>/* Local Connection */</ConnectString>
       </ConnectionProperties>
-      <rd:DataSourceID>84fbb57e-029a-44fb-b42c-23f01561805a</rd:DataSourceID>
+      <rd:DataSourceID>8329e07e-b732-44d9-af5d-264c8395f637</rd:DataSourceID>
     </DataSource>
   </DataSources>
   <DataSets>
-    <DataSet Name="dsSummarySalesRepCommission">
+    <DataSet Name="dsTrafficSummary">
       <Query>
-        <DataSourceName>dsSummarySalesRepCommission</DataSourceName>
+        <DataSourceName>dsTrafficSummary</DataSourceName>
         <CommandText>/* Local Query */</CommandText>
       </Query>
       <Fields>
-        <Field Name="SalesRepName">
-          <DataField>SalesRepName</DataField>
+        <Field Name="ServiceName">
+          <DataField>ServiceName</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="Commission">
-          <DataField>Commission</DataField>
-          <rd:TypeName>System.Double</rd:TypeName>
+        <Field Name="FromCountryName">
+          <DataField>FromCountryName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ToCountryName">
+          <DataField>ToCountryName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Duration">
+          <DataField>Duration</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
         </Field>
       </Fields>
       <rd:DataSetInfo>
-        <rd:DataSetName>dsSummarySalesRepCommission</rd:DataSetName>
-        <rd:SchemaPath>D:\MUM_Course\CS490\git\11\TMBF\TMBF\Report\dsSummarySalesRepCommission.xsd</rd:SchemaPath>
-        <rd:TableName>SummarySalesRepCommision</rd:TableName>
+        <rd:DataSetName>dsTrafficSummary</rd:DataSetName>
+        <rd:SchemaPath>D:\MUM_Course\CS490\git\13\TMBF\TMBF\Report\dsTrafficSummary.xsd</rd:SchemaPath>
+        <rd:TableName>TraficSummary</rd:TableName>
         <rd:TableAdapterFillMethod>Fill</rd:TableAdapterFillMethod>
         <rd:TableAdapterGetDataMethod>GetData</rd:TableAdapterGetDataMethod>
-        <rd:TableAdapterName>SummarySalesRepCommisionTableAdapter</rd:TableAdapterName>
+        <rd:TableAdapterName>TraficSummaryTableAdapter</rd:TableAdapterName>
       </rd:DataSetInfo>
     </DataSet>
   </DataSets>
@@ -394,5 +534,5 @@ GvPLaxkrYndzR4UA6JnST21mksXd+QcGDU8NeZK3BB5U0DY2tZG1rGNAa1rQGhoGgDQNAAOxeqIgIiIC
     </EmbeddedImage>
   </EmbeddedImages>
   <rd:ReportUnitType>Inch</rd:ReportUnitType>
-  <rd:ReportID>a94766f0-f3fa-4940-8528-0e5976c26933</rd:ReportID>
+  <rd:ReportID>08c4c671-14ee-4804-ab68-792f6812ade8</rd:ReportID>
 </Report>

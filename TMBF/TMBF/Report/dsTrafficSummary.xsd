@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsTrafficSummary" targetNamespace="http://tempuri.org/dsTrafficSummary.xsd" xmlns:mstns="http://tempuri.org/dsTrafficSummary.xsd" xmlns="http://tempuri.org/dsTrafficSummary.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Web.config" AppSettingsPropertyName="TelecomContext" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="TelecomContext (Web.config)" ParameterPrefix="@" PropertyReference="AppConfig.System.Configuration.ConfigurationManager.0.ConnectionStrings.TelecomContext.ConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="TrafficSummaryTableAdapter" GeneratorDataComponentClassName="TrafficSummaryTableAdapter" Name="TrafficSummary" UserDataComponentName="TrafficSummaryTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="TelecomContext (Web.config)" DbObjectName="TMBF.dbo.TrafficSummary" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT ServiceName, FromCountryName, ToCountryName, Duration FROM dbo.TrafficSummary</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="ServiceName" DataSetColumn="ServiceName" />
+              <Mapping SourceColumn="FromCountryName" DataSetColumn="FromCountryName" />
+              <Mapping SourceColumn="ToCountryName" DataSetColumn="ToCountryName" />
+              <Mapping SourceColumn="Duration" DataSetColumn="Duration" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsTrafficSummary" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="dsTrafficSummary" msprop:Generator_UserDSName="dsTrafficSummary">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="TrafficSummary" msprop:Generator_TableClassName="TrafficSummaryDataTable" msprop:Generator_TableVarName="tableTrafficSummary" msprop:Generator_TablePropName="TrafficSummary" msprop:Generator_RowDeletingName="TrafficSummaryRowDeleting" msprop:Generator_RowChangingName="TrafficSummaryRowChanging" msprop:Generator_RowEvHandlerName="TrafficSummaryRowChangeEventHandler" msprop:Generator_RowDeletedName="TrafficSummaryRowDeleted" msprop:Generator_UserTableName="TrafficSummary" msprop:Generator_RowChangedName="TrafficSummaryRowChanged" msprop:Generator_RowEvArgName="TrafficSummaryRowChangeEvent" msprop:Generator_RowClassName="TrafficSummaryRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ServiceName" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnServiceName" msprop:Generator_ColumnPropNameInRow="ServiceName" msprop:Generator_ColumnPropNameInTable="ServiceNameColumn" msprop:Generator_UserColumnName="ServiceName" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="7" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="FromCountryName" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnFromCountryName" msprop:Generator_ColumnPropNameInRow="FromCountryName" msprop:Generator_ColumnPropNameInTable="FromCountryNameColumn" msprop:Generator_UserColumnName="FromCountryName" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="7" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ToCountryName" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnToCountryName" msprop:Generator_ColumnPropNameInRow="ToCountryName" msprop:Generator_ColumnPropNameInTable="ToCountryNameColumn" msprop:Generator_UserColumnName="ToCountryName" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="5" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Duration" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnDuration" msprop:Generator_ColumnPropNameInRow="Duration" msprop:Generator_ColumnPropNameInTable="DurationColumn" msprop:Generator_UserColumnName="Duration" type="xs:int" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

@@ -11,6 +11,7 @@ namespace TMBF.Controllers
 {
     public class ReportController : Controller
     {
+        private TelecomContext db = new TelecomContext();
         [CustomerR]
         public ActionResult CustomerBillReportViewer(string returnUrl)
         {
@@ -26,19 +27,33 @@ namespace TMBF.Controllers
             return View(searchParameterModel);
         }
 
-        public FileContentResult GenerateReport(string reportName, string month, string year, string format)
+        public FileContentResult GenerateReport(string reportName, string month, string year, string format, string serviceID, string countryID)
         {
+            if ( month == null || year == null)
+                return null;
+            serviceID = serviceID == null ? string.Empty : serviceID;
+            countryID = countryID == null ? string.Empty : countryID;
+
             //Render the report            
             byte[] renderedBytes = null;
             switch (reportName)
-	        {
-	            case "CustomerBill":
-		            renderedBytes = GenerateCustomerBillReportData(month, year, format);
-		            break;
+            {
+                case "CustomerBill":
+                    renderedBytes = GenerateCustomerBillReportData(month, year, format);
+                    break;
                 case "SalesRepCommission":
                     renderedBytes = GenerateSalesRepCommissionData(month, year, format);
                     break;
-	        }
+                case "SummarySalesRepCommission":
+                    renderedBytes = GenerateSummarySalesRepCommissionData(month, year, format);
+                    break;
+                case "TrafficSummary":
+                    renderedBytes = GenerateTrafficSummaryData(month, year, format);
+                    break;
+                case "Rate":
+                    renderedBytes = GenerateRateData(Convert.ToInt64( serviceID), Convert.ToInt64(countryID), Convert.ToInt32(month), Convert.ToInt32(year), format);
+                    break;
+            }
 
             if (format == null)
             {
@@ -48,7 +63,8 @@ namespace TMBF.Controllers
             {
                 return File(renderedBytes, "pdf");
             }
-            else             {
+            else
+            {
                 return File(renderedBytes, "image/jpeg");
             }
         }
@@ -61,9 +77,11 @@ namespace TMBF.Controllers
 
             ReportDataSource reportDataSource = new ReportDataSource();
             reportDataSource.Name = "dsCustomerBill";
-  
+            if (Session["LoggedUser"] == null || !(Session["LoggedUser"] is Customer))
+                return null;
+
             Customer customer = (Customer)Session["LoggedUser"];
-            
+
             var customerBill = new ReportDAL().GetCustomerBill(customer.ID, int.Parse(month), int.Parse(year));
 
             reportDataSource.Value = customerBill;
@@ -101,11 +119,14 @@ namespace TMBF.Controllers
             renderedBytes = localReport.Render(format, deviceInfo, out mimeType, out encoding, out fileNameExtension, out streams, out warnings);
             return renderedBytes;
         }
-        [CustomerR]
-        [SalesRepR]
-        public ActionResult DownloadReport(string reportName, string month, string year, string format)
+
+        public ActionResult DownloadExcel(string reportName, string month, string year, string format)
         {
-             //Render the report            
+            return DownloadExcel(reportName, month, year, format, string.Empty, string.Empty);
+        }
+        public ActionResult DownloadExcel(string reportName, string month, string year, string format, string serviceID, string countryID)
+        {
+            //Render the report            
             byte[] renderedBytes = null;
             switch (reportName)
             {
@@ -114,6 +135,15 @@ namespace TMBF.Controllers
                     break;
                 case "SalesRepCommission":
                     renderedBytes = GenerateSalesRepCommissionData(month, year, format);
+                    break;
+                case "SummarySalesRepCommission":
+                    renderedBytes = GenerateSummarySalesRepCommissionData(month, year, format);
+                    break;
+                case "TrafficSummary":
+                    renderedBytes = GenerateTrafficSummaryData(month, year, format);
+                    break;
+                case "Rate":
+                    renderedBytes = GenerateRateData(Convert.ToInt64( serviceID), Convert.ToInt64(countryID), Convert.ToInt32(month), Convert.ToInt32(year), format);
                     break;
             }
             if (format == null)
@@ -148,7 +178,7 @@ namespace TMBF.Controllers
             return View(searchParameterModel);
         }
 
-        public byte[] GenerateSalesRepCommissionData(string month, string year, string format)
+        private byte[] GenerateSalesRepCommissionData(string month, string year, string format)
         {
             if (month == null || year == null)
                 return null;
@@ -191,21 +221,176 @@ namespace TMBF.Controllers
             renderedBytes = localReport.Render(format, deviceInfo, out mimeType, out encoding, out fileNameExtension, out streams, out warnings);
             return renderedBytes;
         }
-                [SalesRepR]
-        public ActionResult AdminCommissionReportViewer(string returnUrl)
+
+        [AdminR]
+        public ActionResult SummarySalesRepCommissionReportViewer(string returnUrl)
         {
             ViewBag.ReturnUrl = returnUrl;
             return View();
         }
 
         [HttpPost]
-        [SalesRepR]
+        [AdminR]
         [ValidateAntiForgeryToken]
-                public ViewResult AdminCommissionReportViewer(SearchParameterModel searchParameterModel)
+        public ViewResult SummarySalesRepCommissionReportViewer(SearchParameterModel searchParameterModel)
         {
             return View(searchParameterModel);
         }
+        private byte[] GenerateSummarySalesRepCommissionData(string month, string year, string format)
+        {
+            if (month == null || year == null)
+                return null;
+            LocalReport localReport = new LocalReport();
+            localReport.ReportPath = Server.MapPath("~/Report/rpSummarySalesRepCommission.rdlc");
 
-        
+            ReportDataSource reportDataSource = new ReportDataSource();
+            reportDataSource.Name = "dsSummarySalesRepCommission";
+
+            var summarySalesRepCommission = new ReportDAL().GetSummarySalesRepCommission(int.Parse(month), int.Parse(year));
+
+            reportDataSource.Value = summarySalesRepCommission;
+            localReport.DataSources.Add(reportDataSource);
+
+            string period = string.Format("{0}/{1}", month, year);
+
+            ReportParameter pPeriod = new ReportParameter("Period", period);
+            localReport.SetParameters(pPeriod);
+
+            string mimeType;
+            string encoding;
+            string fileNameExtension;
+            //The DeviceInfo settings should be changed based on the reportType            
+            //http://msdn2.microsoft.com/en-us/library/ms155397.aspx            
+            string deviceInfo = "<DeviceInfo>" +
+                "  <OutputFormat>jpeg</OutputFormat>" +
+                "  <PageWidth>8.5in</PageWidth>" +
+                "  <PageHeight>11in</PageHeight>" +
+                "  <MarginTop>0.5in</MarginTop>" +
+                "  <MarginLeft>1in</MarginLeft>" +
+                "  <MarginRight>1in</MarginRight>" +
+                "  <MarginBottom>0.5in</MarginBottom>" +
+                "</DeviceInfo>";
+            Warning[] warnings;
+            string[] streams;
+            byte[] renderedBytes;
+            //Render the report            
+            renderedBytes = localReport.Render(format, deviceInfo, out mimeType, out encoding, out fileNameExtension, out streams, out warnings);
+            return renderedBytes;
+        }
+
+        [AdminR]
+        public ActionResult TrafficSummaryReportViewer(string returnUrl)
+        {
+            ViewBag.ReturnUrl = returnUrl;
+            return View();
+        }
+
+        [HttpPost]
+        [AdminR]
+        [ValidateAntiForgeryToken]
+        public ViewResult TrafficSummaryReportViewer(SearchParameterModel searchParameterModel)
+        {
+            return View(searchParameterModel);
+        }
+        private byte[] GenerateTrafficSummaryData(string month, string year, string format)
+        {
+            if (month == null || year == null)
+                return null;
+            LocalReport localReport = new LocalReport();
+            localReport.ReportPath = Server.MapPath("~/Report/rpTrafficSummary.rdlc");
+
+            ReportDataSource reportDataSource = new ReportDataSource();
+            reportDataSource.Name = "dsTrafficSummary";
+
+            var trafficSummary = new ReportDAL().GetTrafficSummary(int.Parse(month), int.Parse(year));
+
+            reportDataSource.Value = trafficSummary;
+            localReport.DataSources.Add(reportDataSource);
+
+            string period = string.Format("{0}/{1}", month, year);
+
+            ReportParameter pPeriod = new ReportParameter("Period", period);
+            localReport.SetParameters(pPeriod);
+
+            string mimeType;
+            string encoding;
+            string fileNameExtension;
+            //The DeviceInfo settings should be changed based on the reportType            
+            //http://msdn2.microsoft.com/en-us/library/ms155397.aspx            
+            string deviceInfo = "<DeviceInfo>" +
+                "  <OutputFormat>jpeg</OutputFormat>" +
+                "  <PageWidth>8.5in</PageWidth>" +
+                "  <PageHeight>11in</PageHeight>" +
+                "  <MarginTop>0.5in</MarginTop>" +
+                "  <MarginLeft>1in</MarginLeft>" +
+                "  <MarginRight>1in</MarginRight>" +
+                "  <MarginBottom>0.5in</MarginBottom>" +
+                "</DeviceInfo>";
+            Warning[] warnings;
+            string[] streams;
+            byte[] renderedBytes;
+            //Render the report            
+            renderedBytes = localReport.Render(format, deviceInfo, out mimeType, out encoding, out fileNameExtension, out streams, out warnings);
+            return renderedBytes;
+        }
+        [AdminR]
+        public ActionResult RateReportViewer(string returnUrl)
+        {
+            ViewBag.ReturnUrl = returnUrl;
+            return View();
+        }
+
+        [HttpPost]
+        [AdminR]
+        [ValidateAntiForgeryToken]
+        public ViewResult RateReportViewer(SearchParameterModel searchParameterModel)
+        {
+            return View(searchParameterModel);
+        }
+        private byte[] GenerateRateData(long serviceID,  long sourceCountryID, int month, int year, string format)
+        {
+            LocalReport localReport = new LocalReport();
+            localReport.ReportPath = Server.MapPath("~/Report/rpRate.rdlc");
+
+            ReportDataSource reportDataSource = new ReportDataSource();
+            reportDataSource.Name = "dsRate";
+
+            var rate = new ReportDAL().GetRate(serviceID, sourceCountryID, month, year);
+
+            reportDataSource.Value = rate;
+            localReport.DataSources.Add(reportDataSource);
+
+            string period = string.Format("{0}/{1}", month, year);
+            Service service = db.Services.Where(s => s.ID == serviceID).FirstOrDefault();
+            Country country = db.Countries.Where(c => c.ID == sourceCountryID).FirstOrDefault();
+
+            ReportParameter pPeriod = new ReportParameter("Period", period);
+            localReport.SetParameters(pPeriod);
+            ReportParameter pServiceName = new ReportParameter("ServiceName", service.Name);
+            localReport.SetParameters(pServiceName);
+            ReportParameter pSourceCountryName = new ReportParameter("SourceCountryName", country.Name);
+            localReport.SetParameters(pSourceCountryName);
+
+            string mimeType;
+            string encoding;
+            string fileNameExtension;
+            //The DeviceInfo settings should be changed based on the reportType            
+            //http://msdn2.microsoft.com/en-us/library/ms155397.aspx            
+            string deviceInfo = "<DeviceInfo>" +
+                "  <OutputFormat>jpeg</OutputFormat>" +
+                "  <PageWidth>8.5in</PageWidth>" +
+                "  <PageHeight>11in</PageHeight>" +
+                "  <MarginTop>0.5in</MarginTop>" +
+                "  <MarginLeft>1in</MarginLeft>" +
+                "  <MarginRight>1in</MarginRight>" +
+                "  <MarginBottom>0.5in</MarginBottom>" +
+                "</DeviceInfo>";
+            Warning[] warnings;
+            string[] streams;
+            byte[] renderedBytes;
+            //Render the report            
+            renderedBytes = localReport.Render(format, deviceInfo, out mimeType, out encoding, out fileNameExtension, out streams, out warnings);
+            return renderedBytes;
+        }
     }
 }

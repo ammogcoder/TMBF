@@ -20,11 +20,11 @@ namespace TMBF.Report {
     [global::System.ComponentModel.DesignerCategoryAttribute("code")]
     [global::System.ComponentModel.ToolboxItem(true)]
     [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedDataSetSchema")]
-    [global::System.Xml.Serialization.XmlRootAttribute("dsSummarySalesRepCommission")]
+    [global::System.Xml.Serialization.XmlRootAttribute("DataSet1")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.DataSet")]
     public partial class dsSummarySalesRepCommission : global::System.Data.DataSet {
         
-        private SummarySalesRepCommisionDataTable tableSummarySalesRepCommision;
+        private SummarySalesRepCommissionDataTable tableSummarySalesRepCommission;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
@@ -54,8 +54,8 @@ namespace TMBF.Report {
             if ((this.DetermineSchemaSerializationMode(info, context) == global::System.Data.SchemaSerializationMode.IncludeSchema)) {
                 global::System.Data.DataSet ds = new global::System.Data.DataSet();
                 ds.ReadXmlSchema(new global::System.Xml.XmlTextReader(new global::System.IO.StringReader(strSchema)));
-                if ((ds.Tables["SummarySalesRepCommision"] != null)) {
-                    base.Tables.Add(new SummarySalesRepCommisionDataTable(ds.Tables["SummarySalesRepCommision"]));
+                if ((ds.Tables["SummarySalesRepCommission"] != null)) {
+                    base.Tables.Add(new SummarySalesRepCommissionDataTable(ds.Tables["SummarySalesRepCommission"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -79,9 +79,9 @@ namespace TMBF.Report {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public SummarySalesRepCommisionDataTable SummarySalesRepCommision {
+        public SummarySalesRepCommissionDataTable SummarySalesRepCommission {
             get {
-                return this.tableSummarySalesRepCommision;
+                return this.tableSummarySalesRepCommission;
             }
         }
         
@@ -152,8 +152,8 @@ namespace TMBF.Report {
                 this.Reset();
                 global::System.Data.DataSet ds = new global::System.Data.DataSet();
                 ds.ReadXml(reader);
-                if ((ds.Tables["SummarySalesRepCommision"] != null)) {
-                    base.Tables.Add(new SummarySalesRepCommisionDataTable(ds.Tables["SummarySalesRepCommision"]));
+                if ((ds.Tables["SummarySalesRepCommission"] != null)) {
+                    base.Tables.Add(new SummarySalesRepCommissionDataTable(ds.Tables["SummarySalesRepCommission"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -188,10 +188,10 @@ namespace TMBF.Report {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         internal void InitVars(bool initTable) {
-            this.tableSummarySalesRepCommision = ((SummarySalesRepCommisionDataTable)(base.Tables["SummarySalesRepCommision"]));
+            this.tableSummarySalesRepCommission = ((SummarySalesRepCommissionDataTable)(base.Tables["SummarySalesRepCommission"]));
             if ((initTable == true)) {
-                if ((this.tableSummarySalesRepCommision != null)) {
-                    this.tableSummarySalesRepCommision.InitVars();
+                if ((this.tableSummarySalesRepCommission != null)) {
+                    this.tableSummarySalesRepCommission.InitVars();
                 }
             }
         }
@@ -199,18 +199,18 @@ namespace TMBF.Report {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitClass() {
-            this.DataSetName = "dsSummarySalesRepCommission";
+            this.DataSetName = "DataSet1";
             this.Prefix = "";
-            this.Namespace = "http://tempuri.org/dsSummarySalesRepCommission.xsd";
+            this.Namespace = "http://tempuri.org/DataSet1.xsd";
             this.EnforceConstraints = true;
             this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
-            this.tableSummarySalesRepCommision = new SummarySalesRepCommisionDataTable();
-            base.Tables.Add(this.tableSummarySalesRepCommision);
+            this.tableSummarySalesRepCommission = new SummarySalesRepCommissionDataTable();
+            base.Tables.Add(this.tableSummarySalesRepCommission);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private bool ShouldSerializeSummarySalesRepCommision() {
+        private bool ShouldSerializeSummarySalesRepCommission() {
             return false;
         }
         
@@ -270,14 +270,14 @@ namespace TMBF.Report {
         }
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public delegate void SummarySalesRepCommisionRowChangeEventHandler(object sender, SummarySalesRepCommisionRowChangeEvent e);
+        public delegate void SummarySalesRepCommissionRowChangeEventHandler(object sender, SummarySalesRepCommissionRowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class SummarySalesRepCommisionDataTable : global::System.Data.TypedTableBase<SummarySalesRepCommisionRow> {
+        public partial class SummarySalesRepCommissionDataTable : global::System.Data.TypedTableBase<SummarySalesRepCommissionRow> {
             
             private global::System.Data.DataColumn columnSalesRepName;
             
@@ -285,8 +285,8 @@ namespace TMBF.Report {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public SummarySalesRepCommisionDataTable() {
-                this.TableName = "SummarySalesRepCommision";
+            public SummarySalesRepCommissionDataTable() {
+                this.TableName = "SummarySalesRepCommission";
                 this.BeginInit();
                 this.InitClass();
                 this.EndInit();
@@ -294,7 +294,7 @@ namespace TMBF.Report {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal SummarySalesRepCommisionDataTable(global::System.Data.DataTable table) {
+            internal SummarySalesRepCommissionDataTable(global::System.Data.DataTable table) {
                 this.TableName = table.TableName;
                 if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
                     this.CaseSensitive = table.CaseSensitive;
@@ -311,7 +311,7 @@ namespace TMBF.Report {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected SummarySalesRepCommisionDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+            protected SummarySalesRepCommissionDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
             }
@@ -343,46 +343,46 @@ namespace TMBF.Report {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public SummarySalesRepCommisionRow this[int index] {
+            public SummarySalesRepCommissionRow this[int index] {
                 get {
-                    return ((SummarySalesRepCommisionRow)(this.Rows[index]));
+                    return ((SummarySalesRepCommissionRow)(this.Rows[index]));
                 }
             }
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event SummarySalesRepCommisionRowChangeEventHandler SummarySalesRepCommisionRowChanging;
+            public event SummarySalesRepCommissionRowChangeEventHandler SummarySalesRepCommissionRowChanging;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event SummarySalesRepCommisionRowChangeEventHandler SummarySalesRepCommisionRowChanged;
+            public event SummarySalesRepCommissionRowChangeEventHandler SummarySalesRepCommissionRowChanged;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event SummarySalesRepCommisionRowChangeEventHandler SummarySalesRepCommisionRowDeleting;
+            public event SummarySalesRepCommissionRowChangeEventHandler SummarySalesRepCommissionRowDeleting;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event SummarySalesRepCommisionRowChangeEventHandler SummarySalesRepCommisionRowDeleted;
+            public event SummarySalesRepCommissionRowChangeEventHandler SummarySalesRepCommissionRowDeleted;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void AddSummarySalesRepCommisionRow(SummarySalesRepCommisionRow row) {
+            public void AddSummarySalesRepCommissionRow(SummarySalesRepCommissionRow row) {
                 this.Rows.Add(row);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public SummarySalesRepCommisionRow AddSummarySalesRepCommisionRow(string SalesRepName, double Commission) {
-                SummarySalesRepCommisionRow rowSummarySalesRepCommisionRow = ((SummarySalesRepCommisionRow)(this.NewRow()));
+            public SummarySalesRepCommissionRow AddSummarySalesRepCommissionRow(string SalesRepName, double Commission) {
+                SummarySalesRepCommissionRow rowSummarySalesRepCommissionRow = ((SummarySalesRepCommissionRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         SalesRepName,
                         Commission};
-                rowSummarySalesRepCommisionRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowSummarySalesRepCommisionRow);
-                return rowSummarySalesRepCommisionRow;
+                rowSummarySalesRepCommissionRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowSummarySalesRepCommissionRow);
+                return rowSummarySalesRepCommissionRow;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public override global::System.Data.DataTable Clone() {
-                SummarySalesRepCommisionDataTable cln = ((SummarySalesRepCommisionDataTable)(base.Clone()));
+                SummarySalesRepCommissionDataTable cln = ((SummarySalesRepCommissionDataTable)(base.Clone()));
                 cln.InitVars();
                 return cln;
             }
@@ -390,7 +390,7 @@ namespace TMBF.Report {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Data.DataTable CreateInstance() {
-                return new SummarySalesRepCommisionDataTable();
+                return new SummarySalesRepCommissionDataTable();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -414,28 +414,28 @@ namespace TMBF.Report {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public SummarySalesRepCommisionRow NewSummarySalesRepCommisionRow() {
-                return ((SummarySalesRepCommisionRow)(this.NewRow()));
+            public SummarySalesRepCommissionRow NewSummarySalesRepCommissionRow() {
+                return ((SummarySalesRepCommissionRow)(this.NewRow()));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new SummarySalesRepCommisionRow(builder);
+                return new SummarySalesRepCommissionRow(builder);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Type GetRowType() {
-                return typeof(SummarySalesRepCommisionRow);
+                return typeof(SummarySalesRepCommissionRow);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanged(e);
-                if ((this.SummarySalesRepCommisionRowChanged != null)) {
-                    this.SummarySalesRepCommisionRowChanged(this, new SummarySalesRepCommisionRowChangeEvent(((SummarySalesRepCommisionRow)(e.Row)), e.Action));
+                if ((this.SummarySalesRepCommissionRowChanged != null)) {
+                    this.SummarySalesRepCommissionRowChanged(this, new SummarySalesRepCommissionRowChangeEvent(((SummarySalesRepCommissionRow)(e.Row)), e.Action));
                 }
             }
             
@@ -443,8 +443,8 @@ namespace TMBF.Report {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanging(e);
-                if ((this.SummarySalesRepCommisionRowChanging != null)) {
-                    this.SummarySalesRepCommisionRowChanging(this, new SummarySalesRepCommisionRowChangeEvent(((SummarySalesRepCommisionRow)(e.Row)), e.Action));
+                if ((this.SummarySalesRepCommissionRowChanging != null)) {
+                    this.SummarySalesRepCommissionRowChanging(this, new SummarySalesRepCommissionRowChangeEvent(((SummarySalesRepCommissionRow)(e.Row)), e.Action));
                 }
             }
             
@@ -452,8 +452,8 @@ namespace TMBF.Report {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleted(e);
-                if ((this.SummarySalesRepCommisionRowDeleted != null)) {
-                    this.SummarySalesRepCommisionRowDeleted(this, new SummarySalesRepCommisionRowChangeEvent(((SummarySalesRepCommisionRow)(e.Row)), e.Action));
+                if ((this.SummarySalesRepCommissionRowDeleted != null)) {
+                    this.SummarySalesRepCommissionRowDeleted(this, new SummarySalesRepCommissionRowChangeEvent(((SummarySalesRepCommissionRow)(e.Row)), e.Action));
                 }
             }
             
@@ -461,14 +461,14 @@ namespace TMBF.Report {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleting(e);
-                if ((this.SummarySalesRepCommisionRowDeleting != null)) {
-                    this.SummarySalesRepCommisionRowDeleting(this, new SummarySalesRepCommisionRowChangeEvent(((SummarySalesRepCommisionRow)(e.Row)), e.Action));
+                if ((this.SummarySalesRepCommissionRowDeleting != null)) {
+                    this.SummarySalesRepCommissionRowDeleting(this, new SummarySalesRepCommissionRowChangeEvent(((SummarySalesRepCommissionRow)(e.Row)), e.Action));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void RemoveSummarySalesRepCommisionRow(SummarySalesRepCommisionRow row) {
+            public void RemoveSummarySalesRepCommissionRow(SummarySalesRepCommissionRow row) {
                 this.Rows.Remove(row);
             }
             
@@ -495,7 +495,7 @@ namespace TMBF.Report {
                 type.Attributes.Add(attribute1);
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "SummarySalesRepCommisionDataTable";
+                attribute2.FixedValue = "SummarySalesRepCommissionDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -539,15 +539,15 @@ namespace TMBF.Report {
         /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
-        public partial class SummarySalesRepCommisionRow : global::System.Data.DataRow {
+        public partial class SummarySalesRepCommissionRow : global::System.Data.DataRow {
             
-            private SummarySalesRepCommisionDataTable tableSummarySalesRepCommision;
+            private SummarySalesRepCommissionDataTable tableSummarySalesRepCommission;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal SummarySalesRepCommisionRow(global::System.Data.DataRowBuilder rb) : 
+            internal SummarySalesRepCommissionRow(global::System.Data.DataRowBuilder rb) : 
                     base(rb) {
-                this.tableSummarySalesRepCommision = ((SummarySalesRepCommisionDataTable)(this.Table));
+                this.tableSummarySalesRepCommission = ((SummarySalesRepCommissionDataTable)(this.Table));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -555,15 +555,15 @@ namespace TMBF.Report {
             public string SalesRepName {
                 get {
                     try {
-                        return ((string)(this[this.tableSummarySalesRepCommision.SalesRepNameColumn]));
+                        return ((string)(this[this.tableSummarySalesRepCommission.SalesRepNameColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'SalesRepName\' in table \'SummarySalesRepCommision\' is DBNull" +
-                                ".", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'SalesRepName\' in table \'SummarySalesRepCommission\' is DBNul" +
+                                "l.", e);
                     }
                 }
                 set {
-                    this[this.tableSummarySalesRepCommision.SalesRepNameColumn] = value;
+                    this[this.tableSummarySalesRepCommission.SalesRepNameColumn] = value;
                 }
             }
             
@@ -572,39 +572,40 @@ namespace TMBF.Report {
             public double Commission {
                 get {
                     try {
-                        return ((double)(this[this.tableSummarySalesRepCommision.CommissionColumn]));
+                        return ((double)(this[this.tableSummarySalesRepCommission.CommissionColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Commission\' in table \'SummarySalesRepCommision\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'Commission\' in table \'SummarySalesRepCommission\' is DBNull." +
+                                "", e);
                     }
                 }
                 set {
-                    this[this.tableSummarySalesRepCommision.CommissionColumn] = value;
+                    this[this.tableSummarySalesRepCommission.CommissionColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsSalesRepNameNull() {
-                return this.IsNull(this.tableSummarySalesRepCommision.SalesRepNameColumn);
+                return this.IsNull(this.tableSummarySalesRepCommission.SalesRepNameColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetSalesRepNameNull() {
-                this[this.tableSummarySalesRepCommision.SalesRepNameColumn] = global::System.Convert.DBNull;
+                this[this.tableSummarySalesRepCommission.SalesRepNameColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsCommissionNull() {
-                return this.IsNull(this.tableSummarySalesRepCommision.CommissionColumn);
+                return this.IsNull(this.tableSummarySalesRepCommission.CommissionColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetCommissionNull() {
-                this[this.tableSummarySalesRepCommision.CommissionColumn] = global::System.Convert.DBNull;
+                this[this.tableSummarySalesRepCommission.CommissionColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -612,22 +613,22 @@ namespace TMBF.Report {
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public class SummarySalesRepCommisionRowChangeEvent : global::System.EventArgs {
+        public class SummarySalesRepCommissionRowChangeEvent : global::System.EventArgs {
             
-            private SummarySalesRepCommisionRow eventRow;
+            private SummarySalesRepCommissionRow eventRow;
             
             private global::System.Data.DataRowAction eventAction;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public SummarySalesRepCommisionRowChangeEvent(SummarySalesRepCommisionRow row, global::System.Data.DataRowAction action) {
+            public SummarySalesRepCommissionRowChangeEvent(SummarySalesRepCommissionRow row, global::System.Data.DataRowAction action) {
                 this.eventRow = row;
                 this.eventAction = action;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public SummarySalesRepCommisionRow Row {
+            public SummarySalesRepCommissionRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -643,7 +644,7 @@ namespace TMBF.Report {
         }
     }
 }
-namespace TMBF.Report.dsSummarySalesRepCommissionTableAdapters {
+namespace TMBF.Report.DataSet1TableAdapters {
     
     
     /// <summary>
@@ -655,7 +656,7 @@ namespace TMBF.Report.dsSummarySalesRepCommissionTableAdapters {
     [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
         ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-    public partial class SummarySalesRepCommisionTableAdapter : global::System.ComponentModel.Component {
+    public partial class SummarySalesRepCommissionTableAdapter : global::System.ComponentModel.Component {
         
         private global::System.Data.SqlClient.SqlDataAdapter _adapter;
         
@@ -669,7 +670,7 @@ namespace TMBF.Report.dsSummarySalesRepCommissionTableAdapters {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public SummarySalesRepCommisionTableAdapter() {
+        public SummarySalesRepCommissionTableAdapter() {
             this.ClearBeforeFill = true;
         }
         
@@ -766,7 +767,7 @@ namespace TMBF.Report.dsSummarySalesRepCommissionTableAdapters {
             this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
-            tableMapping.DataSetTable = "SummarySalesRepCommision";
+            tableMapping.DataSetTable = "SummarySalesRepCommission";
             tableMapping.ColumnMappings.Add("SalesRepName", "SalesRepName");
             tableMapping.ColumnMappings.Add("Commission", "Commission");
             this._adapter.TableMappings.Add(tableMapping);
@@ -785,7 +786,7 @@ namespace TMBF.Report.dsSummarySalesRepCommissionTableAdapters {
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT SalesRepName, Commission FROM dbo.SummarySalesRepCommision";
+            this._commandCollection[0].CommandText = "SELECT SalesRepName, Commission FROM dbo.SummarySalesRepCommission";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -793,7 +794,7 @@ namespace TMBF.Report.dsSummarySalesRepCommissionTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(dsSummarySalesRepCommission.SummarySalesRepCommisionDataTable dataTable) {
+        public virtual int Fill(dsSummarySalesRepCommission.SummarySalesRepCommissionDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -806,9 +807,9 @@ namespace TMBF.Report.dsSummarySalesRepCommissionTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual dsSummarySalesRepCommission.SummarySalesRepCommisionDataTable GetData() {
+        public virtual dsSummarySalesRepCommission.SummarySalesRepCommissionDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            dsSummarySalesRepCommission.SummarySalesRepCommisionDataTable dataTable = new dsSummarySalesRepCommission.SummarySalesRepCommisionDataTable();
+            dsSummarySalesRepCommission.SummarySalesRepCommissionDataTable dataTable = new dsSummarySalesRepCommission.SummarySalesRepCommissionDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }

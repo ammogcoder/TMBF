@@ -43,3 +43,18 @@ Create  PROCEDURE [dbo].GetSummarySalesRepCommission
 AS
 
 SELECT  'Mike Tyson' as SalesRepName, Cast(0.123456 as float) as Commission
+
+
+GO
+Create  PROCEDURE [dbo].GetTrafficSummary
+	@month int,
+	@year int
+AS
+-- –service name–from country name –to country name –total minutes of calls
+SELECT  'Spectra' as ServiceName, 'VietNam' as  FromCountryName, 'Nepal' as ToCountryName, 12345 as Duration
+
+GO
+Create  PROCEDURE [dbo].GetRate
+AS
+SELECT  'Brazin' as DestinationCountryName, 0.123 as  PeekRate, 0.987 as OffPeekRate
+
