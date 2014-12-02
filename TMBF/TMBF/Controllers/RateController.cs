@@ -27,6 +27,87 @@ namespace TMBF.Controllers
         /// <param name="dsRates"> DataSet with the information in the xls file</param>
         /// <param name="serviceInfo">format: Servicename_Sourcecountry</param>
         /// <param name="htCountry">DataSet with the countries and its ids</param>
+
+        private DateTime getOffPeekStartTime(string serviceinfo) {
+            
+            Hashtable htable = new Hashtable();
+            htable["Spectra_USA"] = new DateTime(2014, 1, 1, 17, 0, 0);//17:00
+            htable["Deluxe_USA"] = new DateTime(2014, 1, 1, 17, 0, 0);//17:00
+            htable["VOIP_USA"] = new DateTime(2014, 1, 1, 17, 0, 0);//17:00
+            htable["Budget_USA"] = new DateTime(2014, 1, 1, 17, 0, 0);//17:00
+            htable["Premium_USA"] = new DateTime(2014, 1, 1, 17, 0, 0);//17:00
+
+            htable["Spectra_Germany"] = new DateTime(2014, 1, 1, 19, 0, 0);
+            htable["GACB_Germany"] = new DateTime(2014, 1, 1, 19, 0, 0);
+            htable["Spectra_France"] = new DateTime(2014, 1, 1, 19, 0, 0);
+            htable["GACB_France"] = new DateTime(2014, 1, 1, 19, 0, 0);
+            htable["Spectra_Denmark"] = new DateTime(2014, 1, 1, 19, 0, 0);
+            htable["GACB_Denmark"] = new DateTime(2014, 1, 1, 19, 0, 0);
+            htable["Spectra_Italy"] = new DateTime(2014, 1, 1, 19, 0, 0);
+            htable["GACB_Italy"] = new DateTime(2014, 1, 1, 19, 0, 0);
+
+            htable["Spectra_England"] = new DateTime(2014, 1, 1, 18, 0, 0);
+            htable["GACB_England"] = new DateTime(2014, 1, 1, 18, 0, 0);
+            htable["Spectra_Netherlands"] = new DateTime(2014, 1, 1, 18, 0, 0);
+            htable["GACB_Netherlands"] = new DateTime(2014, 1, 1, 18, 0, 0);
+
+            htable["GACB_Spain"] = new DateTime(2014, 1, 1, 17, 30, 0);
+            htable["GACB_Hungary"] = new DateTime(2014, 1, 1, 17, 30, 0);
+            htable["GACB_Austria"] = new DateTime(2014, 1, 1, 17, 30, 0);
+
+            DateTime res;
+            if (htable.ContainsKey(serviceinfo))
+            {
+                res = (DateTime) htable[serviceinfo];
+            }
+            else
+            {
+                res = new DateTime(4000, 1, 1);//TODO this country/service was not found!
+            }
+        
+                
+            return res;
+        }
+        private DateTime getPeekStartTime(string serviceinfo) {
+            Hashtable htable = new Hashtable();
+            htable["Spectra_USA"] = new DateTime(2014, 1, 1, 8, 0, 0);//08:00
+            htable["Deluxe_USA"] = new DateTime(2014, 1, 1, 8, 0, 0);
+            htable["VOIP_USA"] = new DateTime(2014, 1, 1, 8, 0, 0);
+            htable["Budget_USA"] = new DateTime(2014, 1, 1, 8, 0, 0);
+            htable["Premium_USA"] = new DateTime(2014, 1, 1, 8, 0, 0);
+
+            htable["Spectra_Germany"] = new DateTime(2014, 1, 1, 9, 0, 0);
+            htable["GACB_Germany"] = new DateTime(2014, 1, 1, 9, 0, 0);
+            htable["Spectra_France"] = new DateTime(2014, 1, 1, 9, 0, 0);
+            htable["GACB_France"] = new DateTime(2014, 1, 1, 9, 0, 0);
+            htable["Spectra_Denmark"] = new DateTime(2014, 1, 1, 9, 0, 0);
+            htable["GACB_Denmark"] = new DateTime(2014, 1, 1, 9, 0, 0);
+            htable["Spectra_Italy"] = new DateTime(2014, 1, 1, 9, 0, 0);
+            htable["GACB_Italy"] = new DateTime(2014, 1, 1, 9, 0, 0);
+
+            htable["Spectra_England"] = new DateTime(2014, 1, 1, 8, 30, 0);
+            htable["GACB_England"] = new DateTime(2014, 1, 1, 8, 30, 0);
+            htable["Spectra_Netherlands"] = new DateTime(2014, 1, 1, 8, 30, 0);
+            htable["GACB_Netherlands"] = new DateTime(2014, 1, 1, 8, 30, 0);
+
+            htable["GACB_Spain"] = new DateTime(2014, 1, 1, 9, 0, 0);
+            htable["GACB_Hungary"] = new DateTime(2014, 1, 1, 9, 0, 0);
+            htable["GACB_Austria"] = new DateTime(2014, 1, 1, 9, 0, 0);
+
+
+            DateTime res;
+            if (htable.ContainsKey(serviceinfo))
+            {
+                res = (DateTime)htable[serviceinfo];
+            }
+            else
+            {
+                res = new DateTime(4000, 1, 1);//TODO this country/service was not found!
+            }
+
+            return res;
+        }
+        
         private void insertSheet(DataSet dsRates, Hashtable htCountry, int tabIndex, DateTime startDate, DateTime endDate)
         {
             int destCountryID;
@@ -40,13 +121,9 @@ namespace TMBF.Controllers
             
             string serviceName = words[0];
             string sourceCountryName = words[1];
-            /*
-            DataRow rowCountry = dsCountry.Tables[0].Rows.Find(sourceCountryName);
-            if(rowCountry == null){
-                Debug.WriteLine("Country {0} not found in the database", sourceCountryName);
-                return;
-            }
-            */
+            DateTime peekStartTime = getPeekStartTime(table.TableName);
+            DateTime offPeekStartTime = getOffPeekStartTime(table.TableName);
+
             try
             {
                  sourceCountryID = Int16.Parse( htCountry[sourceCountryName].ToString() );//constant acces time
@@ -73,6 +150,8 @@ namespace TMBF.Controllers
                 newRow["OffPeekRate"] = offPeekRate;
                 newRow["RateEffectiveDate"] = startDate;
                 newRow["RateEndDate"] = endDate;
+                newRow["PeekRateStartTime"] = peekStartTime;
+                newRow["OffPeekRateStartTime"] = offPeekStartTime;
                 newRow["DestinationCountry_ID"] = destCountryID;
                 newRow["SourceCountry_ID"] = sourceCountryID;
 
@@ -93,8 +172,11 @@ namespace TMBF.Controllers
             dt.Columns.Add("OffPeekRate", typeof( float) );
             dt.Columns.Add("RateEffectiveDate", typeof(DateTime));
             dt.Columns.Add("RateEndDate", typeof(DateTime));
+            dt.Columns.Add("PeekRateStartTime", typeof(DateTime));
+            dt.Columns.Add("OffPeekRateStartTime", typeof(DateTime));
             dt.Columns.Add("DestinationCountry_ID", typeof( int ));
             dt.Columns.Add("SourceCountry_ID", typeof( int ));
+
 
             return dt;
             
@@ -142,11 +224,11 @@ namespace TMBF.Controllers
             DataSet dsCountry = CountriesDataAccess.getAsDataset();
             DataSet dsRates = sheet.getDataSet();
             DateTime startDate = getDateFromName(sheet.getName());
-              
             DateTime endDate = new DateTime(3015,1,1);//FIXME hardcoded end date
-            DateTime capDate = endDate;
+            DateTime capDate = startDate.AddSeconds(-1);
+            
             Hashtable hCountry = CreateIndexHashtable(dsCountry.Tables[0]);
-            capDate.AddSeconds(-1);
+
 
             ServicesDataAccess.capEndDate(capDate);
 

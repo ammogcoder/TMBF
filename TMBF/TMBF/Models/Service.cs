@@ -33,10 +33,10 @@ namespace TMBF.Models
         public DateTime RateEndDate { get; set; }
 
         [Display(Name = "Peek Rate Start Time")]
-        public int? PeekRateStartTime { get; set; }
+        public DateTime? PeekRateStartTime { get; set; }
 
         [Display(Name = "Off-Peek Rate Start Time")]
-        public int? OffPeekRateStartTime { get; set; }
+        public DateTime? OffPeekRateStartTime { get; set; }
        
         public virtual ICollection<Customer> Customers {  get;  set; }
     }

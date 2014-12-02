@@ -1,4 +1,5 @@
-﻿INSERT INTO [dbo].[Country] ([ID], [Name]) VALUES (1, N'USA')
+﻿
+INSERT INTO [dbo].[Country] ([ID], [Name]) VALUES (1, N'USA')
 INSERT INTO [dbo].[Country] ([ID], [Name]) VALUES (7, N'Russia')
 INSERT INTO [dbo].[Country] ([ID], [Name]) VALUES (20, N'Egypt')
 INSERT INTO [dbo].[Country] ([ID], [Name]) VALUES (27, N'South Africa')
