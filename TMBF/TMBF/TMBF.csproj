@@ -226,6 +226,7 @@
     <Content Include="Report\dsRate.xsc">
       <DependentUpon>dsRate.xsd</DependentUpon>
     </Content>
+    <Content Include="ClassDiagram1.cd" />
     <None Include="Report\dsRate.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
@@ -275,7 +276,7 @@
     <Content Include="Scripts\SqlScripts\DataBase Script.sql" />
     <Content Include="Scripts\SqlScripts\Countries.data.sql" />
     <Content Include="Scripts\SqlScripts\DataOnly IntialData.sql" />
-    <Content Include="Scripts\SqlScripts\FINAL ALL DATA V100.sql" />
+    <Content Include="Scripts\SqlScripts\FINAL ALL DATA V101.sql" />
     <Content Include="Scripts\SqlScripts\GetTrafficSummary.sql" />
     <Content Include="Scripts\SqlScripts\ModifyGetTrafficSummary.sql" />
     <Content Include="Scripts\SqlScripts\Service.data.sql" />
