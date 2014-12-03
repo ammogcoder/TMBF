@@ -68,39 +68,22 @@ GO
 CREATE  PROCEDURE [dbo].GetSalesRepCommission
 	@salesRepID bigint,
 	@month int,
-	@year int,
-	@totCommission int out
+	@year int
 AS
-
-	DECLARE @id bigint
-	DECLARE @com_pc int
-	DECLARE @totCost int
-	DECLARE @runTot int
-	  SET @totCost=0
-	DECLARE @pass varchar(100)
-
-	DECLARE cur CURSOR FOR SELECT c.ID, c.CommisionForSalesRep FROM Customer c 
-	  WHERE c.SalesRepID = @salesRepID	
-	    	  
-	OPEN cur
-
-	FETCH NEXT FROM cur INTO @id, @com_pc
-
-	WHILE @@FETCH_STATUS = 0 
-		BEGIN
-			exec @runTot= GetCustomerBillTotal @id,@month,@year,0
-			SET @totCost = @totCost+ @runTot * @com_pc
-			FETCH NEXT FROM cur INTO @id, @com_pc
-		END
-
-	CLOSE cur    
-	DEALLOCATE cur
-
-	SET @totCommission=0.01 * @totCost
-
-	RETURN @totCommission
-
+DECLARE @commission float
+SET @commission = ( Select Sum(	Duration * (Case WHEN CallTime>=s.PeekRateStartTime AND CallTime<s.OffPeekRateStartTime THEN s.PeekRate 
+	ELSE s.OffPeekRate End)*c.CommisionForSalesRep /100)  as Commission
+from Call inner join Customer c on Call.CustomerID = c.ID 
+inner join Service s on Call.SourceCountry_ID = s.SourceCountry_ID and Call.DestinationCountry_ID = s.DestinationCountry_ID
+where Month(CallDate)= @month and Year(CallDate) = @year and c.SalesRepID  = @salesRepID 
+	and Month( s.RateEffectiveDate) = @month and Year(s.RateEffectiveDate) = @year 
+	and CallDate >= s.RateEffectiveDate and CallDate <= s.RateEndDate )
+if @commission is null
+	Set @commission = 0
+Select  @commission as Commission
 GO
+
+
 
 
 Create  PROCEDURE [dbo].GetSummarySalesRepCommission
@@ -108,7 +91,16 @@ Create  PROCEDURE [dbo].GetSummarySalesRepCommission
 	@year int
 AS
 
-SELECT  'Mike Tyson' as SalesRepName, Cast(0.123456 as float) as Commission
+--SELECT  'Mike Tyson' as SalesRepName, Cast(0.123456 as float) as Commission
+Select u.FirstName + u.LastName as SalesRepName, Sum(	Duration * (Case WHEN CallTime>=s.PeekRateStartTime AND CallTime<s.OffPeekRateStartTime THEN s.PeekRate 
+	ELSE s.OffPeekRate End)*c.CommisionForSalesRep /100)  as Commission
+from Call inner join Customer c on Call.CustomerID = c.ID inner join [User] u on c.ID = u.ID
+inner join Service s on Call.SourceCountry_ID = s.SourceCountry_ID and Call.DestinationCountry_ID = s.DestinationCountry_ID
+where Month(CallDate)= @month and Year(CallDate) = @year 
+	and Month( s.RateEffectiveDate) = @month and Year(s.RateEffectiveDate) = @year 
+	and CallDate >= s.RateEffectiveDate and CallDate <= s.RateEndDate 
+Group by u.FirstName + u.LastName
+
 Go
 
 -- =============================================
@@ -155,3 +147,17 @@ Print @serviceName
 SELECT Country.Name as DestinationCountryName, Service.PeekRate, Service.OffPeekRate FROM Country INNER JOIN Service On Country.ID = Service.DestinationCountry_ID  
 WHERE month(Service.RateEffectiveDate) = @month AND year(Service.RateEffectiveDate) = @year 
 and Service.SourceCountry_ID = @countryID and  Service.Name=  @serviceName
+
+-- for commission
+
+select Duration, c.CommisionForSalesRep, c.SalesRepID,
+	Case WHEN CallTime>=s.PeekRateStartTime AND CallTime<s.OffPeekRateStartTime THEN s.PeekRate 
+	ELSE s.OffPeekRate End as Rate,
+	Duration * (Case WHEN CallTime>=s.PeekRateStartTime AND CallTime<s.OffPeekRateStartTime THEN s.PeekRate 
+	ELSE s.OffPeekRate End)*c.CommisionForSalesRep /100  as Commission
+from Call inner join Customer c on Call.CustomerID = c.ID 
+inner join Service s on Call.SourceCountry_ID = s.SourceCountry_ID and Call.DestinationCountry_ID = s.DestinationCountry_ID
+where Month(CallDate)= 12 and Year(CallDate) = 2013 and c.SalesRepID  = 1 
+	and Month( s.RateEffectiveDate) = 12 and Year(s.RateEffectiveDate) = 2013 
+	and CallDate >= s.RateEffectiveDate and CallDate <= s.RateEndDate
+

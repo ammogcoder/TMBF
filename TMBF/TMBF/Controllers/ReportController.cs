@@ -197,7 +197,7 @@ namespace TMBF.Controllers
             string period = string.Format("{0}/{1}", month, year);
 
             ReportParameter pSalesRepName = new ReportParameter("SalesRepName", string.Format("{0} {1}", salesRep.FirstName, salesRep.LastName));
-            ReportParameter pSalesRepCommission = new ReportParameter("SalesRepCommission", string.Format("{0}", salesRepCommission));
+            ReportParameter pSalesRepCommission = new ReportParameter("SalesRepCommission", String.Format("{0:0.00}", salesRepCommission)); 
             ReportParameter pPeriod = new ReportParameter("Period", period);
             localReport.SetParameters(pSalesRepName);
             localReport.SetParameters(pSalesRepCommission);
