@@ -28,15 +28,81 @@ SELECT CallDate, Concat(Concat(Cast((CallTime/100) as nvarchar),':'),Cast((CallT
 			  month(CallDate) = @month
 GO
 
+CREATE  PROCEDURE [dbo].GetCustomerBillTotal
+	@customerID bigint,
+	@month int,
+	@year int,
+	@total int out
+AS	
+		SET @total = ( SELECT SUM(tbl.cost) FROM
+		(SELECT CUSTOMERID as aid, ((Duration/60)*
+				(SELECT  CASE 
+							WHEN CallTime>=s.PeekRateStartTime AND CallTime<s.OffPeekRateStartTime THEN s.PeekRate 
+							ELSE s.OffPeekRate
+						END
+						FROM Service s
+						WHERE s.ID = (SELECT DISTINCT cust.ServiceID from Call c INNER JOIN Customer cust ON c.CustomerID=cust.ID)
+						AND year(s.RateEffectiveDate)<=@year
+						AND month(s.RateEffectiveDate)<=@month
+						AND year(s.RateEndDate)>=@year
+						AND month(s.RateEndDate)>=@month
+						AND SourceCountry_ID=s.SourceCountry_ID
+						AND DestinationCountry_ID=s.DestinationCountry_ID
+				)
+			)
+			as cost        			
+			from Call	
+			where CustomerID = @customerID AND 
+					year(CallDate) = @year AND 
+					month(CallDate) = @month  )  as tbl 
+			
+			GROUP BY tbl.aid
+					
+			)
+
+			RETURN @total
+
+GO
+
+
 CREATE  PROCEDURE [dbo].GetSalesRepCommission
 	@salesRepID bigint,
 	@month int,
-	@year int
+	@year int,
+	@totCommission int out
 AS
 
-SELECT Cast(0.56 as float) as Commission
+	DECLARE @id bigint
+	DECLARE @com_pc int
+	DECLARE @totCost int
+	DECLARE @runTot int
+	  SET @totCost=0
+	DECLARE @pass varchar(100)
+
+	DECLARE cur CURSOR FOR SELECT c.ID, c.CommisionForSalesRep FROM Customer c 
+	  WHERE c.SalesRepID = @salesRepID	
+	    	  
+	OPEN cur
+
+	FETCH NEXT FROM cur INTO @id, @com_pc
+
+	WHILE @@FETCH_STATUS = 0 
+		BEGIN
+			exec @runTot= GetCustomerBillTotal @id,@month,@year,0
+			SET @totCost = @totCost+ @runTot * @com_pc
+			FETCH NEXT FROM cur INTO @id, @com_pc
+		END
+
+	CLOSE cur    
+	DEALLOCATE cur
+
+	SET @totCommission=0.01 * @totCost
+
+	RETURN @totCommission
 
 GO
+
+
 Create  PROCEDURE [dbo].GetSummarySalesRepCommission
 	@month int,
 	@year int
