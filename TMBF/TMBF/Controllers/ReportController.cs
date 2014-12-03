@@ -39,16 +39,16 @@ namespace TMBF.Controllers
             switch (reportName)
             {
                 case "CustomerBill":
-                    renderedBytes = GenerateCustomerBillReportData(month, year, format);
+                    renderedBytes = GenerateCustomerBillReportData(Convert.ToInt32(month), Convert.ToInt32(year), format);
                     break;
                 case "SalesRepCommission":
-                    renderedBytes = GenerateSalesRepCommissionData(month, year, format);
+                    renderedBytes = GenerateSalesRepCommissionData(Convert.ToInt32(month), Convert.ToInt32(year), format);
                     break;
                 case "SummarySalesRepCommission":
-                    renderedBytes = GenerateSummarySalesRepCommissionData(month, year, format);
+                    renderedBytes = GenerateSummarySalesRepCommissionData(Convert.ToInt32(month), Convert.ToInt32(year), format);
                     break;
                 case "TrafficSummary":
-                    renderedBytes = GenerateTrafficSummaryData(month, year, format);
+                    renderedBytes = GenerateTrafficSummaryData(Convert.ToInt32(month), Convert.ToInt32(year), format);
                     break;
                 case "Rate":
                     renderedBytes = GenerateRateData(Convert.ToInt64( serviceID), Convert.ToInt64(countryID), Convert.ToInt32(month), Convert.ToInt32(year), format);
@@ -68,7 +68,7 @@ namespace TMBF.Controllers
                 return File(renderedBytes, "image/jpeg");
             }
         }
-        private byte[] GenerateCustomerBillReportData(string month, string year, string format)
+        private byte[] GenerateCustomerBillReportData(int month, int year, string format)
         {
             if (month == null || year == null)
                 return null;
@@ -82,7 +82,7 @@ namespace TMBF.Controllers
 
             Customer customer = (Customer)Session["LoggedUser"];
 
-            var customerBill = new ReportDAL().GetCustomerBill(customer.ID, int.Parse(month), int.Parse(year));
+            var customerBill = new ReportDAL().GetCustomerBill(customer.ID, month, year);
 
             reportDataSource.Value = customerBill;
             localReport.DataSources.Add(reportDataSource);
@@ -120,27 +120,28 @@ namespace TMBF.Controllers
             return renderedBytes;
         }
 
-        public ActionResult DownloadExcel(string reportName, string month, string year, string format)
-        {
-            return DownloadExcel(reportName, month, year, format, string.Empty, string.Empty);
-        }
         public ActionResult DownloadExcel(string reportName, string month, string year, string format, string serviceID, string countryID)
         {
+            if (month == null || year == null)
+                return null;
+            serviceID = serviceID == null ? string.Empty : serviceID;
+            countryID = countryID == null ? string.Empty : countryID;
+
             //Render the report            
             byte[] renderedBytes = null;
             switch (reportName)
             {
                 case "CustomerBill":
-                    renderedBytes = GenerateCustomerBillReportData(month, year, format);
+                    renderedBytes = GenerateCustomerBillReportData(Convert.ToInt32(month), Convert.ToInt32(year), format);
                     break;
                 case "SalesRepCommission":
-                    renderedBytes = GenerateSalesRepCommissionData(month, year, format);
+                    renderedBytes = GenerateSalesRepCommissionData(Convert.ToInt32(month), Convert.ToInt32(year), format);
                     break;
                 case "SummarySalesRepCommission":
-                    renderedBytes = GenerateSummarySalesRepCommissionData(month, year, format);
+                    renderedBytes = GenerateSummarySalesRepCommissionData(Convert.ToInt32(month), Convert.ToInt32(year), format);
                     break;
                 case "TrafficSummary":
-                    renderedBytes = GenerateTrafficSummaryData(month, year, format);
+                    renderedBytes = GenerateTrafficSummaryData(Convert.ToInt32(month), Convert.ToInt32(year), format);
                     break;
                 case "Rate":
                     renderedBytes = GenerateRateData(Convert.ToInt64( serviceID), Convert.ToInt64(countryID), Convert.ToInt32(month), Convert.ToInt32(year), format);
@@ -178,7 +179,7 @@ namespace TMBF.Controllers
             return View(searchParameterModel);
         }
 
-        private byte[] GenerateSalesRepCommissionData(string month, string year, string format)
+        private byte[] GenerateSalesRepCommissionData(int month, int year, string format)
         {
             if (month == null || year == null)
                 return null;
@@ -188,7 +189,7 @@ namespace TMBF.Controllers
             SalesRep salesRep = new SalesRep();
             salesRep.ID = 1;
 
-            var salesRepCommission = new ReportDAL().GetSalesRepCommission(salesRep.ID, int.Parse(month), int.Parse(year));
+            var salesRepCommission = new ReportDAL().GetSalesRepCommission(salesRep.ID, month, year);
 
             string period = string.Format("{0}/{1}", month, year);
 
@@ -236,17 +237,15 @@ namespace TMBF.Controllers
         {
             return View(searchParameterModel);
         }
-        private byte[] GenerateSummarySalesRepCommissionData(string month, string year, string format)
+        private byte[] GenerateSummarySalesRepCommissionData(int month, int year, string format)
         {
-            if (month == null || year == null)
-                return null;
             LocalReport localReport = new LocalReport();
             localReport.ReportPath = Server.MapPath("~/Report/rpSummarySalesRepCommission.rdlc");
 
             ReportDataSource reportDataSource = new ReportDataSource();
             reportDataSource.Name = "dsSummarySalesRepCommission";
 
-            var summarySalesRepCommission = new ReportDAL().GetSummarySalesRepCommission(int.Parse(month), int.Parse(year));
+            var summarySalesRepCommission = new ReportDAL().GetSummarySalesRepCommission(month, year);
 
             reportDataSource.Value = summarySalesRepCommission;
             localReport.DataSources.Add(reportDataSource);
@@ -292,7 +291,7 @@ namespace TMBF.Controllers
         {
             return View(searchParameterModel);
         }
-        private byte[] GenerateTrafficSummaryData(string month, string year, string format)
+        private byte[] GenerateTrafficSummaryData(int month, int year, string format)
         {
             if (month == null || year == null)
                 return null;
@@ -302,7 +301,7 @@ namespace TMBF.Controllers
             ReportDataSource reportDataSource = new ReportDataSource();
             reportDataSource.Name = "dsTrafficSummary";
 
-            var trafficSummary = new ReportDAL().GetTrafficSummary(int.Parse(month), int.Parse(year));
+            var trafficSummary = new ReportDAL().GetTrafficSummary(month, year);
 
             reportDataSource.Value = trafficSummary;
             localReport.DataSources.Add(reportDataSource);

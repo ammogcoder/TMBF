@@ -32,8 +32,8 @@ namespace TMBF.Report
     partial void OnCreated();
     #endregion
 		
-		public DataClasses1DataContext() : 
-				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["TelecomContext"].ConnectionString, mappingSource)
+		public DataClasses1DataContext() :
+        base(global::System.Configuration.ConfigurationManager.ConnectionStrings["TelecomContext"].ConnectionString, mappingSource)
 		{
 			OnCreated();
 		}
@@ -83,6 +83,14 @@ namespace TMBF.Report
 			get
 			{
 				return this.GetTable<TrafficSummary>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Rate> Rates
+		{
+			get
+			{
+				return this.GetTable<Rate>();
 			}
 		}
 	}
@@ -307,6 +315,69 @@ namespace TMBF.Report
 				if ((this._Duration != value))
 				{
 					this._Duration = value;
+				}
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Rate")]
+	public partial class Rate
+	{
+		
+		private string _DestinationCountryName;
+		
+		private System.Nullable<double> _PeekRate;
+		
+		private System.Nullable<double> _OffPeekRate;
+		
+		public Rate()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DestinationCountryName", DbType="VarChar(6) NOT NULL", CanBeNull=false)]
+		public string DestinationCountryName
+		{
+			get
+			{
+				return this._DestinationCountryName;
+			}
+			set
+			{
+				if ((this._DestinationCountryName != value))
+				{
+					this._DestinationCountryName = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PeekRate", DbType="Float")]
+		public System.Nullable<double> PeekRate
+		{
+			get
+			{
+				return this._PeekRate;
+			}
+			set
+			{
+				if ((this._PeekRate != value))
+				{
+					this._PeekRate = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OffPeekRate", DbType="Float")]
+		public System.Nullable<double> OffPeekRate
+		{
+			get
+			{
+				return this._OffPeekRate;
+			}
+			set
+			{
+				if ((this._OffPeekRate != value))
+				{
+					this._OffPeekRate = value;
 				}
 			}
 		}
