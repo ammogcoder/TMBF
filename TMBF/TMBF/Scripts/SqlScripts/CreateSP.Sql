@@ -5,66 +5,16 @@ CREATE  PROCEDURE [dbo].GetCustomerBill
 	@month int,
 	@year int
 AS	
-SELECT CallDate, Concat(Concat(Cast((CallTime/100) as nvarchar),':'),Cast((CallTime%100) as nvarchar)) as TimeOfDay, 
-       ReceiverNo as PhoneNo, Concat(Concat(Concat(Cast((Duration/60) as nvarchar),' min. '),Cast((Duration%60) as nvarchar)),' sec. ') as CallDuration,
-	   (   (Duration/60)*
-		   (SELECT  CASE 
-						WHEN CallTime>=s.PeekRateStartTime AND CallTime<s.OffPeekRateStartTime THEN s.PeekRate 
-						ELSE s.OffPeekRate
-					END
-					FROM Service s
-					WHERE s.ID = (SELECT DISTINCT cust.ServiceID from Call c INNER JOIN Customer cust ON c.CustomerID=cust.ID)
-					AND year(s.RateEffectiveDate)<=@year
-					AND month(s.RateEffectiveDate)<=@month
-					AND year(s.RateEndDate)>=@year
-					AND month(s.RateEndDate)>=@month
-					AND SourceCountry_ID=s.SourceCountry_ID
-					AND DestinationCountry_ID=s.DestinationCountry_ID
-			)
-		)
-		as Cost	        
-	   --Cast(0 as float) as Cost
-		from Call	
-		where CustomerID = @customerID AND 
-			  year(CallDate) = @year AND 
-			  month(CallDate) = @month
-GO
+	--phone number, length of call, time of call, cost of call
+SELECT ReceiverNo as PhoneNo, Duration/60 as Length, CallDate, 
+	Cast( CallTime/100 as varchar) + ':' + Cast( CallTime%100 as varchar) as CallTime, 
+	Duration * (Case WHEN CallTime>=s.PeekRateStartTime AND CallTime<s.OffPeekRateStartTime THEN s.PeekRate 
+				ELSE s.OffPeekRate End) as Cost
+	from Call inner join Service s on Call.SourceCountry_ID = s.SourceCountry_ID and Call.DestinationCountry_ID = s.DestinationCountry_ID
+	where CustomerID = @customerID
+		and Month(CallDate)= @month and Year(CallDate) = @year 
 
-CREATE  PROCEDURE [dbo].GetCustomerBillTotal
-	@customerID bigint,
-	@month int,
-	@year int,
-	@total int out
-AS	
-		SET @total = ( SELECT SUM(tbl.cost) FROM
-		(SELECT CUSTOMERID as aid, ((Duration/60)*
-				(SELECT  CASE 
-							WHEN CallTime>=s.PeekRateStartTime AND CallTime<s.OffPeekRateStartTime THEN s.PeekRate 
-							ELSE s.OffPeekRate
-						END
-						FROM Service s
-						WHERE s.ID = (SELECT DISTINCT cust.ServiceID from Call c INNER JOIN Customer cust ON c.CustomerID=cust.ID)
-						AND year(s.RateEffectiveDate)<=@year
-						AND month(s.RateEffectiveDate)<=@month
-						AND year(s.RateEndDate)>=@year
-						AND month(s.RateEndDate)>=@month
-						AND SourceCountry_ID=s.SourceCountry_ID
-						AND DestinationCountry_ID=s.DestinationCountry_ID
-				)
-			)
-			as cost        			
-			from Call	
-			where CustomerID = @customerID AND 
-					year(CallDate) = @year AND 
-					month(CallDate) = @month  )  as tbl 
-			
-			GROUP BY tbl.aid
-					
-			)
-
-			RETURN @total
-
-GO
+Go
 
 
 CREATE PROCEDURE [dbo].GetSalesRepCommission

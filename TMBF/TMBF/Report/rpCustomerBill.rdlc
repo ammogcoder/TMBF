@@ -125,7 +125,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Length</Value>
+                              <Value>Duration</Value>
                               <Style>
                                 <FontWeight>Bold</FontWeight>
                               </Style>
