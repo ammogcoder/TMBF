@@ -85,7 +85,9 @@ namespace TMBF.Controllers
         public ActionResult Create()
         {
             ViewBag.CountryID = new SelectList(db.Countries, "ID", "Name");
-            ViewBag.ServiceID = new SelectList(db.Services, "ID", "Name");
+            //ViewBag.ServiceID = new SelectList(db.Services, "ID", "Name");    ttt
+            IList<Service> serviceList = db.Services.GroupBy(i => i.Name).Select(g => g.FirstOrDefault()).ToList();
+            ViewBag.ServiceID = new SelectList(serviceList, "ID", "Name");
             ViewBag.UsrRole = Session["Role"].ToString();
             return View();
         }
@@ -114,7 +116,9 @@ namespace TMBF.Controllers
                 }
             }
             ViewBag.CountryID = new SelectList(db.Countries, "ID", "Name", customer.CountryID);
-            ViewBag.ServiceID = new SelectList(db.Services, "ID", "Name", customer.ServiceID);
+            //ViewBag.ServiceID = new SelectList(db.Services, "ID", "Name");    ttt
+            IList<Service> serviceList = db.Services.GroupBy(i => i.Name).Select(g => g.FirstOrDefault()).ToList();
+            ViewBag.ServiceID = new SelectList(serviceList, "ID", "Name", customer.ServiceID);
             return View(customer);
         }
 
@@ -131,7 +135,9 @@ namespace TMBF.Controllers
                 return HttpNotFound();
             }
             ViewBag.CountryID = new SelectList(db.Countries, "ID", "Name", customer.CountryID);
-            ViewBag.ServiceID = new SelectList(db.Services, "ID", "Name", customer.ServiceID);
+            //ViewBag.ServiceID = new SelectList(db.Services, "ID", "Name");    ttt
+            IList<Service> serviceList = db.Services.GroupBy(i => i.Name).Select(g => g.FirstOrDefault()).ToList();
+            ViewBag.ServiceID = new SelectList(serviceList, "ID", "Name", customer.ServiceID);
             return View(customer);
         }
 
@@ -149,7 +155,9 @@ namespace TMBF.Controllers
                 return RedirectToAction("Index");
             }
             ViewBag.CountryID = new SelectList(db.Countries, "ID", "Name", customer.CountryID);
-            ViewBag.ServiceID = new SelectList(db.Services, "ID", "Name", customer.ServiceID);
+            //ViewBag.ServiceID = new SelectList(db.Services, "ID", "Name");    ttt
+            IList<Service> serviceList = db.Services.GroupBy(i => i.Name).Select(g => g.FirstOrDefault()).ToList();
+            ViewBag.ServiceID = new SelectList(serviceList, "ID", "Name", customer.ServiceID);
             return View(customer);
         }
     
