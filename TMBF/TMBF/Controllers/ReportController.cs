@@ -29,7 +29,7 @@ namespace TMBF.Controllers
 
         public FileContentResult GenerateReport(string reportName, string month, string year, string format, string serviceID, string countryID)
         {
-            if ( month == null || year == null)
+            if (month == null || year == null)
                 return null;
             serviceID = serviceID == null ? string.Empty : serviceID;
             countryID = countryID == null ? string.Empty : countryID;
@@ -51,7 +51,7 @@ namespace TMBF.Controllers
                     renderedBytes = GenerateTrafficSummaryData(Convert.ToInt32(month), Convert.ToInt32(year), format);
                     break;
                 case "Rate":
-                    renderedBytes = GenerateRateData(Convert.ToInt64( serviceID), Convert.ToInt64(countryID), Convert.ToInt32(month), Convert.ToInt32(year), format);
+                    renderedBytes = GenerateRateData(Convert.ToInt64(serviceID), Convert.ToInt64(countryID), Convert.ToInt32(month), Convert.ToInt32(year), format);
                     break;
             }
             if (renderedBytes == null)
@@ -145,7 +145,7 @@ namespace TMBF.Controllers
                     renderedBytes = GenerateTrafficSummaryData(Convert.ToInt32(month), Convert.ToInt32(year), format);
                     break;
                 case "Rate":
-                    renderedBytes = GenerateRateData(Convert.ToInt64( serviceID), Convert.ToInt64(countryID), Convert.ToInt32(month), Convert.ToInt32(year), format);
+                    renderedBytes = GenerateRateData(Convert.ToInt64(serviceID), Convert.ToInt64(countryID), Convert.ToInt32(month), Convert.ToInt32(year), format);
                     break;
             }
             if (renderedBytes == null)
@@ -184,20 +184,22 @@ namespace TMBF.Controllers
 
         private byte[] GenerateSalesRepCommissionData(int month, int year, string format)
         {
-            if (month == null || year == null)
+            if (month == 0 || year == 0)
                 return null;
             LocalReport localReport = new LocalReport();
             localReport.ReportPath = Server.MapPath("~/Report/rpSalesRepCommission.rdlc");
 
-            SalesRep salesRep = new SalesRep();
-            salesRep.ID = 1;
+            if (Session["LoggedUser"] == null || !(Session["LoggedUser"] is SalesRep))
+                return null;
+
+            SalesRep salesRep = (SalesRep)Session["LoggedUser"];
 
             var salesRepCommission = new ReportDAL().GetSalesRepCommission(salesRep.ID, month, year);
 
             string period = string.Format("{0}/{1}", month, year);
 
             ReportParameter pSalesRepName = new ReportParameter("SalesRepName", string.Format("{0} {1}", salesRep.FirstName, salesRep.LastName));
-            ReportParameter pSalesRepCommission = new ReportParameter("SalesRepCommission", String.Format("{0:0.00}", salesRepCommission)); 
+            ReportParameter pSalesRepCommission = new ReportParameter("SalesRepCommission", String.Format("{0:0.00}", salesRepCommission));
             ReportParameter pPeriod = new ReportParameter("Period", period);
             localReport.SetParameters(pSalesRepName);
             localReport.SetParameters(pSalesRepCommission);
@@ -353,7 +355,7 @@ namespace TMBF.Controllers
             ViewBag.ServiceID = new SelectList(serviceList, "ID", "Name");
             return View(searchParameterModel);
         }
-        private byte[] GenerateRateData(long serviceID,  long sourceCountryID, int month, int year, string format)
+        private byte[] GenerateRateData(long serviceID, long sourceCountryID, int month, int year, string format)
         {
             LocalReport localReport = new LocalReport();
             localReport.ReportPath = Server.MapPath("~/Report/rpRate.rdlc");
