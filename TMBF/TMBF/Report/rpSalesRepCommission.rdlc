@@ -223,7 +223,7 @@
               <TextRun>
                 <Value>=Parameters!SalesRepCommission.Value</Value>
                 <Style>
-                  <Format>G7</Format>
+                  <Format>#.00</Format>
                 </Style>
               </TextRun>
             </TextRuns>
