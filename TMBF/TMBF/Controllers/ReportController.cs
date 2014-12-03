@@ -296,7 +296,7 @@ namespace TMBF.Controllers
         }
         private byte[] GenerateTrafficSummaryData(int month, int year, string format)
         {
-            if (month == null || year == null)
+            if (month == 0 || year == 0)
                 return null;
             LocalReport localReport = new LocalReport();
             localReport.ReportPath = Server.MapPath("~/Report/rpTrafficSummary.rdlc");
