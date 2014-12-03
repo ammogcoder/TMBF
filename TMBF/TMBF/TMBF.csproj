@@ -275,7 +275,7 @@
     <Content Include="Scripts\SqlScripts\DataBase Script.sql" />
     <Content Include="Scripts\SqlScripts\Countries.data.sql" />
     <Content Include="Scripts\SqlScripts\DataOnly IntialData.sql" />
-    <Content Include="Scripts\SqlScripts\FINAL ALL DATA.sql" />
+    <Content Include="Scripts\SqlScripts\FINAL ALL DATA V100.sql" />
     <Content Include="Scripts\SqlScripts\GetTrafficSummary.sql" />
     <Content Include="Scripts\SqlScripts\ModifyGetTrafficSummary.sql" />
     <Content Include="Scripts\SqlScripts\Service.data.sql" />
