@@ -29,8 +29,11 @@ namespace TMBF.DAL
             context.SaveChanges();
             
              
-            var salesRep = new SalesRep { ID = 1,UserName="sales", FirstName = "Dinesh", LastName = "Rahul", Password = "sales", role = User.Role.SalesRep };
-            context.SalesReps.Add(salesRep);
+            var salesReps = new List<SalesRep>{
+                new SalesRep{ ID = 1,UserName="sales", FirstName = "Dinesh", LastName = "Rahul", Password = "sales", role = User.Role.SalesRep },
+                new SalesRep{ ID = 2,UserName="sales2", FirstName = "Tuan", LastName = "Dang", Password = "sales2", role = User.Role.SalesRep }
+            };
+            salesReps.ForEach(r=>context.SalesReps.Add(r));
             context.SaveChanges();
 
             var customers = new List<Customer>
@@ -38,7 +41,7 @@ namespace TMBF.DAL
                 new Customer{ID=6421234569,FirstName="John",LastName="Doe",CommisionForSalesRep=5,City="Fairfield",State="IA",StreetAddress="100N",ZipCode=123,ServiceID=1,SalesRepID=1,CountryID=123,PhoneNo="6421234569", role = User.Role.Customer },
                 new Customer{UserName="usr1",ID=6421234579,FirstName="Kohn",LastName="Eoe",CommisionForSalesRep=5,City="Fairfield",State="IA",StreetAddress="100N",ZipCode=123,ServiceID=1,SalesRepID=1,CountryID=123,PhoneNo="6421234579", role = User.Role.Customer, Password="customer1"},
                 new Customer{ID=6421234589,FirstName="Lohn",LastName="Foe",CommisionForSalesRep=5,City="Fairfield",State="IA",StreetAddress="100N",ZipCode=123,ServiceID=1,SalesRepID=1,CountryID=123,PhoneNo="6421234589", role = User.Role.Customer },
-                new Customer{UserName="usr2",ID=6421234599,FirstName="Mohn",LastName="Goe",CommisionForSalesRep=5,City="Fairfield",State="IA",StreetAddress="100N",ZipCode=123,ServiceID=1,SalesRepID=1,CountryID=123,PhoneNo="6421234599", role = User.Role.Customer, Password="customer2"},
+                new Customer{UserName="usr2",ID=6421234599,FirstName="Mohn",LastName="Goe",CommisionForSalesRep=7.5,City="Fairfield",State="IA",StreetAddress="100N",ZipCode=123,ServiceID=1,SalesRepID=2,CountryID=123,PhoneNo="6421234599", role = User.Role.Customer, Password="customer2"},
                 new Customer{ID=6421234509,FirstName="Nohn",LastName="Hoe",CommisionForSalesRep=5,City="Fairfield",State="IA",StreetAddress="100N",ZipCode=123,ServiceID=1,SalesRepID=1,CountryID=123,PhoneNo="6421234509", role = User.Role.Customer },
                 new Customer{ID=7421234569,FirstName="John",LastName="Doe",CommisionForSalesRep=5,City="Fairfield",State="IA",StreetAddress="100N",ZipCode=123,ServiceID=1,SalesRepID=1,CountryID=123,PhoneNo="6421234569", role = User.Role.Customer },
                 new Customer{ID=7421234579,FirstName="Kohn",LastName="Eoe",CommisionForSalesRep=5,City="Fairfield",State="IA",StreetAddress="100N",ZipCode=123,ServiceID=1,SalesRepID=1,CountryID=123,PhoneNo="6421234579", role = User.Role.Customer },

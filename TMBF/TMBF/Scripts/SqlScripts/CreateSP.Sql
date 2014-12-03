@@ -20,7 +20,7 @@ SELECT CallDate, Concat(Concat(Cast((CallTime/100) as nvarchar),':'),Cast((CallT
 					AND DestinationCountry_ID=s.DestinationCountry_ID
 			)
 		)
-		as cost	        
+		as Cost	        
 	   --Cast(0 as float) as Cost
 		from Call	
 		where CustomerID = @customerID AND 
@@ -65,7 +65,7 @@ AS
 GO
 
 
-CREATE  PROCEDURE [dbo].GetSalesRepCommission
+CREATE  PROCEDURE [dbo].GetSalesRepCommissionTotal
 	@salesRepID bigint,
 	@month int,
 	@year int,
@@ -76,8 +76,8 @@ AS
 	DECLARE @com_pc int
 	DECLARE @totCost int
 	DECLARE @runTot int
-	  SET @totCost=0
-	DECLARE @pass varchar(100)
+
+	SET @totCost=0	
 
 	DECLARE cur CURSOR FOR SELECT c.ID, c.CommisionForSalesRep FROM Customer c 
 	  WHERE c.SalesRepID = @salesRepID	
@@ -103,13 +103,73 @@ AS
 GO
 
 
-Create  PROCEDURE [dbo].GetSummarySalesRepCommission
+CREATE  PROCEDURE [dbo].GetSalesRepCommission
+	@salesRepID bigint,
 	@month int,
 	@year int
 AS
 
-SELECT  'Mike Tyson' as SalesRepName, Cast(0.123456 as float) as Commission
-Go
+	DECLARE @id bigint
+	DECLARE @com_pc int
+	DECLARE @totCost int
+	DECLARE @runTot int
+
+	SET @totCost=0	
+
+	DECLARE cur CURSOR FOR SELECT c.ID, c.CommisionForSalesRep FROM Customer c 
+	  WHERE c.SalesRepID = @salesRepID	
+	    	  
+	OPEN cur
+
+	FETCH NEXT FROM cur INTO @id, @com_pc
+
+	WHILE @@FETCH_STATUS = 0 
+		BEGIN
+			exec @runTot= GetCustomerBillTotal @id,@month,@year,0
+			SET @totCost = @totCost+ @runTot * @com_pc
+			FETCH NEXT FROM cur INTO @id, @com_pc
+		END
+
+	CLOSE cur    
+	DEALLOCATE cur
+	
+	SELECT (0.01 * @totCost) AS Commission
+GO
+
+
+Create  PROCEDURE [dbo].GetSummarySalesRepCommission
+	@month int,
+	@year int
+AS
+	DECLARE @id bigint	
+	DECLARE @com int	  
+	DECLARE @name varchar(100)
+
+	DECLARE cur2 CURSOR FOR SELECT s.ID, concat(concat(u.FirstName,' '),u.LastName) as SalesRepName FROM SalesRep s inner join [User] u on u.ID=s.ID
+
+	Declare @FinalTable  Table
+	(
+	  SalesRepName varchar(100),
+	  Commission int
+	)
+	    	  
+	OPEN cur2
+
+	FETCH NEXT FROM cur2 INTO @id, @name
+
+	WHILE @@FETCH_STATUS = 0 
+		BEGIN
+			exec @com = GetSalesRepCommissionTotal @id,@month,@year,0
+			INSERT INTO @FinalTable (SalesRepName,Commission) VALUES (@name,@com)
+			FETCH NEXT FROM cur2 INTO @id, @name
+		END
+
+	CLOSE cur2    
+	DEALLOCATE cur2
+
+	SELECT * FROM @FinalTable
+	--SELECT  'Mike Tyson' as SalesRepName, Cast(0.123456 as float) as Commission
+GO
 
 -- =============================================
 -- Author:		<Author,,Name>
@@ -141,9 +201,10 @@ GO
 
 
 -- –service name–from country name –to country name –total minutes of calls
-SELECT  'Spectra' as ServiceName, 'VietNam' as  FromCountryName, 'Nepal' as ToCountryName, 12345 as Duration
+--SELECT  'Spectra' as ServiceName, 'VietNam' as  FromCountryName, 'Nepal' as ToCountryName, 12345 as Duration
 
-GO
+--GO
+
 CREATE  PROCEDURE [dbo].GetRate
 	@serviceName nvarchar (MAX),
 	@countryID bigint,
@@ -155,3 +216,4 @@ Print @serviceName
 SELECT Country.Name as DestinationCountryName, Service.PeekRate, Service.OffPeekRate FROM Country INNER JOIN Service On Country.ID = Service.DestinationCountry_ID  
 WHERE month(Service.RateEffectiveDate) = @month AND year(Service.RateEffectiveDate) = @year 
 and Service.SourceCountry_ID = @countryID and  Service.Name=  @serviceName
+GO
