@@ -34,9 +34,8 @@
             <ul>
 
                 @Html.LabelFor(m => m.ServiceID)
-                @Html.TextBoxFor(m => m.ServiceID, new { @Value = string.Empty })
-                @Html.ValidationMessageFor(m => m.ServiceID)
-
+                @Html.DropDownList("ServiceID", String.Empty)
+                @Html.ValidationMessageFor(model => model.ServiceID)
             </ul>
             <ul>
 

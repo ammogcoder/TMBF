@@ -46,15 +46,42 @@ SELECT  'Mike Tyson' as SalesRepName, Cast(0.123456 as float) as Commission
 
 
 GO
-Create  PROCEDURE [dbo].GetTrafficSummary
-	@month int,
-	@year int
+CREATE  PROCEDURE [dbo].[GetTrafficSummary]
+ @month int,
+ @year int
 AS
+BEGIN
+	-- SET NOCOUNT ON added to prevent extra result sets from
+	-- interfering with SELECT statements.
+	SET NOCOUNT ON;
+	
+SELECT Service.Name As 'ServiceName' , (select name from Country where ID=Call.SourceCountry_ID) As 'FromCountryName', 
+(select name from Country where ID=Call.DestinationCountry_ID) As 'ToCountryName' , SUM(Duration) As 'Duration'
+from [dbo].[Service] Inner Join [dbo].[Customer] ON Service.ID=ServiceID 
+Inner Join [dbo].[Call] on Call.CustomerID=Customer.PhoneNo
+where DATEDIFF(month,CallDate,DATEFROMPARTS (@year, @month, 1))<=0
+Group By Call.SourceCountry_ID,Call.DestinationCountry_ID,Service.Name
+order by Service.Name
+
+
+
+
+END
+
+GO
+
 -- –service name–from country name –to country name –total minutes of calls
 SELECT  'Spectra' as ServiceName, 'VietNam' as  FromCountryName, 'Nepal' as ToCountryName, 12345 as Duration
 
 GO
-Create  PROCEDURE [dbo].GetRate
+CREATE  PROCEDURE [dbo].GetRate
+	@serviceName nvarchar (MAX),
+	@countryID bigint,
+	@month int,
+	@year int
 AS
-SELECT  'Brazin' as DestinationCountryName, 0.123 as  PeekRate, 0.987 as OffPeekRate
-
+Print @serviceName
+--SELECT  'Brazin' as DestinationCountryName, 0.123 as  PeekRate, 0.987 as OffPeekRate
+SELECT Country.Name as DestinationCountryName, Service.PeekRate, Service.OffPeekRate FROM Country INNER JOIN Service On Country.ID = Service.DestinationCountry_ID  
+WHERE month(Service.RateEffectiveDate) = @month AND year(Service.RateEffectiveDate) = @year 
+and Service.SourceCountry_ID = @countryID and  Service.Name=  @serviceName
