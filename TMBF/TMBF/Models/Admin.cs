@@ -8,7 +8,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace TMBF.Models
 {
-    [Table("SalesRep")]
+    [Table("Admin")]
     public class Admin:User
     {
     }
