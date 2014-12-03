@@ -16,7 +16,7 @@ namespace TMBF.Models
         public string OutputFormat { get; set; }
         [Display(Name = "Service")]
         public string ServiceID { get; set; }
-        [Display(Name = "Country")]
+        [Display(Name = "Country code")]
         public string CountryID { get; set; }
     }
 }

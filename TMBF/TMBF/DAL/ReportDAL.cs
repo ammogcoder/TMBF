@@ -110,17 +110,17 @@ namespace TMBF.DAL
             }
             return list;
         }
-        public IList<Rate> GetRate(long serviceID, long sourceCountryID, int month, int year)
+        public IList<Rate> GetRate(string serviceName, long sourceCountryID, int month, int year)
         {
             IList<Rate> list = null;
             using (TelecomContext context = new TelecomContext())
             {
                 using (var ctx = new TelecomContext())
                 {
-                    var pServiceID = new SqlParameter
+                    var pServiceName = new SqlParameter
                     {
-                        ParameterName = "serviceID",
-                        Value = serviceID
+                        ParameterName = "serviceName",
+                        Value = serviceName
                     };
                     var pSourceCountryID = new SqlParameter
                     {
@@ -136,7 +136,7 @@ namespace TMBF.DAL
                         ParameterName = "year",
                         Value = year
                     };
-                    list = ctx.Database.SqlQuery<Rate>("exec GetRate @serviceID, @sourceCountryID, @month, @year ", pServiceID, pSourceCountryID, pMonth, pYear).ToList<Rate>();
+                    list = ctx.Database.SqlQuery<Rate>("exec GetRate @serviceName, @sourceCountryID, @month, @year ", pServiceName, pSourceCountryID, pMonth, pYear).ToList<Rate>();
                 }
 
             }

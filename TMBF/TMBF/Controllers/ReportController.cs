@@ -54,7 +54,8 @@ namespace TMBF.Controllers
                     renderedBytes = GenerateRateData(Convert.ToInt64( serviceID), Convert.ToInt64(countryID), Convert.ToInt32(month), Convert.ToInt32(year), format);
                     break;
             }
-
+            if (renderedBytes == null)
+                return null;
             if (format == null)
             {
                 return File(renderedBytes, "image/jpeg");
@@ -70,7 +71,7 @@ namespace TMBF.Controllers
         }
         private byte[] GenerateCustomerBillReportData(int month, int year, string format)
         {
-            if (month == null || year == null)
+            if (month == 0 || year == 0)
                 return null;
             LocalReport localReport = new LocalReport();
             localReport.ReportPath = Server.MapPath("~/Report/rpCustomerBill.rdlc");
@@ -147,6 +148,8 @@ namespace TMBF.Controllers
                     renderedBytes = GenerateRateData(Convert.ToInt64( serviceID), Convert.ToInt64(countryID), Convert.ToInt32(month), Convert.ToInt32(year), format);
                     break;
             }
+            if (renderedBytes == null)
+                return null;
             if (format == null)
             {
                 return File(renderedBytes, "image/jpeg");
@@ -293,7 +296,7 @@ namespace TMBF.Controllers
         }
         private byte[] GenerateTrafficSummaryData(int month, int year, string format)
         {
-            if (month == null || year == null)
+            if (month == 0 || year == 0)
                 return null;
             LocalReport localReport = new LocalReport();
             localReport.ReportPath = Server.MapPath("~/Report/rpTrafficSummary.rdlc");
@@ -336,6 +339,8 @@ namespace TMBF.Controllers
         public ActionResult RateReportViewer(string returnUrl)
         {
             ViewBag.ReturnUrl = returnUrl;
+            IList<Service> serviceList = db.Services.GroupBy(i => i.Name).Select(g => g.FirstOrDefault()).ToList();
+            ViewBag.ServiceID = new SelectList(serviceList, "ID", "Name");
             return View();
         }
 
@@ -344,6 +349,8 @@ namespace TMBF.Controllers
         [ValidateAntiForgeryToken]
         public ViewResult RateReportViewer(SearchParameterModel searchParameterModel)
         {
+            IList<Service> serviceList = db.Services.GroupBy(i => i.Name).Select(g => g.FirstOrDefault()).ToList();
+            ViewBag.ServiceID = new SelectList(serviceList, "ID", "Name");
             return View(searchParameterModel);
         }
         private byte[] GenerateRateData(long serviceID,  long sourceCountryID, int month, int year, string format)
@@ -351,17 +358,23 @@ namespace TMBF.Controllers
             LocalReport localReport = new LocalReport();
             localReport.ReportPath = Server.MapPath("~/Report/rpRate.rdlc");
 
+            string period = string.Format("{0}/{1}", month, year);
+            Service service = db.Services.Where(s => s.ID == serviceID).FirstOrDefault();
+            if (service == null)
+                return null;
+            Country country = db.Countries.Where(c => c.ID == sourceCountryID).FirstOrDefault();
+            if (country == null)
+                return null;
+
             ReportDataSource reportDataSource = new ReportDataSource();
             reportDataSource.Name = "dsRate";
 
-            var rate = new ReportDAL().GetRate(serviceID, sourceCountryID, month, year);
+            var rate = new ReportDAL().GetRate(service.Name, sourceCountryID, month, year);
 
             reportDataSource.Value = rate;
             localReport.DataSources.Add(reportDataSource);
 
-            string period = string.Format("{0}/{1}", month, year);
-            Service service = db.Services.Where(s => s.ID == serviceID).FirstOrDefault();
-            Country country = db.Countries.Where(c => c.ID == sourceCountryID).FirstOrDefault();
+
 
             ReportParameter pPeriod = new ReportParameter("Period", period);
             localReport.SetParameters(pPeriod);
