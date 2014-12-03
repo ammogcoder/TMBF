@@ -15,10 +15,10 @@ namespace TMBF.Models
         public string Name { get; set; }
 
         [Display(Name = "Source Country")]
-        public Country SourceCountry { get; set; }
+        public virtual Country SourceCountry { get; set; }
 
         [Display(Name = "Destination Country")]
-        public Country DestinationCountry { get; set; }
+        public virtual Country DestinationCountry { get; set; }
 
         [Display(Name = "Peek Hr. Rate")]
         public double PeekRate { get; set; }

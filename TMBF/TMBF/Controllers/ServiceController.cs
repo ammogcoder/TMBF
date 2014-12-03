@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using TMBF.Models;
 using TMBF.DAL;
+using PagedList;
 
 namespace TMBF.Controllers
 {[AdminR]
@@ -16,10 +17,24 @@ namespace TMBF.Controllers
         private TelecomContext db = new TelecomContext();
 
         // GET: /Service/
-        public ActionResult Index()
+        public ActionResult Index(string sortOrder, string currentFilter, int? page)
         {
-            return View(db.Services.ToList());
-        }
+            ViewBag.CurrentSort = sortOrder;
+
+            var services = from s in db.Services
+                         select s;
+            switch (sortOrder)
+            {
+                default:
+                    services = services.OrderBy(s => s.Name);
+                    break;
+            }
+
+            int pageSize = 10;
+            int pageNumber = (page ?? 1);
+
+            return View(services.ToPagedList(pageNumber, pageSize));
+        }       
 
         // GET: /Service/Details/5
         public ActionResult Details(int? id)

@@ -10,6 +10,7 @@ using TMBF.Models;
 using TMBF.DAL;
 using System.Web.Security;
 using System.Diagnostics;
+using PagedList;
 
 namespace TMBF.Controllers
 {
@@ -19,10 +20,24 @@ namespace TMBF.Controllers
         private TelecomContext db = new TelecomContext();
 
         // GET: /SalesRep/
-        public ActionResult Index()
+        public ActionResult Index(string sortOrder, string currentFilter, int? page)
         {
-            return View(db.SalesReps.ToList());
-        }
+            ViewBag.CurrentSort = sortOrder;
+
+            var salesRep = from s in db.SalesReps
+                         select s;
+            switch (sortOrder)
+            {
+                default:
+                    salesRep = salesRep.OrderBy(s => s.FirstName);
+                    break;
+            }
+
+            int pageSize = 10;
+            int pageNumber = (page ?? 1);
+
+            return View(salesRep.ToPagedList(pageNumber, pageSize));
+        }        
 
         // GET: /SalesRep/Details/5
         public ActionResult Details(long? id)

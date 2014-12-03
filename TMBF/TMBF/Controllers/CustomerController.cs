@@ -59,7 +59,7 @@ namespace TMBF.Controllers
                     break;                                      
             }
 
-            int pageSize = 2;
+            int pageSize = 10;
             int pageNumber = (page ?? 1);            
 
             customers = customers.Include(c => c.Country).Include(c => c.Service);
