@@ -341,6 +341,9 @@ namespace TMBF.Controllers
         public ActionResult RateReportViewer(string returnUrl)
         {
             ViewBag.ReturnUrl = returnUrl;
+
+            ViewBag.CountryID = new SelectList(db.Countries.ToList(), "ID", "Name");
+
             IList<Service> serviceList = db.Services.GroupBy(i => i.Name).Select(g => g.FirstOrDefault()).ToList();
             ViewBag.ServiceID = new SelectList(serviceList, "ID", "Name");
             return View();
@@ -351,6 +354,8 @@ namespace TMBF.Controllers
         [ValidateAntiForgeryToken]
         public ViewResult RateReportViewer(SearchParameterModel searchParameterModel)
         {
+            ViewBag.CountryID = new SelectList(db.Countries.ToList(), "ID", "Name");
+
             IList<Service> serviceList = db.Services.GroupBy(i => i.Name).Select(g => g.FirstOrDefault()).ToList();
             ViewBag.ServiceID = new SelectList(serviceList, "ID", "Name");
             return View(searchParameterModel);

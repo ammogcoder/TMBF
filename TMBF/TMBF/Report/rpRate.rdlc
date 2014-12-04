@@ -161,7 +161,7 @@
                             <TextRun>
                               <Value>=Fields!PeekRate.Value</Value>
                               <Style>
-                                <Format>#.00</Format>
+                                <Format>0.00</Format>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -193,7 +193,7 @@
                             <TextRun>
                               <Value>=Fields!OffPeekRate.Value</Value>
                               <Style>
-                                <Format>#.00</Format>
+                                <Format>0.00</Format>
                               </Style>
                             </TextRun>
                           </TextRuns>
