@@ -11,17 +11,28 @@ namespace TMBF.Business
     public class CallsDataAccess
     {
         //Check if CallExist, by tuandang
-        private static Boolean CallExists(DateTime CallDate, double CallTime, double Duration, string ReceiverNo, double CustomerID, double SourceCountry_ID, double DestinationCountry_ID)
+        private static Boolean CheckToInsert(DateTime CallDate, double CallTime, double Duration, string ReceiverNo, double CustomerID, double SourceCountry_ID, double DestinationCountry_ID)
         {
+            bool isOk = true;
             TelecomContext db = new TelecomContext();
-            Call call = db.Calls.Where(c => c.CustomerID == CustomerID && c.ReceiverNo == ReceiverNo &&
-                c.CallDate == CallDate && c.CallTime == CallTime).FirstOrDefault();
-            return call != null;
+
+            //check Customer exists
+            Customer customer = db.Customers.Where(c => c.ID == CustomerID).FirstOrDefault();
+            isOk = customer != null;
+            if (isOk)
+            {
+                //check Call exists
+                Call call = db.Calls.Where(c => c.CustomerID == CustomerID && c.ReceiverNo == ReceiverNo &&
+                    c.CallDate == CallDate && c.CallTime == CallTime).FirstOrDefault();
+                isOk = call == null;
+            }
+
+            return isOk;
         }
         public static Boolean insertCalls(DateTime CallDate, double CallTime, double Duration, string ReceiverNo, double CustomerID, double SourceCountry_ID, double DestinationCountry_ID)
         {
             //Check if CallExist, by tuandang
-            if (CallExists(CallDate, CallTime, Duration, ReceiverNo, CustomerID, SourceCountry_ID,  DestinationCountry_ID))
+            if (!CheckToInsert(CallDate, CallTime, Duration, ReceiverNo, CustomerID, SourceCountry_ID, DestinationCountry_ID))
                 return true;
             int ret = 0;
             string sql = @"INSERT [Call] ([CallDate], [CallTime], [Duration], [ReceiverNo], [CustomerID], [DestinationCountry_ID], [SourceCountry_ID]) 
