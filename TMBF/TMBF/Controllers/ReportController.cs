@@ -156,7 +156,18 @@ namespace TMBF.Controllers
             }
             else
             {
-                string filename = string.Format("{0}.{1}", reportName, "xls");
+                string filename = string.Empty;
+                if (reportName == "Rate")
+                {
+                    long serviceIDLong = Convert.ToInt64(serviceID);
+                    int countryIDInt = Convert.ToInt32(countryID);
+                    Service service = db.Services.FirstOrDefault(s => s.ID == serviceIDLong);
+                    Country country = db.Countries.FirstOrDefault(c => c.ID == countryIDInt);
+
+                    filename = string.Format("{0}_{1}.{2}", service.Name, country.Name, "xls");
+                }
+                else
+                    filename = string.Format("{0}.{1}", reportName, "xls");
                 Response.ClearHeaders();
                 Response.Clear();
                 Response.AddHeader("Content-Disposition", "attachment;filename=" + filename);
@@ -364,6 +375,8 @@ namespace TMBF.Controllers
         {
             LocalReport localReport = new LocalReport();
             localReport.ReportPath = Server.MapPath("~/Report/rpRate.rdlc");
+
+            localReport.DisplayName = "RateReport";
 
             string period = string.Format("{0}/{1}", month, year);
             Service service = db.Services.Where(s => s.ID == serviceID).FirstOrDefault();
