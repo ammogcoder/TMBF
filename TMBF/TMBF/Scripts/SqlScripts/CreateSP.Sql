@@ -21,11 +21,11 @@ CREATE  PROCEDURE [dbo].GetCustomerBill
 	@year int
 AS	
 	--phone number, length of call, time of call, cost of call
-SELECT ReceiverNo as PhoneNo, Duration/60 as Length, CallDate, 
+SELECT ReceiverNo as PhoneNo, Ceiling( Cast(Duration as Float) /60) as Length, CallDate, 
 	Cast( CallTime/100 as varchar) + ':' + Cast( CallTime%100 as varchar) as CallTime, 
-	Ceiling( Duration/60) * (Case WHEN CallTime>=s.PeekRateStartTime AND CallTime<s.OffPeekRateStartTime THEN s.PeekRate 
+	Ceiling( Cast(Duration as Float) /60) * (Case WHEN CallTime>=s.PeekRateStartTime AND CallTime<s.OffPeekRateStartTime THEN s.PeekRate 
 				ELSE s.OffPeekRate End) as Cost
-	from Call inner join Service s on Call.SourceCountry_ID = s.SourceCountry_ID and Call.DestinationCountry_ID = s.DestinationCountry_ID
+	from Call left join Service s on Call.SourceCountry_ID = s.SourceCountry_ID and Call.DestinationCountry_ID = s.DestinationCountry_ID
 	where CustomerID = @customerID
 		and Month(CallDate)= @month and Year(CallDate) = @year 
 
