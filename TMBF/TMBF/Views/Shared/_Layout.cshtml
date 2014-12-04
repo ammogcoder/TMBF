@@ -16,7 +16,9 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("TMBF", "Index", "Home", null, new { @class = "navbar-brand" })
+
+                <a href="~/Home"><img src="~/Content/TMBF%20Logo.png" class="navbar-brand" style="padding-top:5px;padding-right:5px" /></a>
+                @*@Html.ActionLink("TMBF", "Index", "Home", null, new { @class = "navbar-brand" })*@
             </div>
             <div class="navbar-collapse collapse">
                 <nav>
@@ -29,9 +31,9 @@
 
                
                 <div class="pull-right">
-                    <div style="color:white">
+                  
                         @Html.Partial("_LoginPartial")
-                    </div>
+              
                 </div>
             </div>
             
@@ -53,6 +55,7 @@
         $("select").toggleClass("form-control")
         $("#SearchString").toggleClass("form-control")
         $(".btn-default").toggleClass("btn-primary")
+        $("#btnSubmit").toggleClass("btn-primary")
         $(".validation-summary-errors").toggleClass("alert alert-dismissable alert-danger")
     </script> 
 </body>
