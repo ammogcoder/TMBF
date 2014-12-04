@@ -35,9 +35,9 @@ namespace TMBF.Controllers
             }
 
             ViewBag.CurrentFilter = searchString;
-            
-            var customers = from c in db.Customers
-                           select c;
+
+            var customers = from c in db.Customers                            
+                            select c;
             if (!String.IsNullOrEmpty(searchString))
             {
                 customers = customers.Where(c => c.LastName.Contains(searchString)
