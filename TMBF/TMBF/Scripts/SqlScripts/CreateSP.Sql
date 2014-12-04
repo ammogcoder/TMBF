@@ -71,7 +71,7 @@ BEGIN
 	SET NOCOUNT ON;
 	
 SELECT Service.Name As 'ServiceName', (select name from Country where ID=Call.SourceCountry_ID) As 'FromCountryName', 
-(select name from Country where ID=Call.DestinationCountry_ID) As 'ToCountryName' , SUM(Duration) As 'Duration'
+(select name from Country where ID=Call.DestinationCountry_ID) As 'ToCountryName' , SUM(Duration)/60 As 'Duration'
 from [dbo].[Service] Inner Join [dbo].[Customer] ON Service.ID=ServiceID 
 Inner Join [dbo].[Call] on Call.CustomerID=Customer.PhoneNo
 where DATEDIFF(month,CallDate,DATEFROMPARTS (@year, @month, 1))<=0

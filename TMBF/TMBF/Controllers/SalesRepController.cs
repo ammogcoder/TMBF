@@ -65,7 +65,7 @@ namespace TMBF.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include="FirstName,LastName,Password")] SalesRep salesrep)
+        public ActionResult Create([Bind(Include = "UserName,FirstName,LastName,Password")] SalesRep salesrep)
         {
             long max = 1;
             foreach(var sr in db.SalesReps){
@@ -75,6 +75,7 @@ namespace TMBF.Controllers
             salesrep.ID = max + 1;
             if (ModelState.IsValid)
             {
+                salesrep.role = TMBF.Models.User.Role.SalesRep;
                 db.SalesReps.Add(salesrep);
                 db.SaveChanges();
                 return RedirectToAction("Index");
