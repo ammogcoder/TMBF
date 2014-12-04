@@ -276,9 +276,9 @@
     <Content Include="Scripts\SqlScripts\CreateSP.Sql" />
     <Content Include="Scripts\SqlScripts\CreateView.Sql" />
     <Content Include="Scripts\SqlScripts\DataBase Script.sql" />
-    <Content Include="Scripts\SqlScripts\Countries.data.sql" />
+    <Content Include="Scripts\SqlScripts\FINAL InitialScript.sql" />
     <Content Include="Scripts\SqlScripts\DataOnly IntialData.sql" />
-    <Content Include="Scripts\SqlScripts\FINAL ALL DATA V101.sql" />
+    <Content Include="Scripts\SqlScripts\FINAL ALL DATA V102.sql" />
     <Content Include="Scripts\SqlScripts\GetTrafficSummary.sql" />
     <Content Include="Scripts\SqlScripts\ModifyGetTrafficSummary.sql" />
     <Content Include="Scripts\SqlScripts\Service.data.sql" />

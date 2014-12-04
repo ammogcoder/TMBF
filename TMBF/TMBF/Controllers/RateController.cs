@@ -28,81 +28,81 @@ namespace TMBF.Controllers
         /// <param name="serviceInfo">format: Servicename_Sourcecountry</param>
         /// <param name="htCountry">DataSet with the countries and its ids</param>
 
-        private DateTime getOffPeekStartTime(string serviceinfo) {
+        private int getOffPeekStartTime(string serviceinfo) {
             
             Hashtable htable = new Hashtable();
-            htable["Spectra_USA"] = new DateTime(2014, 1, 1, 17, 0, 0);//17:00
-            htable["Deluxe_USA"] = new DateTime(2014, 1, 1, 17, 0, 0);//17:00
-            htable["VOIP_USA"] = new DateTime(2014, 1, 1, 17, 0, 0);//17:00
-            htable["Budget_USA"] = new DateTime(2014, 1, 1, 17, 0, 0);//17:00
-            htable["Premium_USA"] = new DateTime(2014, 1, 1, 17, 0, 0);//17:00
+            htable["Spectra_USA"] = 1700;//17:00
+            htable["Deluxe_USA"] = 1700;//17:00
+            htable["VOIP_USA"] = 1700;//17:00
+            htable["Budget_USA"] = 1700;//17:00
+            htable["Premium_USA"] = 1700;//17:00
 
-            htable["Spectra_Germany"] = new DateTime(2014, 1, 1, 19, 0, 0);
-            htable["GACB_Germany"] = new DateTime(2014, 1, 1, 19, 0, 0);
-            htable["Spectra_France"] = new DateTime(2014, 1, 1, 19, 0, 0);
-            htable["GACB_France"] = new DateTime(2014, 1, 1, 19, 0, 0);
-            htable["Spectra_Denmark"] = new DateTime(2014, 1, 1, 19, 0, 0);
-            htable["GACB_Denmark"] = new DateTime(2014, 1, 1, 19, 0, 0);
-            htable["Spectra_Italy"] = new DateTime(2014, 1, 1, 19, 0, 0);
-            htable["GACB_Italy"] = new DateTime(2014, 1, 1, 19, 0, 0);
+            htable["Spectra_Germany"] = 1900;
+            htable["GACB_Germany"] = 1900;
+            htable["Spectra_France"] = 1900;
+            htable["GACB_France"] = 1900;
+            htable["Spectra_Denmark"] = 1900;
+            htable["GACB_Denmark"] = 1900;
+            htable["Spectra_Italy"] = 1900;
+            htable["GACB_Italy"] = 1900;
 
-            htable["Spectra_England"] = new DateTime(2014, 1, 1, 18, 0, 0);
-            htable["GACB_England"] = new DateTime(2014, 1, 1, 18, 0, 0);
-            htable["Spectra_Netherlands"] = new DateTime(2014, 1, 1, 18, 0, 0);
-            htable["GACB_Netherlands"] = new DateTime(2014, 1, 1, 18, 0, 0);
+            htable["Spectra_England"] = 1800;
+            htable["GACB_England"] = 1800;
+            htable["Spectra_Netherlands"] = 1800;
+            htable["GACB_Netherlands"] = 1800;
 
-            htable["GACB_Spain"] = new DateTime(2014, 1, 1, 17, 30, 0);
-            htable["GACB_Hungary"] = new DateTime(2014, 1, 1, 17, 30, 0);
-            htable["GACB_Austria"] = new DateTime(2014, 1, 1, 17, 30, 0);
+            htable["GACB_Spain"] = 1730;
+            htable["GACB_Hungary"] = 1730;
+            htable["GACB_Austria"] = 1730;
 
-            DateTime res;
+            int res;
             if (htable.ContainsKey(serviceinfo))
             {
-                res = (DateTime) htable[serviceinfo];
+                res = (int) htable[serviceinfo];
             }
             else
             {
-                res = new DateTime(4000, 1, 1);//TODO this country/service was not found!
+                res = 2000;//TODO this country/service was not found!
             }
         
                 
             return res;
         }
-        private DateTime getPeekStartTime(string serviceinfo) {
+        private int getPeekStartTime(string serviceinfo) {
             Hashtable htable = new Hashtable();
-            htable["Spectra_USA"] = new DateTime(2014, 1, 1, 8, 0, 0);//08:00
-            htable["Deluxe_USA"] = new DateTime(2014, 1, 1, 8, 0, 0);
-            htable["VOIP_USA"] = new DateTime(2014, 1, 1, 8, 0, 0);
-            htable["Budget_USA"] = new DateTime(2014, 1, 1, 8, 0, 0);
-            htable["Premium_USA"] = new DateTime(2014, 1, 1, 8, 0, 0);
+            htable["Spectra_USA"] = 800;//08:00
+            htable["Deluxe_USA"] = 800;
+            htable["VOIP_USA"] = 800;
+            htable["Budget_USA"] = 800;
+            htable["Premium_USA"] = 800;
 
-            htable["Spectra_Germany"] = new DateTime(2014, 1, 1, 9, 0, 0);
-            htable["GACB_Germany"] = new DateTime(2014, 1, 1, 9, 0, 0);
-            htable["Spectra_France"] = new DateTime(2014, 1, 1, 9, 0, 0);
-            htable["GACB_France"] = new DateTime(2014, 1, 1, 9, 0, 0);
-            htable["Spectra_Denmark"] = new DateTime(2014, 1, 1, 9, 0, 0);
-            htable["GACB_Denmark"] = new DateTime(2014, 1, 1, 9, 0, 0);
-            htable["Spectra_Italy"] = new DateTime(2014, 1, 1, 9, 0, 0);
-            htable["GACB_Italy"] = new DateTime(2014, 1, 1, 9, 0, 0);
+            htable["Spectra_Germany"] = 900;
+            htable["GACB_Germany"] = 900;
+            htable["Spectra_France"] = 900;
+            htable["GACB_France"] = 900;
+            htable["Spectra_Denmark"] = 900;
+            htable["GACB_Denmark"] = 900;
+            htable["Spectra_Italy"] = 900;
+            htable["GACB_Italy"] = 900;
 
-            htable["Spectra_England"] = new DateTime(2014, 1, 1, 8, 30, 0);
-            htable["GACB_England"] = new DateTime(2014, 1, 1, 8, 30, 0);
-            htable["Spectra_Netherlands"] = new DateTime(2014, 1, 1, 8, 30, 0);
-            htable["GACB_Netherlands"] = new DateTime(2014, 1, 1, 8, 30, 0);
+            htable["Spectra_England"] = 830;
+            htable["GACB_England"] = 830;
+            htable["Spectra_Netherlands"] = 830;
+            htable["GACB_Netherlands"] = 830;
 
-            htable["GACB_Spain"] = new DateTime(2014, 1, 1, 9, 0, 0);
-            htable["GACB_Hungary"] = new DateTime(2014, 1, 1, 9, 0, 0);
-            htable["GACB_Austria"] = new DateTime(2014, 1, 1, 9, 0, 0);
+            htable["GACB_Spain"] = 900;
+            htable["GACB_Hungary"] = 900;
+            htable["GACB_Austria"] = 900;
 
 
-            DateTime res;
+            int res;
             if (htable.ContainsKey(serviceinfo))
             {
-                res = (DateTime)htable[serviceinfo];
+                res = (int)htable[serviceinfo];
             }
             else
             {
-                res = new DateTime(4000, 1, 1);//TODO this country/service was not found!
+                res = 600;//TODO this country/service was not found!
             }
 
             return res;
@@ -121,8 +121,8 @@ namespace TMBF.Controllers
             
             string serviceName = words[0];
             string sourceCountryName = words[1];
-            DateTime peekStartTime = getPeekStartTime(table.TableName);
-            DateTime offPeekStartTime = getOffPeekStartTime(table.TableName);
+            int peekStartTime = getPeekStartTime(table.TableName);
+            int offPeekStartTime = getOffPeekStartTime(table.TableName);
 
             try
             {
@@ -172,8 +172,8 @@ namespace TMBF.Controllers
             dt.Columns.Add("OffPeekRate", typeof( float) );
             dt.Columns.Add("RateEffectiveDate", typeof(DateTime));
             dt.Columns.Add("RateEndDate", typeof(DateTime));
-            dt.Columns.Add("PeekRateStartTime", typeof(DateTime));
-            dt.Columns.Add("OffPeekRateStartTime", typeof(DateTime));
+            dt.Columns.Add("PeekRateStartTime", typeof(int));
+            dt.Columns.Add("OffPeekRateStartTime", typeof(int));
             dt.Columns.Add("DestinationCountry_ID", typeof( int ));
             dt.Columns.Add("SourceCountry_ID", typeof( int ));
 

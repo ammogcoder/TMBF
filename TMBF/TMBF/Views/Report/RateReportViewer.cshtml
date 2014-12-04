@@ -18,18 +18,14 @@
 
         <fieldset>
             <ul>
-
-                    @Html.LabelFor(m => m.Month)
-                    @Html.TextBoxFor(m => m.Month, new { @Value = DateTime.Today.Month })
-                    @Html.ValidationMessageFor(m => m.Month)
-
+                @Html.LabelFor(m => m.Month)
+                @Html.TextBoxFor(m => m.Month)
+                @Html.ValidationMessageFor(m => m.Month)
             </ul>
             <ul>
-
-                    @Html.LabelFor(m => m.Year)
-                    @Html.TextBoxFor(m => m.Year, new { @Value = DateTime.Today.Year })
-                    @Html.ValidationMessageFor(m => m.Year)
-
+                @Html.LabelFor(m => m.Year)
+                @Html.TextBoxFor(m => m.Year)
+                @Html.ValidationMessageFor(m => m.Year)
             </ul>
             <ul>
 
@@ -40,9 +36,8 @@
             <ul>
 
                 @Html.LabelFor(m => m.CountryID)
-                @Html.TextBoxFor(m => m.CountryID, new { @Value = string.Empty })
+                @Html.DropDownList("CountryID", String.Empty)
                 @Html.ValidationMessageFor(m => m.CountryID)
-
             </ul>
             <ul>
                 <input type="submit" id="btnSubmit" value="View Report" />
@@ -57,7 +52,7 @@
                 }
             </ul>
 
-</fieldset>
+        </fieldset>
     }
 </section>
 
