@@ -18,6 +18,26 @@ namespace TMBF.Business
                 c.CallDate == CallDate && c.CallTime == CallTime).FirstOrDefault();
             return call != null;
         }
+        internal static bool insertCallTable(System.Data.DataTable dt)
+        {
+            SqlConnection connection = ConnectionManager.GetTMConnection();
+            using (SqlBulkCopy bulkCopy = new SqlBulkCopy(connection))
+            {
+                bulkCopy.DestinationTableName = "dbo.Call";
+
+                try
+                {
+                    // Write from the source to the destination.
+                    bulkCopy.WriteToServer(dt);
+                }
+                catch (Exception ex)
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
         public static Boolean insertCalls(DateTime CallDate, double CallTime, double Duration, string ReceiverNo, double CustomerID, double SourceCountry_ID, double DestinationCountry_ID)
         {
             //Check if CallExist, by tuandang

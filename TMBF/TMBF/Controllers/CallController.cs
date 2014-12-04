@@ -118,25 +118,64 @@ namespace TMBF.Controllers
         private bool FillToDataBase(DataRowCollection Data)
         {
             Boolean NoErrors = true;
+            DataTable dt = initBatchTable();
 
             for (int i = 0; i < Data.Count && Data[i][0].ToString() != ""; i++)
             {
-          
-                NoErrors = NoErrors && Business.CallsDataAccess.insertCalls(ReturnDate(Data[i][5].ToString()), (double)Data[i][6], (double)Data[i][4], Data[i][3].ToString(), (double)Data[i][2], (double)Data[i][0], (double)Data[i][1]);
+                DataRow newRow = dt.NewRow();
+                newRow["CallDate"] = ReturnDate(Data[i][5].ToString());
+                newRow["CallTime"] = Int32.Parse(Data[i][6].ToString());
+                newRow["Duration"] = Int32.Parse(Data[i][4].ToString());
+                newRow["ReceiverNo"] = Data[i][3].ToString();
+                newRow["CustomerID"] = (long)((double)Data[i][2]);
+                newRow["DestinationCountry_ID"] = Int32.Parse(Data[i][0].ToString());
+                newRow["SourceCountry_ID"] = Int32.Parse(Data[i][1].ToString());
+                //NoErrors = NoErrors && Business.CallsDataAccess.insertCalls(DateTime.FromOADate((double)Data[i][5]), (double)Data[i][6], (double)Data[i][4], Data[i][3].ToString(), (double)Data[i][2], (double)Data[i][0], (double)Data[i][1]);
 
             }
+
+            Business.CallsDataAccess.insertCallTable(dt);
             return NoErrors;
         }
+        private DataTable initBatchTable()
+        {
+            DataTable dt = new DataTable();
+            dt.Clear();
+            dt.Columns.Add("ID", typeof(int));
+            dt.Columns.Add("CallDate", typeof(DateTime));
+            dt.Columns.Add("CallTime", typeof(int));
+            dt.Columns.Add("Duration", typeof(int));
+            dt.Columns.Add("ReceiverNo", typeof(string));
+            dt.Columns.Add("CustomerID", typeof(long));
+            dt.Columns.Add("DestinationCountry_ID", typeof(int));
+            dt.Columns.Add("SourceCountry_ID", typeof(int));
+
+
+            return dt;
+
+
+        }
+
         private bool FillToDataBaseOA(DataRowCollection Data)
         {
             Boolean NoErrors = true;
-          
+            DataTable dt = initBatchTable(); 
+
             for (int i = 0; i < Data.Count && Data[i][0].ToString()!=""; i++)
             {
-         
-                NoErrors = NoErrors && Business.CallsDataAccess.insertCalls(DateTime.FromOADate((double)Data[i][5]), (double)Data[i][6], (double)Data[i][4], Data[i][3].ToString(), (double)Data[i][2], (double)Data[i][0], (double)Data[i][1]);
+                DataRow newRow = dt.NewRow();
+                newRow["CallDate"] = DateTime.FromOADate((double)Data[i][5]);
+                newRow["CallTime"] =  Int32.Parse(Data[i][6].ToString());
+                newRow["Duration"] = Int32.Parse(Data[i][4].ToString());
+                newRow["ReceiverNo"] = Data[i][3].ToString();
+                newRow["CustomerID"] = (long)((double)Data[i][2]);
+                newRow["DestinationCountry_ID"] = Int32.Parse(Data[i][0].ToString());
+                newRow["SourceCountry_ID"] = Int32.Parse(Data[i][1].ToString());
+                //NoErrors = NoErrors && Business.CallsDataAccess.insertCalls(DateTime.FromOADate((double)Data[i][5]), (double)Data[i][6], (double)Data[i][4], Data[i][3].ToString(), (double)Data[i][2], (double)Data[i][0], (double)Data[i][1]);
           
             }
+
+            Business.CallsDataAccess.insertCallTable(dt);
            return NoErrors;
         }
         private bool insertToDatabase(string filename)
