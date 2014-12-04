@@ -17,22 +17,60 @@
                    new { LinkText="Country", ActionName="Index",ControllerName="Country",Roles="Admin"},
                    new { LinkText="Update Rates", ActionName="FileUpload",ControllerName="Rate",Roles="Admin"},                        
                    new { LinkText="About", ActionName="About",ControllerName="Home",Roles="Anonymous,All"  }
+               
                 };
 }  
 
 <ul id="menu" class="nav navbar-nav">
     @if (@Session["UsrName"] != null)
     {
+        bool Exist = false;
+
         String[] roles = new String[] { @Session["Role"].ToString() };
         var links = from item in menus
                     where item.Roles.Split(new String[] { "," }, StringSplitOptions.RemoveEmptyEntries)
                     .Any(x => roles.Contains(x) || x == "All")
                     select item;
-        foreach (var link in links)
+        if (@Session["Role"].ToString() == "Admin") 
+        { 
+         foreach (var link in links)
         {
-            @:
-            <li> @Html.ActionLink(link.LinkText, link.ActionName, link.ControllerName)</li>
+            if (link.LinkText == "Commission Summary" || link.LinkText == "Traffic Summary" || link.LinkText == "Export Rate" || link.LinkText == "About")
+            {
+                Exist = true;
+            }
+            else
+            {  <li> @Html.ActionLink(link.LinkText, link.ActionName, link.ControllerName)</li>}
         }
+        if (Exist)
+        {
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Reports <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+
+
+                    @foreach (var link in links)
+                    {
+                    if (link.LinkText == "Commission Summary" || link.LinkText == "Traffic Summary" || link.LinkText == "Export Rate")
+                    {
+                    <li> @Html.ActionLink(link.LinkText, link.ActionName, link.ControllerName)</li>
+                    }
+                    }
+
+                </ul>
+            </li>
+        <li><a href="/Home/About">About</a></li>
+        }
+        }
+        else 
+        {
+        
+       foreach (var link in links)
+        {
+            <li> @Html.ActionLink(link.LinkText, link.ActionName, link.ControllerName)</li>}
+        
+        }
+       
     }
     else
     {
