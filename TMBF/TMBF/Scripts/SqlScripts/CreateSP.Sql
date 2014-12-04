@@ -1,5 +1,20 @@
 ﻿-- add Disc to SaleRep
 -- delete key constrain with User in Admin
+
+-- drop all SP
+DROP PROCEDURE GetCustomerBill
+Go
+DROP PROCEDURE GetSalesRepCommission
+Go
+DROP PROCEDURE GetSummarySalesRepCommission
+Go
+DROP PROCEDURE GetTrafficSummary
+Go
+DROP PROCEDURE GetRate
+Go
+
+-- create new SP
+
 CREATE  PROCEDURE [dbo].GetCustomerBill
 	@customerID bigint,
 	@month int,
@@ -8,7 +23,7 @@ AS
 	--phone number, length of call, time of call, cost of call
 SELECT ReceiverNo as PhoneNo, Duration/60 as Length, CallDate, 
 	Cast( CallTime/100 as varchar) + ':' + Cast( CallTime%100 as varchar) as CallTime, 
-	Duration * (Case WHEN CallTime>=s.PeekRateStartTime AND CallTime<s.OffPeekRateStartTime THEN s.PeekRate 
+	Ceiling( Duration/60) * (Case WHEN CallTime>=s.PeekRateStartTime AND CallTime<s.OffPeekRateStartTime THEN s.PeekRate 
 				ELSE s.OffPeekRate End) as Cost
 	from Call inner join Service s on Call.SourceCountry_ID = s.SourceCountry_ID and Call.DestinationCountry_ID = s.DestinationCountry_ID
 	where CustomerID = @customerID
