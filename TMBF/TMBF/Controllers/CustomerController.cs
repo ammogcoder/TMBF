@@ -97,7 +97,7 @@ namespace TMBF.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include="ID,StreetAddress,City,State,ZipCode,CommisionForSalesRep,CountryID,ServiceID,SalesRepID,FirstName,LastName,Password")] Customer customer)
+        public ActionResult Create([Bind(Include = "ID,UserName,StreetAddress,City,State,ZipCode,CommisionForSalesRep,CountryID,ServiceID,SalesRepID,FirstName,LastName,Password")] Customer customer)
         {
             //Debug.WriteLine(customer.ID);
             if (customer.ID < 1000000000)
@@ -108,7 +108,8 @@ namespace TMBF.Controllers
             else
             {
                 if (ModelState.IsValid)
-                {                    
+                {
+                    customer.role = TMBF.Models.User.Role.Customer;
                     customer.SalesRepID = ((SalesRep)Session["LoggedUser"]).ID;                    
                     db.Customers.Add(customer);
                     db.SaveChanges();
