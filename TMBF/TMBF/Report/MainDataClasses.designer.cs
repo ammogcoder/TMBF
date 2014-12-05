@@ -32,8 +32,8 @@ namespace TMBF.Report
     partial void OnCreated();
     #endregion
 		
-		public DataClasses1DataContext() :
-        base(global::System.Configuration.ConfigurationManager.ConnectionStrings["TelecomContext"].ConnectionString, mappingSource)
+		public DataClasses1DataContext() : 
+				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["TelecomContext"].ConnectionString, mappingSource)
 		{
 			OnCreated();
 		}
@@ -324,6 +324,8 @@ namespace TMBF.Report
 	public partial class Rate
 	{
 		
+		private int _CountryID;
+		
 		private string _DestinationCountryName;
 		
 		private System.Nullable<double> _PeekRate;
@@ -332,6 +334,22 @@ namespace TMBF.Report
 		
 		public Rate()
 		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CountryID", DbType="Int NOT NULL")]
+		public int CountryID
+		{
+			get
+			{
+				return this._CountryID;
+			}
+			set
+			{
+				if ((this._CountryID != value))
+				{
+					this._CountryID = value;
+				}
+			}
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DestinationCountryName", DbType="VarChar(6) NOT NULL", CanBeNull=false)]

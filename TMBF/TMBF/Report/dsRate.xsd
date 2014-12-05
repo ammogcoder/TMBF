@@ -12,13 +12,14 @@
               <DbSource ConnectionRef="TelecomContext (Web.config)" DbObjectName="TMBF.dbo.Rate" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>SELECT DestinationCountryName, PeekRate, OffPeekRate FROM dbo.Rate</CommandText>
+                    <CommandText>SELECT CountryID, DestinationCountryName, PeekRate, OffPeekRate FROM dbo.Rate</CommandText>
                     <Parameters />
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
             </MainSource>
             <Mappings>
+              <Mapping SourceColumn="CountryID" DataSetColumn="CountryID" />
               <Mapping SourceColumn="DestinationCountryName" DataSetColumn="DestinationCountryName" />
               <Mapping SourceColumn="PeekRate" DataSetColumn="PeekRate" />
               <Mapping SourceColumn="OffPeekRate" DataSetColumn="OffPeekRate" />
@@ -36,6 +37,7 @@
         <xs:element name="Rate" msprop:Generator_TableClassName="RateDataTable" msprop:Generator_TableVarName="tableRate" msprop:Generator_TablePropName="Rate" msprop:Generator_RowDeletingName="RateRowDeleting" msprop:Generator_RowChangingName="RateRowChanging" msprop:Generator_RowEvHandlerName="RateRowChangeEventHandler" msprop:Generator_RowDeletedName="RateRowDeleted" msprop:Generator_UserTableName="Rate" msprop:Generator_RowChangedName="RateRowChanged" msprop:Generator_RowEvArgName="RateRowChangeEvent" msprop:Generator_RowClassName="RateRow">
           <xs:complexType>
             <xs:sequence>
+              <xs:element name="CountryID" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnCountryID" msprop:Generator_ColumnPropNameInRow="CountryID" msprop:Generator_ColumnPropNameInTable="CountryIDColumn" msprop:Generator_UserColumnName="CountryID" type="xs:int" minOccurs="0" />
               <xs:element name="DestinationCountryName" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnDestinationCountryName" msprop:Generator_ColumnPropNameInRow="DestinationCountryName" msprop:Generator_ColumnPropNameInTable="DestinationCountryNameColumn" msprop:Generator_UserColumnName="DestinationCountryName" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">

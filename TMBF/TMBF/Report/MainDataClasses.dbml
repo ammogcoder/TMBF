@@ -25,6 +25,7 @@
   </Table>
   <Table Name="dbo.Rate" Member="Rates">
     <Type Name="Rate">
+      <Column Name="CountryID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="DestinationCountryName" Type="System.String" DbType="VarChar(6) NOT NULL" CanBeNull="false" />
       <Column Name="PeekRate" Type="System.Double" DbType="Float" CanBeNull="true" />
       <Column Name="OffPeekRate" Type="System.Double" DbType="Float" CanBeNull="true" />

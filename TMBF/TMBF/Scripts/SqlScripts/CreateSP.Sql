@@ -110,22 +110,10 @@ CREATE  PROCEDURE [dbo].GetRate
 	@month int,
 	@year int
 AS
-Print @serviceName
---SELECT  'Brazin' as DestinationCountryName, 0.123 as  PeekRate, 0.987 as OffPeekRate
-SELECT Country.Name as DestinationCountryName, Service.PeekRate, Service.OffPeekRate FROM Country INNER JOIN Service On Country.ID = Service.DestinationCountry_ID  
+
+--SELECT  1000 as CountryID, 'Brazin' as DestinationCountryName, Cast(0.123 as Float) as  PeekRate, Cast(0.123 as Float) as OffPeekRate
+
+SELECT Country.ID as CountryID, Country.Name as DestinationCountryName, Service.PeekRate, Service.OffPeekRate FROM Country INNER JOIN Service On Country.ID = Service.DestinationCountry_ID  
 WHERE month(Service.RateEffectiveDate) = @month AND year(Service.RateEffectiveDate) = @year 
 and Service.SourceCountry_ID = @countryID and  Service.Name=  @serviceName
-
--- for commission
-
-select Duration, c.CommisionForSalesRep, c.SalesRepID,
-	Case WHEN CallTime>=s.PeekRateStartTime AND CallTime<s.OffPeekRateStartTime THEN s.PeekRate 
-	ELSE s.OffPeekRate End as Rate,
-	Duration * (Case WHEN CallTime>=s.PeekRateStartTime AND CallTime<s.OffPeekRateStartTime THEN s.PeekRate 
-	ELSE s.OffPeekRate End)*c.CommisionForSalesRep /100  as Commission
-from Call inner join Customer c on Call.CustomerID = c.ID 
-inner join Service s on Call.SourceCountry_ID = s.SourceCountry_ID and Call.DestinationCountry_ID = s.DestinationCountry_ID
-where Month(CallDate)= 12 and Year(CallDate) = 2013 and c.SalesRepID  = 1 
-	and Month( s.RateEffectiveDate) = 12 and Year(s.RateEffectiveDate) = 2013 
-	and CallDate >= s.RateEffectiveDate and CallDate <= s.RateEndDate
 
