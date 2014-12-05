@@ -36,7 +36,9 @@ namespace TMBF.Controllers
 
             ViewBag.CurrentFilter = searchString;
 
-            var customers = from c in db.Customers                            
+           // long tempID=((SalesRep)Session["LoggedUser"]).ID;
+            var customers = from c in db.Customers
+                            //where c.SalesRepID == tempID
                             select c;
             if (!String.IsNullOrEmpty(searchString))
             {
@@ -100,7 +102,7 @@ namespace TMBF.Controllers
         public ActionResult Create([Bind(Include = "ID,UserName,StreetAddress,City,State,ZipCode,CommisionForSalesRep,CountryID,ServiceID,SalesRepID,FirstName,LastName,Password")] Customer customer)
         {
             //Debug.WriteLine(customer.ID);
-            if (customer.ID < 1000000000)
+            if (customer.ID < 1000000000 || customer.ID > 9999999999)
             {
                 ViewBag.ErrorMessage = "Phone No.s are 10 digits long.";
                 //Debug.WriteLine(customer.ID);

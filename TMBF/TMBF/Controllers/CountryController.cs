@@ -35,7 +35,30 @@ namespace TMBF.Controllers
             int pageNumber = (page ?? 1);
 
             return View(countries.ToPagedList(pageNumber, pageSize));
-        }         
+        }
+
+        // GET: /Country/Create
+        public ActionResult Create()
+        {
+            return View();
+        }
+
+        // POST: /Country/Create
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create([Bind(Include = "ID,Name")] Country country)
+        {            
+            if (ModelState.IsValid)
+            {
+                db.Countries.Add(country);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
+            return View(country);
+        }
 
         // GET: /Country/Details/5
         public ActionResult Details(int? id)

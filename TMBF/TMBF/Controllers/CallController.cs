@@ -131,7 +131,7 @@ namespace TMBF.Controllers
                 newRow["DestinationCountry_ID"] = Int32.Parse(Data[i][0].ToString());
                 newRow["SourceCountry_ID"] = Int32.Parse(Data[i][1].ToString());
                 //NoErrors = NoErrors && Business.CallsDataAccess.insertCalls(DateTime.FromOADate((double)Data[i][5]), (double)Data[i][6], (double)Data[i][4], Data[i][3].ToString(), (double)Data[i][2], (double)Data[i][0], (double)Data[i][1]);
-
+                dt.Rows.Add(newRow);
             }
 
             Business.CallsDataAccess.insertCallTable(dt);
@@ -171,6 +171,7 @@ namespace TMBF.Controllers
                 newRow["CustomerID"] = (long)((double)Data[i][2]);
                 newRow["DestinationCountry_ID"] = Int32.Parse(Data[i][0].ToString());
                 newRow["SourceCountry_ID"] = Int32.Parse(Data[i][1].ToString());
+                dt.Rows.Add(newRow);
                 //NoErrors = NoErrors && Business.CallsDataAccess.insertCalls(DateTime.FromOADate((double)Data[i][5]), (double)Data[i][6], (double)Data[i][4], Data[i][3].ToString(), (double)Data[i][2], (double)Data[i][0], (double)Data[i][1]);
           
             }

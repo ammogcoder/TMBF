@@ -327,6 +327,7 @@
     <Content Include="Views\Report\SummarySalesRepCommissionReportViewer.cshtml" />
     <Content Include="Views\Report\TrafficSummaryReportViewer.cshtml" />
     <Content Include="Views\Report\RateReportViewer.cshtml" />
+    <Content Include="Views\Country\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
