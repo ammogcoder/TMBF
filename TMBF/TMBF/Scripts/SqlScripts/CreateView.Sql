@@ -14,7 +14,7 @@ AS
 SELECT  'Spectra' as ServiceName, 'VietNam' as  FromCountryName, 'Nepal' as ToCountryName, 12345 as Duration
 
 GO
-Create  View Rate
+create  View Rate
 AS
-SELECT  'Brazin' as DestinationCountryName, Cast(123.5, Float) as  PeekRate, Cast(123.5, Float) as OffPeekRate
+SELECT  1000 As CountryID, 'Brazin' as DestinationCountryName, Cast( 123.4567 as Float) as  PeekRate, Cast( 123.4567 as Float)  as OffPeekRate
 

@@ -157,17 +157,53 @@ namespace TMBF.Controllers
             else
             {
                 string filename = string.Empty;
-                if (reportName == "Rate")
-                {
-                    long serviceIDLong = Convert.ToInt64(serviceID);
-                    int countryIDInt = Convert.ToInt32(countryID);
-                    Service service = db.Services.FirstOrDefault(s => s.ID == serviceIDLong);
-                    Country country = db.Countries.FirstOrDefault(c => c.ID == countryIDInt);
+                //if (reportName == "Rate")
+                //{
+                //    long serviceIDLong = Convert.ToInt64(serviceID);
+                //    int countryIDInt = Convert.ToInt32(countryID);
+                //    Service service = db.Services.FirstOrDefault(s => s.ID == serviceIDLong);
+                //    Country country = db.Countries.FirstOrDefault(c => c.ID == countryIDInt);
 
-                    filename = string.Format("{0}_{1}.{2}", service.Name, country.Name, "xls");
-                }
-                else
-                    filename = string.Format("{0}.{1}", reportName, "xls");
+                //    filename = string.Format("{0}_{1}.{2}", service.Name, country.Name, "xls");
+                //}
+                //else
+
+                filename = string.Format("{0}.{1}", reportName, "xls");
+                Response.ClearHeaders();
+                Response.Clear();
+                Response.AddHeader("Content-Disposition", "attachment;filename=" + filename);
+                Response.ContentType = "application/vnd.ms-excel";
+                Response.BinaryWrite(renderedBytes);
+                Response.Flush();
+                Response.End();
+                return View();
+            }
+        }
+        public ActionResult DownloadDraftRateExcel(string reportName, string month, string year, string format, string serviceID, string countryID)
+        {
+            if (month == null || year == null)
+                return null;
+            serviceID = serviceID == null ? string.Empty : serviceID;
+            countryID = countryID == null ? string.Empty : countryID;
+            int serviceIDInt = Convert.ToInt32(serviceID);
+            Service service = db.Services.FirstOrDefault(s => s.ID == serviceIDInt);
+            int countryIDInt = Convert.ToInt32(countryID);
+            Country country= db.Countries.FirstOrDefault(s => s.ID == countryIDInt);
+
+            //Render the report            
+            byte[] renderedBytes = null;
+
+            renderedBytes = GenerateDraftRateData(serviceIDInt, countryIDInt, Convert.ToInt32(month), Convert.ToInt32(year), format);
+            if (renderedBytes == null)
+                return null;
+            if (format == null)
+            {
+                return File(renderedBytes, "image/jpeg");
+            }
+            else
+            {
+                string filename = string.Empty;
+                filename = string.Format("{0}_{1}.xls", service.Name, country.Name);
                 Response.ClearHeaders();
                 Response.Clear();
                 Response.AddHeader("Content-Disposition", "attachment;filename=" + filename);
@@ -371,12 +407,49 @@ namespace TMBF.Controllers
             ViewBag.ServiceID = new SelectList(serviceList, "ID", "Name");
             return View(searchParameterModel);
         }
+        private byte[] GenerateDraftRateData(long serviceID, long sourceCountryID, int month, int year, string format)
+        {
+            LocalReport localReport = new LocalReport();
+            localReport.ReportPath = Server.MapPath("~/Report/rpDraftRate.rdlc");
+
+            Service service = db.Services.Where(s => s.ID == serviceID).FirstOrDefault();
+            if (service == null)
+                return null;
+
+            ReportDataSource reportDataSource = new ReportDataSource();
+            reportDataSource.Name = "dsRate";
+
+            var rate = new ReportDAL().GetRate(service.Name, sourceCountryID, month, year);
+
+            reportDataSource.Value = rate;
+            localReport.DataSources.Add(reportDataSource);
+            
+            string mimeType;
+            string encoding;
+            string fileNameExtension;
+            //The DeviceInfo settings should be changed based on the reportType            
+            //http://msdn2.microsoft.com/en-us/library/ms155397.aspx            
+            string deviceInfo = "<DeviceInfo>" +
+                "  <OutputFormat>jpeg</OutputFormat>" +
+                "  <PageWidth>8.5in</PageWidth>" +
+                "  <PageHeight>11in</PageHeight>" +
+                "  <MarginTop>0.5in</MarginTop>" +
+                "  <MarginLeft>1in</MarginLeft>" +
+                "  <MarginRight>1in</MarginRight>" +
+                "  <MarginBottom>0.5in</MarginBottom>" +
+                "</DeviceInfo>";
+            Warning[] warnings;
+            string[] streams;
+            byte[] renderedBytes;
+            //Render the report            
+            renderedBytes = localReport.Render(format, deviceInfo, out mimeType, out encoding, out fileNameExtension, out streams, out warnings);
+            return renderedBytes;
+
+        }
         private byte[] GenerateRateData(long serviceID, long sourceCountryID, int month, int year, string format)
         {
             LocalReport localReport = new LocalReport();
             localReport.ReportPath = Server.MapPath("~/Report/rpRate.rdlc");
-
-            localReport.DisplayName = "RateReport";
 
             string period = string.Format("{0}/{1}", month, year);
             Service service = db.Services.Where(s => s.ID == serviceID).FirstOrDefault();
@@ -393,8 +466,6 @@ namespace TMBF.Controllers
 
             reportDataSource.Value = rate;
             localReport.DataSources.Add(reportDataSource);
-
-
 
             ReportParameter pPeriod = new ReportParameter("Period", period);
             localReport.SetParameters(pPeriod);

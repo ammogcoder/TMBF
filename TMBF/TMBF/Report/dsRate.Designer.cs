@@ -279,6 +279,8 @@ namespace TMBF.Report {
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
         public partial class RateDataTable : global::System.Data.TypedTableBase<RateRow> {
             
+            private global::System.Data.DataColumn columnCountryID;
+            
             private global::System.Data.DataColumn columnDestinationCountryName;
             
             private global::System.Data.DataColumn columnPeekRate;
@@ -316,6 +318,14 @@ namespace TMBF.Report {
             protected RateDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn CountryIDColumn {
+                get {
+                    return this.columnCountryID;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -379,9 +389,10 @@ namespace TMBF.Report {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public RateRow AddRateRow(string DestinationCountryName, double PeekRate, double OffPeekRate) {
+            public RateRow AddRateRow(int CountryID, string DestinationCountryName, double PeekRate, double OffPeekRate) {
                 RateRow rowRateRow = ((RateRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
+                        CountryID,
                         DestinationCountryName,
                         PeekRate,
                         OffPeekRate};
@@ -407,6 +418,7 @@ namespace TMBF.Report {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             internal void InitVars() {
+                this.columnCountryID = base.Columns["CountryID"];
                 this.columnDestinationCountryName = base.Columns["DestinationCountryName"];
                 this.columnPeekRate = base.Columns["PeekRate"];
                 this.columnOffPeekRate = base.Columns["OffPeekRate"];
@@ -415,12 +427,15 @@ namespace TMBF.Report {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             private void InitClass() {
+                this.columnCountryID = new global::System.Data.DataColumn("CountryID", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCountryID);
                 this.columnDestinationCountryName = new global::System.Data.DataColumn("DestinationCountryName", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnDestinationCountryName);
                 this.columnPeekRate = new global::System.Data.DataColumn("PeekRate", typeof(double), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnPeekRate);
                 this.columnOffPeekRate = new global::System.Data.DataColumn("OffPeekRate", typeof(double), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnOffPeekRate);
+                this.columnCountryID.ReadOnly = true;
                 this.columnDestinationCountryName.ReadOnly = true;
                 this.columnDestinationCountryName.MaxLength = 6;
                 this.columnPeekRate.ReadOnly = true;
@@ -567,6 +582,22 @@ namespace TMBF.Report {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int CountryID {
+                get {
+                    try {
+                        return ((int)(this[this.tableRate.CountryIDColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'CountryID\' in table \'Rate\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableRate.CountryIDColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string DestinationCountryName {
                 get {
                     try {
@@ -611,6 +642,18 @@ namespace TMBF.Report {
                 set {
                     this[this.tableRate.OffPeekRateColumn] = value;
                 }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsCountryIDNull() {
+                return this.IsNull(this.tableRate.CountryIDColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetCountryIDNull() {
+                this[this.tableRate.CountryIDColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -809,6 +852,7 @@ namespace TMBF.Report.dsRateTableAdapters {
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
             tableMapping.DataSetTable = "Rate";
+            tableMapping.ColumnMappings.Add("CountryID", "CountryID");
             tableMapping.ColumnMappings.Add("DestinationCountryName", "DestinationCountryName");
             tableMapping.ColumnMappings.Add("PeekRate", "PeekRate");
             tableMapping.ColumnMappings.Add("OffPeekRate", "OffPeekRate");
@@ -828,7 +872,7 @@ namespace TMBF.Report.dsRateTableAdapters {
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT DestinationCountryName, PeekRate, OffPeekRate FROM dbo.Rate";
+            this._commandCollection[0].CommandText = "SELECT CountryID, DestinationCountryName, PeekRate, OffPeekRate FROM dbo.Rate";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
